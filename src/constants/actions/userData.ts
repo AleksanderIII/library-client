@@ -1,0 +1,5 @@
+export enum UserDataActions {
+    POST_USER_DATA = 'POST_USER_DATA',
+    CHANGE_VALUE = 'CHANGE_VALUE',
+    CLEAR_USER_DATA = 'CLEAR_USER_DATA',
+}

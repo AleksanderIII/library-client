@@ -1,0 +1,68 @@
+.cardDetails {
+    position: relative;
+    min-height: 100vh;
+    color: brown;
+}
+
+.cardDetails_container {
+    border-radius: 30px;
+    box-sizing: border-box;
+    border: 2px solid brown;
+    background-image: linear-gradient(-225deg, rgb(203, 241, 219) 0%, rgb(231, 245, 253) 100%);
+    margin: 5% 20%;
+    margin-bottom: 0;
+    padding: 50px;
+    padding-top: 20px;
+}
+
+.cardDetails_header {
+    display: grid;
+    font-weight: bold;
+    grid-template-columns: 80px 1fr 80px;
+    align-items: center;
+    justify-items: center;
+}
+
+.cardDetails_header span {
+    width: fit-content;
+}
+
+.cardDetails_container_mainInfo {
+    display: grid;
+    padding: 40px 0;
+    grid-template-columns: 2fr 3fr;
+}
+
+.cardDetails_img {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+}
+
+.cardDetails_img img {
+    max-height: 20vh;
+    min-height: 20vh;
+    margin: 10px;
+}
+
+.cardDetails_container div {
+    padding: 0px;
+}
+
+.cardDetails_container_manage {
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.cardDetails_content_description_elements {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 40px;
+    margin-left: 80px;
+    align-items: center;
+}
+
+.cardDetails_content_description_elements_input {
+    width: 70%;
+}

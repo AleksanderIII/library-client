@@ -1,0 +1,13 @@
+{
+    "CONTINENT": "Continent",
+    "COUNTRY": "Country",
+    "TYPE": "Type",
+    "VALUE": "Value", 
+    "CASH" : "Cash",
+    "COINS" : "Coins",
+    "DATE": "Date",
+    "DESCRIPTION":"DESCRIPTION",
+    "ADD_INFO": "Additional information",
+    "FORM": "Form",
+    "MATERIAL": "Material"
+}

@@ -1,0 +1,11 @@
+.filters{
+    background: rgba(236, 233, 233, 0.473);
+    margin-bottom: 20px;
+    position: relative;
+    padding: 20px 0;
+    border-radius: 20px;
+}
+.filters h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
