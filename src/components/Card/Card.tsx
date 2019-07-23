@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { ICardProps, Editor, ICardState } from '../../models';
 import { Icons } from '../../components';
 
-import './Card.css';
 import { Strings } from '../../constants';
 
 class Card extends React.Component<ICardProps, ICardState> {

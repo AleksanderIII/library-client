@@ -6,8 +6,16 @@
         "module": "commonjs",
         "target": "es2016",
         "jsx": "react",
+        "keyofStringsOnly": true,
     },
     "include": [
         "./src/**/*"
-    ]
+    ],
+    "sourceMap": true,
+    "downlevelIteration": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
 }
