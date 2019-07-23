@@ -6,7 +6,7 @@ import { PageNotFound, CardDetails } from './components';
 import configureStore from './configureStore';
 import { View, Registration } from './containers';
 
-import './App.css';
+import './styles/main.less';
 
 const store = configureStore;
 
