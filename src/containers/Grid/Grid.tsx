@@ -43,7 +43,7 @@ class Grid extends React.Component<IGridProps> {
   public render(): JSX.Element {
     let countriesData: ICardsByCountry;
     let countryNames;
-    if (this.props.data.length) {
+    if (this.props.data && this.props.data.length) {
       let viewMoneyData = this.props.data;
       if (this.props.centuryFilter !== 'Все') {
         viewMoneyData = viewMoneyData.filter(elem => `${Math.ceil(elem.date / 100)}` === this.props.centuryFilter);

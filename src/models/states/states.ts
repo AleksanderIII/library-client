@@ -11,6 +11,14 @@ export interface IAppState {
 
 export interface IViewState{
     isOpenedEditor: boolean;
+    isLoading: boolean;
+    dataType: string;
+    continent: string;
+    data: {
+        [key: string]: IMoneyData[]
+        cash: IMoneyData[],
+        coins: IMoneyData[]
+    };
 }
 
 export interface IAppSettingsState {
