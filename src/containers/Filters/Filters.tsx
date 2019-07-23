@@ -5,8 +5,6 @@ import { Select } from '../../components';
 import { IAppState, IFiltersState, IDispatchProp } from '../../models';
 import { FiltersActions } from '../../actions';
 
-import './Filters.css';
-
 class Filters extends React.Component<IFiltersState & IDispatchProp> {
   constructor(props: IFiltersState) {
     super(props);

@@ -13,7 +13,6 @@ import {
 } from '../../models';
 import CountriesLibrary from '../../utils/countriesLibrary';
 import { ViewActions, MoneyEditorActions } from '../../actions';
-import './MoneyEditor.css';
 
 class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorComponentProps & IDispatchProp, IMoneyEditorState> {
   constructor(props: IMoneyEditorProps & IMoneyEditorComponentProps & IDispatchProp) {

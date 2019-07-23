@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 import { IGridSectionProps, IDispatchProp, IGridSectionState } from '../../models';
 import { ViewActions } from '../../actions';
 import { Card, Icons } from '../../components';
-import './GridSection.css';
+
 import '../../public/flags.css';
 
 class GridSection extends React.Component<IGridSectionProps & IDispatchProp, IGridSectionState> {
-  private cardSection: HTMLDivElement;
   constructor(props: IGridSectionProps & IDispatchProp) {
     super(props);
     this.removeCard = this.removeCard.bind(this);
@@ -55,7 +54,7 @@ class GridSection extends React.Component<IGridSectionProps & IDispatchProp, IGr
               </div>
               <hr />
               <div className='gridSection_cards'  >
-                <div className='gridSection_cards_slider' style={{ top: `${this.state.top}px` }} ref={cardSection => { this.cardSection = cardSection; }}>
+                <div className='gridSection_cards_slider' style={{ top: `${this.state.top}px` }} >
                   {
                     this.props.countryData.map((elem, index) =>
                       <Card

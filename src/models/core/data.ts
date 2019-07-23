@@ -1,8 +1,9 @@
 export interface IMoneyData {
+    [key: string]: string | number | undefined;
     _id: string;
-    continent?: string;
-    country?: string;
-    value?: number;
+    continent: string;
+    country: string;
+    value: string | number;
     date?: number;
     frontImageUrl: string;
     backImageUrl: string;
@@ -14,20 +15,7 @@ export interface IMoneyData {
 }
 
 export interface ICardsByCountry {
-    [key: string]: ICardData[];
-}
-
-export interface ICardData {
-    [key: string]: string | number;
-    _id: string;
-    value: number;
-    frontImageUrl: string;
-    backImageUrl: string;
-    date: number;
-    material?: string;
-    form?: string;
-    addInformation?: string;
-    code?: string;
+    [key: string]: IMoneyData[];
 }
 
 export interface IObj {

@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { IInputProps, IInputState } from '../../models';
-import './Input.css';
 
 class Input extends React.Component<IInputProps, IInputState> {
   constructor(props: IInputProps) {

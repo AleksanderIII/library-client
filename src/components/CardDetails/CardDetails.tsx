@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import { Editor, IDispatchProp, ICardDetailsState, IAppState, ICardDetailsComponentState } from '../../models';
 import { Icons, Input } from '../../components';
-import './CardDetails.css';
 import { Strings } from '../../constants';
 import { CardDetailsActions } from '../../actions';
 
@@ -47,7 +46,7 @@ class CardDetails extends React.Component<ICardDetailsState & IDispatchProp, ICa
 
                     <div className='cardDetails_header'>
                         <span></span>
-                        <span>{continent.toUpperCase()} ({country.toUpperCase()})</span>
+                        <span>{continent ? continent.toUpperCase() : ''} ({country ? country.toUpperCase() : ''})</span>
                         <img className={`flag flag-${code && code.toLowerCase()}`} />
                     </div>
                     <div className='cardDetails_container_mainInfo'>
@@ -56,11 +55,11 @@ class CardDetails extends React.Component<ICardDetailsState & IDispatchProp, ICa
                             <img src={this.props.data.backImageUrl} alt='It missed' />
                         </div>
                         <div className='cardDetails_content_description_elements'>
-                            {this.createInput(Strings[Editor.Filters.Names.DATE], date, 'date')}
-                            {this.createInput(Strings[Editor.Filters.Names.VALUE], value, 'value')}
-                            {this.createInput(Strings[Editor.Filters.Names.MATERIAL], material, 'material')}
-                            {this.createInput(Strings[Editor.Filters.Names.FORM], form, 'form')}
-                            {this.createInput(Strings[Editor.Filters.Names.ADD_INFO], addInformation, 'addInfo')}
+                            {this.createInput(Strings[Editor.Filters.Names.DATE], date || '-', 'date')}
+                            {this.createInput(Strings[Editor.Filters.Names.VALUE], value || '-', 'value')}
+                            {this.createInput(Strings[Editor.Filters.Names.MATERIAL], material || '-', 'material')}
+                            {this.createInput(Strings[Editor.Filters.Names.FORM], form || '-', 'form')}
+                            {this.createInput(Strings[Editor.Filters.Names.ADD_INFO], addInformation || '-', 'addInfo')}
                         </div>
                     </div>
                     <div className='cardDetails_container_manage'>

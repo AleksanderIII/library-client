@@ -6,8 +6,6 @@ import { ViewActions } from '../../actions';
 import { IMainViewProps, IDispatchProp, IAppState, Editor } from '../../models';
 import { Strings } from '../../constants';
 
-import './MainView.css';
-
 class MainView extends React.Component<IMainViewProps & IDispatchProp> {
 
     public componentDidMount(): void {
@@ -64,7 +62,7 @@ const mapStateToProps = (state: IAppState): IMainViewProps => {
         data: state.view.data,
         countryFilter: state.filterData.country.selected,
         centuryFilter: state.filterData.century.selected,
-        dataType: state.view.dataType
+        dataType: state.view.dataType || ''
     };
 };
 

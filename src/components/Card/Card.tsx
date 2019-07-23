@@ -24,7 +24,7 @@ class Card extends React.Component<ICardProps, ICardState> {
       <div className='card'>
         <p className='card_manageIcons'>
           <span><Link to={`/${this.props._id}`} ><Icons name='openIcon' /></Link></span>
-          <span onClick={() => this.props.removeCard(this.props._id)}><Icons name='trashIcon' /></span>
+          <span onClick={() => this.props.removeCard && this.props.removeCard(this.props._id)}><Icons name='trashIcon' /></span>
         </p>
         <div className='card_content'>
           <div onMouseEnter={this.rotateImage} className={this.state.isFrontSide ? 'card_content_img' : 'card_content_img rotate'} >

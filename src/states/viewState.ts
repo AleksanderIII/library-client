@@ -1,14 +1,7 @@
-import { IViewProps } from '../models';
+import { IViewState } from '../models';
 
-export default function getInitialViewState(): IViewProps {
+export default function getInitialViewState(): IViewState {
     return {
-        data: {
-            cash: [],
-            coins: []
-        },
-        isLoading: false,
         isOpenedEditor: false,
-        dataType: 'coins',
-        continent: 'continents'
     };
 }

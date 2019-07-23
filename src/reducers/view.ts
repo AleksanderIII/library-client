@@ -1,8 +1,8 @@
 import { ViewActions } from '../constants';
-import { IViewProps, ViewActionTypes } from '../models';
+import { IViewState, ViewActionTypes } from '../models';
 import getInitialState from '../states/viewState';
 
-export default function view(state: IViewProps = getInitialState(), action: ViewActionTypes): IViewProps {
+export default function view(state: IViewState = getInitialState(), action: ViewActionTypes): IViewState {
   switch (action.type) {
     case ViewActions.GET_MONEY_REQUEST:
       return {

@@ -1,11 +1,10 @@
 import * as React from 'react';
 
 import { IIconsProps } from '../../models';
-import './Icons.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileExcel, faTrashAlt, faFolderOpen, faFilePdf, faHome, faSignInAlt, faSave, faEdit, faCog, faGlobeEurope, faGlobeAfrica, faGlobeAmericas, faGlobeAsia, faChevronCircleLeft, faChevronCircleRight, faChevronCircleDown, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
+import { faFileExcel, faTrashAlt, faFolderOpen, faFilePdf, faHome, faSignInAlt, faSave, faEdit, faCog, faChevronCircleDown, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faFileExcel);
 library.add(faTrashAlt);
@@ -25,7 +24,7 @@ class Icons extends React.Component<IIconsProps> {
             case 'excelIcon': return <FontAwesomeIcon className='icon file-excel' icon='file-excel' />;
             case 'pdfIcon': return <FontAwesomeIcon className='icon file-pdf' icon='file-pdf' />;
             case 'trashIcon': return <FontAwesomeIcon className='icon trash-alt' icon='trash-alt' />;
-            case 'openIcon': return <FontAwesomeIcon  className='icon folder-open' icon='folder-open' />;
+            case 'openIcon': return <FontAwesomeIcon className='icon folder-open' icon='folder-open' />;
             case 'homeIcon': return <FontAwesomeIcon className='icon home' icon='home' />;
             case 'signIcon': return <FontAwesomeIcon className='icon sign-in-alt' icon='sign-in-alt' />;
             case 'save': return <FontAwesomeIcon className='icon save' icon='save' />;

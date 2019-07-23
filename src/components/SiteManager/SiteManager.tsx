@@ -4,7 +4,6 @@ import * as React from 'react';
 import { Icons } from '../../components';
 import { ISiteManagerProps } from '../../models';
 //import { exportToExcel } from '../../utils/jsonToExcel';
-import './SiteManager.css';
 
 class SiteManager extends React.Component<ISiteManagerProps> {
     constructor(props: ISiteManagerProps) {

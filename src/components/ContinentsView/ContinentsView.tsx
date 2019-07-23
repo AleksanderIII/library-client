@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import './ContinentsView.css';
-
 class ContinentsView extends React.Component {
 
   public render(): JSX.Element {

@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 import { Route, RouteComponentProps } from 'react-router-dom';
 
 import { Filters, MoneyEditor, MainView } from '../';
-import { IAppState, IDispatchProp, IViewProps } from '../../models';
+import { IAppState, IDispatchProp, IViewState } from '../../models';
 import { ViewActions } from '../../actions';
-import './View.css';
 import { SiteManager, Header, ContinentsView } from '../../components';
 
-class View extends React.Component<IViewProps & IDispatchProp & RouteComponentProps> {
+class View extends React.Component<IViewState & IDispatchProp & RouteComponentProps> {
   private unlisten: any;
-  constructor(props: IViewProps & IDispatchProp & RouteComponentProps) {
+  constructor(props: IViewState & IDispatchProp & RouteComponentProps) {
     super(props);
   }
 
@@ -55,7 +54,7 @@ class View extends React.Component<IViewProps & IDispatchProp & RouteComponentPr
   }
 }
 
-const mapStateToProps = (state: IAppState): IViewProps => {
+const mapStateToProps = (state: IAppState): IViewState => {
   return {
     isOpenedEditor: state.view.isOpenedEditor
   };

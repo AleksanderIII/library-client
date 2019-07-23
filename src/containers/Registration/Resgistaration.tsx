@@ -2,7 +2,6 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import './Registration.css';
 import { IRegistrationState, IDispatchProp } from '../../models';
 import { Button, Input } from '../../components';
 import { UserDataActions } from '../../actions';

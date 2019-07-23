@@ -1,9 +1,7 @@
 import * as React from 'react';
 
-import { ISelectProps, ISelectState, Editor } from '../../models';
+import { ISelectProps, ISelectState } from '../../models';
 import { } from '../../constants';
-import './Select.css';
-import { threadId } from 'worker_threads';
 
 class Select extends React.Component<ISelectProps, ISelectState> {
     constructor(props: ISelectProps) {
@@ -30,7 +28,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
             : 0;
         const columnWidth: number = columnsCount * oneColumnWidth;
         const isNewDefault =
-            options
+            options && options
                 .map(elem => elem === this.state.selected)
                 .filter(elem => elem === true).length === 0 ||
             defaultValue !== this.state.selected;
@@ -76,7 +74,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     }
 
     private clickHandler(event: React.MouseEvent): void {
-        const selectedOption: string = event.currentTarget.textContent;
+        const selectedOption: string = event.currentTarget.textContent || '';
         this.setState({ selected: selectedOption });
 
         if (this.props.getValue) {

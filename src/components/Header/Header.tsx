@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Icons, Select } from '../../components';
 import { AppSettingsActions } from '../../actions';
 import { IAppState, IDispatchProp, ICountable, IHeaderProps } from '../../models';
-import './Header.css';
 import countriesLibrary from '../../utils/countriesLibrary';
 
 class Header extends React.Component<IDispatchProp & IHeaderProps> {
@@ -51,7 +50,7 @@ class Header extends React.Component<IDispatchProp & IHeaderProps> {
               <Select name='Континент'
                 options={continents}
                 centralAlign={false}
-                defaultValue={this.findingContinent(this.props.continent)}
+                defaultValue={this.findingContinent(this.props.continent || '')}
                 propName='continents'
                 getValue={this.changeContinent}
               /> : null

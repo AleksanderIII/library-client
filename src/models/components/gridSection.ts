@@ -1,8 +1,8 @@
-import { ICardData } from '../../models';
+import { IMoneyData } from '../../models';
 
 export interface IGridSectionProps {
     countryName: string;
-    countryData: ICardData[];
+    countryData: IMoneyData[];
 }
 
 export interface IGridSectionState {

@@ -2,11 +2,15 @@ import { IMoneyData } from '../core/data';
 
 export interface IAppState {
     appSettings: IAppSettingsState;
-    view: IViewProps;
+    view: IViewState;
     moneyEditor: IMoneyEditorComponentProps;
     cardDetails: ICardDetailsState;
     userData: IUserDataState;
     filterData: IFiltersState;
+}
+
+export interface IViewState{
+    isOpenedEditor: boolean;
 }
 
 export interface IAppSettingsState {
@@ -30,18 +34,6 @@ export interface IMoneyEditorComponentProps {
 
 export interface IMoneyEditorState {
     values: string[];
-}
-
-export interface IViewProps {
-    data?: {
-        [key: string]: IMoneyData[]
-        cash?: IMoneyData[],
-        coins?: IMoneyData[]
-    };
-    isLoading?: boolean;
-    dataType?: string;
-    isOpenedEditor?: boolean;
-    continent?: string;
 }
 
 export interface ICardDetailsState {
