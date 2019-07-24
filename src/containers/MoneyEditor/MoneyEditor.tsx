@@ -43,22 +43,20 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
     ];
     return (
       <div className='editor'>
-        <div className='editor_content'  >
-          <p className='closeBtn' onClick={() => this.props.dispatch(ViewActions.toggleEditor())} >&#215;</p>
+        <div className='editor__container'  >
+          <p className='editor__container__closeBtn' onClick={() => this.props.dispatch(ViewActions.toggleEditor())} >&#215;</p>
           <h2>Редактор</h2>
-          <div className='content'>
-            <div className='central-align'>
-              {this.createSelector(Strings[`${Editor.Filters.Names.CONTINENT}`], continentsList, true, continentsList[0], 'contenent', this.getValue, this.updateValue)}
-              {this.createSelector(Strings[`${Editor.Filters.Names.COUNTRY}`], countriesList, true, this.props.country, 'country', this.getValue)}
-              {this.createSelector(Strings[`${Editor.Filters.Names.TYPE}`], moneyType, true, moneyType[0], 'type', this.getValue, this.updateValue)}
-              {this.createSelector(Strings[`${Editor.Filters.Names.VALUE}`], this.state.values, true, this.state.values[0], 'value', this.getValue)}
-              <Input name={'date'} placeholder='Год выпуска' maxLength={+'4'} getValue={this.getValue} />
-              <Input name={'frontImageUrl'} placeholder='Путь к картинке(решка)' getValue={this.getValue} />
-              <Input name={'backImageUrl'} placeholder='Путь к картинке(орел)' getValue={this.getValue} />
-              <Input name={'material'} placeholder='Материал' getValue={this.getValue} />
-              <Input name={'form'} placeholder='Форма' getValue={this.getValue} />
-              <Button text='Добавить' handleClick={this.postData} />
-            </div>
+          <div className='editor__container__content'>
+            {this.createSelector(Strings[`${Editor.Filters.Names.CONTINENT}`], continentsList, true, continentsList[0], 'contenent', this.getValue, this.updateValue)}
+            {this.createSelector(Strings[`${Editor.Filters.Names.COUNTRY}`], countriesList, true, this.props.country, 'country', this.getValue)}
+            {this.createSelector(Strings[`${Editor.Filters.Names.TYPE}`], moneyType, true, moneyType[0], 'type', this.getValue, this.updateValue)}
+            {this.createSelector(Strings[`${Editor.Filters.Names.VALUE}`], this.state.values, true, this.state.values[0], 'value', this.getValue)}
+            <Input name={'date'} placeholder='Год выпуска' maxLength={+'4'} getValue={this.getValue} />
+            <Input name={'frontImageUrl'} placeholder='Путь к картинке(решка)' getValue={this.getValue} />
+            <Input name={'backImageUrl'} placeholder='Путь к картинке(орел)' getValue={this.getValue} />
+            <Input name={'material'} placeholder='Материал' getValue={this.getValue} />
+            <Input name={'form'} placeholder='Форма' getValue={this.getValue} />
+            <Button text='Добавить' handleClick={this.postData} />
           </div>
         </div>
       </div>

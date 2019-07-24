@@ -1,16 +1,30 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
     mode: "production",
     devtool: "source-map",
 
+    entry: {
+        index: './src/index.tsx'
+    },
+
+    output: {
+        path: __dirname + '/dist',
+        filename: 'main.js',
+        publicPath: "/"
+    },
+
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
         modules: ['node_modules'],
     },
+
     devServer: {
         historyApiFallback: true,
+        hot: true,
     },
+    
     module: {
         rules: [{
             test: /\.ts|\.tsx$/,

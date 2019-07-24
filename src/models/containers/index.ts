@@ -1,3 +1,3 @@
 export * from './grid';
-export * from './mainView';
+export * from './dataViewer';
 export * from './registration';

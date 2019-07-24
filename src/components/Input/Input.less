@@ -1,26 +1,27 @@
 .input{
     position: relative;
-}
 
+    input{
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        text-align: center;
+        outline: none;
+        color: brown;
+        font-size: 1em;
+        margin: 5px 0;
+        padding: 5px;
+        overflow: hidden;
+        background: rgba(240, 236, 228, 0.548);
+        border: 1px solid #f3e9c385;
+        border-bottom: 2px solid rgba(240, 236, 228, 0.548);
 
-.input input{
-    width: 100%;
-    border: none;
-    text-align: center;
-    outline: none;
-    color: brown;
-    font-size: 1em;
-    margin: 5px 0;
-    padding: 5px;
-    overflow: hidden;
-    background: rgba(240, 236, 228, 0.548);
-    border-bottom: 2px solid rgba(240, 236, 228, 0.548);
-}
+        &:hover{
+            border-bottom: 2px solid wheat;
+        }
 
-.input input:hover{
-    border-bottom: 2px solid wheat;
-}
-
-.input input:focus{
-    border-bottom: 2px solid wheat;
+        &:focus{
+            border-bottom: 2px solid wheat;
+        }
+    }
 }

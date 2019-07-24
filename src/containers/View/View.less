@@ -4,46 +4,48 @@
     min-height: 100vh;
     box-sizing: border-box;
     padding: 60px 20px 20px 20px;
+
+    &__moneyView{
+        color: rgb(65, 65, 65);
+        display: flex;
+    }
+
+    &__manager{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__container{
+        flex: 5;
+        margin: 10px;
+        margin-right: 50px;
+        background: rgba(250, 248, 248, 0.712);
+        min-height: 60vh;
+        height: 100%;
+        
+        ul li{
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid rgb(65, 65, 65);;
+            border-radius: 5px;
+        }
+
+        ul li:last-child{
+            float: right;
+        }
+
+        ul li:hover{
+            color: white;
+            background: rgb(241, 191, 191);
+        }
+
+        .content{
+            padding: 20px;
+            border: 1px solid rgb(65, 65, 65);
+            border-radius: 10px;
+            max-height: 100%;
+        }
+    }
 }
 
-.moneyView{
-    color: rgb(65, 65, 65);
-    display: flex;
-}
-
-.view_manager{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.view .view-container{
-    flex: 5;
-    margin: 10px;
-    margin-right: 50px;
-    background: rgba(250, 248, 248, 0.712);
-    min-height: 60vh
-}
-
-.view .view-container ul li{
-    display: inline-block;
-    padding: 10px 20px;
-    border: 1px solid rgb(65, 65, 65);;
-    border-radius: 5px;
-}
-
-.view .view-container ul li:last-child{
-    float: right;
-}
-
-.view .view-container ul li:hover{
-    color: white;
-    background: rgb(241, 191, 191);
-}
-
-.view .view-container .content{
-    padding: 20px;
-    border: 1px solid rgb(65, 65, 65);
-    border-radius: 10px;
-    max-height: 100%;
-}

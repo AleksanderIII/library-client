@@ -36,7 +36,7 @@ class Header extends React.Component<IDispatchProp & IHeaderProps> {
     };
     const listOfKeys = Object.keys(continentsList);
     const targetContinent = listOfKeys.filter(elem => continentsList[elem] === value)[0];
-    window.location.assign(`/continents/${targetContinent}`);
+    window.history.pushState(null, null, `/continents/${targetContinent}`);
   }
 
   public render(): JSX.Element {

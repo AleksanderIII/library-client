@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Route, RouteComponentProps } from 'react-router-dom';
 
-import { Filters, MoneyEditor, MainView } from '../';
+import { Filters, MoneyEditor, DataViewer } from '../';
 import { IAppState, IDispatchProp, IViewState } from '../../models';
 import { ViewActions } from '../../actions';
 import { SiteManager, Header, ContinentsView } from '../../components';
@@ -37,14 +37,14 @@ class View extends React.Component<IViewState & IDispatchProp & RouteComponentPr
         <div className='view'>
           <Route exact path={`${this.props.match.path}`} component={ContinentsView} />
           <Route exact path={`${this.props.match.path}/:id`} render={() =>
-            <div className='moneyView'>
-              <div className='view_manager'>
+            <div className='view__moneyView'>
+              <div className='view__manager'>
                 {this.props.isOpenedEditor && <MoneyEditor />}
                 <Filters />
                 <SiteManager />
               </div>
-              <div className='view-container'>
-                <MainView />
+              <div className='view__container'>
+                <DataViewer />
               </div>
             </div>
           } />

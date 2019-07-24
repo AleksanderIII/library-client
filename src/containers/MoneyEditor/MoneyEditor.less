@@ -7,55 +7,55 @@
     background: rgba(177, 173, 173, 0.651);
     z-index: 99998;
     color: rgb(80, 80, 80);
-}
-.editor_content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50vh;
-    min-height: auto;
-    border: 1px solid rgb(231, 206, 206);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    z-index: 3;
-    background: rgb(241, 241, 241);
-    z-index: 99999;
-    display: flex;
-}
 
-.closeBtn {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 7px;
-    font-size: 1.5rem;
-    font-weight: 900;
-    border-radius: 5px;
-    color: rgb(224, 111, 111);
-    margin: 5px;
-}
+    &__container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50vh;
+        min-height: auto;
+        border: 1px solid rgb(231, 206, 206);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        z-index: 3;
+        background: rgb(241, 241, 241);
+        z-index: 99999;
+        display: flex;
 
-.closeBtn:hover {
-    color:rgb(220, 0, 0);
-    background: rgb(252, 249, 232);
-}
+        &__closeBtn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 7px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            border-radius: 5px;
+            color: rgb(224, 111, 111);
+            margin: 5px;
 
+            &:hover {
+                color:rgb(220, 0, 0);
+                background: rgb(252, 249, 232);
+            }
+        }
 
-.editor h2 {
-    text-align: center;
-    height: 15%;
-    margin: 5%;
-}
+        h2 {
+            text-align: center;
+            height: 15%;
+            margin: 5%;
+        }
 
-.editor .content {
-    position: relative;
-}
+        &__content{
+            position: relative;
+            display: flex;
+            align-items: center;
 
-.editor .content .central-align {
-    position: relative;
-    left: 50%;
-    max-width: 50%;
-    transform: translate(-50%, 0);
+            flex-direction: column;
+            div[class='input']{
+                width: 80%;
+            }
+        }
+    }
 }

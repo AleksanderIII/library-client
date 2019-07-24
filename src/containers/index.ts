@@ -2,7 +2,7 @@ import Filters from './Filters/Filters';
 import Grid from './Grid/Grid';
 import MoneyEditor from './MoneyEditor/MoneyEditor';
 import View from './View/View';
-import MainView from './MainView/MainView';
+import DataViewer from './DataViewer/DataViewer';
 import Registration from './Registration/Resgistaration';
 
 export {
@@ -10,6 +10,6 @@ export {
     Grid,
     View,
     MoneyEditor,
-    MainView,
+    DataViewer,
     Registration
 };

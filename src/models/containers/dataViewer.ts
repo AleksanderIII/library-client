@@ -1,6 +1,6 @@
-import { IMoneyData } from '../../models/core/data';
+import { IMoneyData } from '../core/data';
 
-export interface IMainViewProps {
+export interface IDataViewerProps {
     data: {
         [key: string]: IMoneyData[];
         cash: IMoneyData[];

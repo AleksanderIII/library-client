@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Grid } from '../../containers';
+import { Grid } from '..';
 import { ViewActions } from '../../actions';
-import { IMainViewProps, IDispatchProp, IAppState, Editor } from '../../models';
+import { IDataViewerProps, IDispatchProp, IAppState, Editor } from '../../models';
 import { Strings } from '../../constants';
 
-class MainView extends React.Component<IMainViewProps & IDispatchProp> {
+class DataViewer extends React.Component<IDataViewerProps & IDispatchProp> {
 
     public componentDidMount(): void {
         const continent = window.location.pathname.replace('/continents/', '');
@@ -32,7 +32,7 @@ class MainView extends React.Component<IMainViewProps & IDispatchProp> {
     public render(): JSX.Element {
         const moneyTypes = ['coins', 'cash'];
         return (
-            <div className='mainView'>
+            <React.Fragment>
                 <ul>
                     {
                         moneyTypes.map((elem, index) =>
@@ -52,12 +52,12 @@ class MainView extends React.Component<IMainViewProps & IDispatchProp> {
                         centuryFilter={this.props.centuryFilter}
                     />
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }
 
-const mapStateToProps = (state: IAppState): IMainViewProps => {
+const mapStateToProps = (state: IAppState): IDataViewerProps => {
     return {
         data: state.view.data,
         countryFilter: state.filterData.country.selected,
@@ -66,4 +66,4 @@ const mapStateToProps = (state: IAppState): IMainViewProps => {
     };
 };
 
-export default connect(mapStateToProps)(MainView);
+export default connect(mapStateToProps)(DataViewer);

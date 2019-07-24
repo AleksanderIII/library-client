@@ -4,8 +4,8 @@ export default function getInitialViewState(): IViewState {
     return {
         isOpenedEditor: false,
         isLoading: false,
-        dataType: '',
-        continent: '',
+        dataType: 'coins',
+        continent: 'continents',
         data: {
             cash: [],
             coins: []
