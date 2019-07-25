@@ -54,9 +54,10 @@ class View extends React.Component<IViewState & IDispatchProp & RouteComponentPr
   }
 }
 
-const mapStateToProps = (state: IAppState): { isOpenedEditor: boolean } => {
+const mapStateToProps = (state: IAppState): { isOpenedEditor: boolean, isLoading: boolean } => {
   return {
-    isOpenedEditor: state.view.isOpenedEditor
+    isOpenedEditor: state.view.isOpenedEditor,
+    isLoading: state.view.isLoading,
   };
 };
 

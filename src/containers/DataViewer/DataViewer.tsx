@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Grid } from '..';
+import { Grid } from '../../containers';
+import { Loader } from '../../components';
 import { ViewActions } from '../../actions';
 import { IDataViewerProps, IDispatchProp, IAppState, Editor } from '../../models';
 import { Strings } from '../../constants';
@@ -45,13 +46,17 @@ class DataViewer extends React.Component<IDataViewerProps & IDispatchProp> {
                     }
                     <li onClick={() => this.props.dispatch(ViewActions.toggleEditor())}>Добавить</li>
                 </ul>
-                <div className='content'>
-                    <Grid
-                        data={this.props.data[this.props.dataType]}
-                        countryFilter={this.props.countryFilter}
-                        centuryFilter={this.props.centuryFilter}
-                    />
-                </div>
+                {
+                    this.props.isLoading ?
+                        <Loader /> :
+                        <div className='content'>
+                            <Grid
+                                data={this.props.data[this.props.dataType]}
+                                countryFilter={this.props.countryFilter}
+                                centuryFilter={this.props.centuryFilter}
+                            />
+                        </div>
+                }
             </React.Fragment>
         );
     }
@@ -62,7 +67,8 @@ const mapStateToProps = (state: IAppState): IDataViewerProps => {
         data: state.view.data,
         countryFilter: state.filterData.country.selected,
         centuryFilter: state.filterData.century.selected,
-        dataType: state.view.dataType || ''
+        dataType: state.view.dataType || '',
+        isLoading: state.view.isLoading
     };
 };
 

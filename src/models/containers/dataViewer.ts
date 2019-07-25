@@ -9,4 +9,5 @@ export interface IDataViewerProps {
     countryFilter?: string;
     centuryFilter?: string;
     dataType: string;
+    isLoading: boolean;
 }

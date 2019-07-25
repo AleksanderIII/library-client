@@ -1,0 +1,27 @@
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.loader__container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	height: 50%;
+	width: 50%;
+
+
+	&__content {
+        height: 100%;
+        width: 100%;
+		background: url('/src/public/loader.png') center center no-repeat;
+		background-size: contain;
+		animation: spin 5s linear 0s infinite;
+	}
+}

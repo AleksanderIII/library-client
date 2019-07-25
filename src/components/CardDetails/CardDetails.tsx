@@ -32,7 +32,7 @@ class CardDetails extends React.Component<ICardDetailsState & IDispatchProp, ICa
     public createInput(title: string, value: string | number, name: string): JSX.Element {
         return <React.Fragment>
             <span>{title}: {value || '-'}</span>
-            <span className={`cardDetails_content_description_elements_input ${this.state.isActiveEdit ? '' : 'hidden'}`}>
+            <span className={`cardDetails__container__content__input ${this.state.isActiveEdit ? '' : 'hidden'}`}>
                 <Input name={name} getValue={this.getInputValue} placeholder={'Новое значение'}></Input>
             </span>
         </ React.Fragment>;
@@ -42,19 +42,18 @@ class CardDetails extends React.Component<ICardDetailsState & IDispatchProp, ICa
         const { material, continent, country, date, value, addInformation, form, code } = this.props.data;
         return (
             <div className='cardDetails'>
-                <div className='cardDetails_container'>
-
-                    <div className='cardDetails_header'>
+                <div className='cardDetails__container'>
+                    <div className='cardDetails__container__header'>
                         <span></span>
                         <span>{continent ? continent.toUpperCase() : ''} ({country ? country.toUpperCase() : ''})</span>
                         <img className={`flag flag-${code && code.toLowerCase()}`} />
                     </div>
-                    <div className='cardDetails_container_mainInfo'>
-                        <div className='cardDetails_img'>
+                    <div className='cardDetails__container__mainInfo'>
+                        <div className='cardDetails__container__mainInfo__images'>
                             <img src={this.props.data.frontImageUrl} alt='It missed' />
                             <img src={this.props.data.backImageUrl} alt='It missed' />
                         </div>
-                        <div className='cardDetails_content_description_elements'>
+                        <div className='cardDetails__container__content'>
                             {this.createInput(Strings[Editor.Filters.Names.DATE], date || '-', 'date')}
                             {this.createInput(Strings[Editor.Filters.Names.VALUE], value || '-', 'value')}
                             {this.createInput(Strings[Editor.Filters.Names.MATERIAL], material || '-', 'material')}
@@ -62,7 +61,7 @@ class CardDetails extends React.Component<ICardDetailsState & IDispatchProp, ICa
                             {this.createInput(Strings[Editor.Filters.Names.ADD_INFO], addInformation || '-', 'addInfo')}
                         </div>
                     </div>
-                    <div className='cardDetails_container_manage'>
+                    <div className='cardDetails__container__manage'>
                         <span>
                             <Icons name='trashIcon' />
                         </span>

@@ -42,11 +42,11 @@ module.exports = {
                 'ts-nameof-loader'
             ]
         }, {
-            test: /\.(png|jpg)$/,
+            test: /\.(ico)$/,
             loader: 'url-loader'
         },
         {
-            test: /\.(jpeg|gif|svg|woff|woff2|ttf|eot|ico)$/,
+            test: /\.(jpeg|jpg|gif|svg|woff|woff2|ttf|eot|ico|png)$/,
             loader: 'file-loader?name=assets/[name].[hash].[ext]'
         },
         {
@@ -61,7 +61,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            favicon: 'src/public/logo.png',
+            favicon: 'src/public/logo.ico',
             template: 'src/index.html'
         })
     ],
