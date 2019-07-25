@@ -44,7 +44,7 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
     return (
       <div className='header'>
         <Link to='/continents'><span><Icons name='homeIcon' /></span></Link>
-        <div className='header_navigation' >
+        <div className='header__navigation' >
           {
             window.location.pathname.includes('continents') && this.props.continent !== 'continents' ?
               <Select name='Континент'
@@ -58,12 +58,12 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
 
         </div>
         <h1>Коллекция</h1>
-        <div className='header_settings' >
+        <div className='header__settings' >
           <div onClick={() => this.props.dispatch(AppSettingsActions.toggleSettingsMenu())} >
             <Icons name='settings' />
             {
               this.props.isOpen ?
-                <ul className='header_settings_list'>
+                <ul className='header__settings__list'>
                   <li>тема: <span>{this.props.theme}</span></li>
                   <li>язык: <span>{this.props.language}</span> </li>
                 </ul>

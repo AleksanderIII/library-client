@@ -44,17 +44,17 @@ class GridSection extends React.Component<IGridSectionProps & IDispatchProp, IGr
         {
           this.props.countryData.length ?
             <div className='gridSection'>
-              <div className='gridSection_header'>
+              <div className='gridSection__header'>
                 <img className={`flag flag-${this.props.countryData[0] ? this.props.countryData[0].code.toLowerCase() : ''}`} />
                 <h2>{this.props.countryName} </h2>
-                <p className='gridSection_header_controls'>
+                <p className='gridSection__header__controls'>
                   <span onClick={this.previousSlide}> <Icons name='arrowUp' /></span>
                   <span onClick={this.nextSlide}><Icons name='arrowDown' /></span>
                 </p>
               </div>
               <hr />
-              <div className='gridSection_cards'  >
-                <div className='gridSection_cards_slider' style={{ top: `${this.state.top}px` }} >
+              <div className='gridSection__cards'  >
+                <div className='gridSection__cards__slider' style={{ top: `${this.state.top}px` }} >
                   {
                     this.props.countryData.map((elem, index) =>
                       <Card

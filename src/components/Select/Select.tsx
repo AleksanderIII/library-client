@@ -44,15 +44,15 @@ class Select extends React.Component<ISelectProps, ISelectState> {
                 </p>
                 <div
                     className={
-                        this.state.clicked ? 'select-content display' : 'select-content'
+                        this.state.clicked ? 'select__content display' : 'select__content'
                     }
                 >
                     {this.state.clicked && (
                         <ul
                             className={
                                 centralAlign
-                                    ? 'select-content-dropdown dropdown-central-align'
-                                    : 'select-content-dropdown'
+                                    ? 'select__content__dropdown dropdown-central-align'
+                                    : 'select__content__dropdown'
                             }
                             style={{ columnCount: columnsCount, width: `${columnWidth}px` }}
                         >
