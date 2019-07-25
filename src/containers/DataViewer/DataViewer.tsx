@@ -9,15 +9,6 @@ import { Strings } from '../../constants';
 
 class DataViewer extends React.Component<IDataViewerProps & IDispatchProp> {
 
-    public componentDidMount(): void {
-        const continent = window.location.pathname.replace('/continents/', '');
-        if (continent === 'All') {
-            this.props.dispatch(ViewActions.getViewDataRequest());
-        } else {
-            this.props.dispatch(ViewActions.getViewDataByContinentRequest(continent));
-        }
-    }
-
     private findName(name: string): string {
         const options = Object.keys(Editor.Filters.Options.TYPE);
         let stringName = '';
@@ -28,6 +19,25 @@ class DataViewer extends React.Component<IDataViewerProps & IDispatchProp> {
         },
         );
         return stringName;
+    }
+
+    public componentDidUpdate(prevProps: IDataViewerProps & IDispatchProp): void {
+        if (prevProps.continent !== this.props.continent) {
+            this.getData();
+        }
+    }
+
+    public componentWillMount(): void {
+        this.getData();
+    }
+
+    private getData = () => {
+        const continent = window.location.pathname.replace('/continents/', '');
+        if (continent === 'All') {
+            this.props.dispatch(ViewActions.getViewDataRequest());
+        } else {
+            this.props.dispatch(ViewActions.getViewDataByContinentRequest(continent));
+        }
     }
 
     public render(): JSX.Element {
@@ -68,6 +78,7 @@ const mapStateToProps = (state: IAppState): IDataViewerProps => {
         countryFilter: state.filterData.country.selected,
         centuryFilter: state.filterData.century.selected,
         dataType: state.view.dataType || '',
+        continent: state.view.continent,
         isLoading: state.view.isLoading
     };
 };

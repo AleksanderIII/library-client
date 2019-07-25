@@ -10,4 +10,5 @@ export interface IDataViewerProps {
     centuryFilter?: string;
     dataType: string;
     isLoading: boolean;
+    continent: string;
 }

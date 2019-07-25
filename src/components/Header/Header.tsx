@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Icons, Select } from '../../components';
@@ -7,7 +7,7 @@ import { AppSettingsActions } from '../../actions';
 import { IAppState, IDispatchProp, ICountable, IHeaderProps } from '../../models';
 import countriesLibrary from '../../utils/countriesLibrary';
 
-class Header extends React.Component<IDispatchProp & IHeaderProps> {
+class Header extends React.Component<IDispatchProp & IHeaderProps & RouteComponentProps> {
 
   private findingContinent(name: string): string {
     const continentsList: ICountable = {
@@ -23,7 +23,7 @@ class Header extends React.Component<IDispatchProp & IHeaderProps> {
     return continentsList[name];
   }
 
-  public changeContinent(name: string, value: string): void {
+  public changeContinent = (name: string, value: string): void => {
     const continentsList: ICountable = {
       All: 'Все',
       Africa: 'Африка',
@@ -36,7 +36,7 @@ class Header extends React.Component<IDispatchProp & IHeaderProps> {
     };
     const listOfKeys = Object.keys(continentsList);
     const targetContinent = listOfKeys.filter(elem => continentsList[elem] === value)[0];
-    window.history.pushState(null, null, `/continents/${targetContinent}`);
+    this.props.history.push(`/continents/${targetContinent}`);
   }
 
   public render(): JSX.Element {
@@ -86,4 +86,4 @@ const mapStateToProps = (state: IAppState): IHeaderProps => {
     continent: state.view.continent
   };
 };
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(withRouter(Header));

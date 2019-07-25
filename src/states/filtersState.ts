@@ -8,7 +8,7 @@ export default function getInitialFiltersState(): IFiltersState {
         },
         century: {
             options: [],
-            selected: 'string'
+            selected: ''
         }
     };
 }
