@@ -1,6 +1,7 @@
 import * as React from 'react';
 export default () =>
- <svg version='1.1' id='landmarks-continents'
+<div className='map'>
+    <svg version='1.1' id='landmarks-continents'
     xmlns='http://www.w3.org/2000/svg'
     x='0px' y='0px' viewBox='0 0 400 220'>
     <g id='africa' transform='translate(0,239) scale(0.016963,-0.016963)'>
@@ -784,4 +785,5 @@ export default () =>
 		l43.982-8.002l55.01,6.994l81-27.979l20.006-28.008l24.986,35.002l45.02,25.992l31.002,5.01l94.99-5.01l20.006-9.988l8.98,6.994
 		l10.91,19l-20.006,48.992l-56.994,34.916l-20.984,13.988l-136.01,31.002l-62.004,8.002L5154.833,8198.911L5154.833,8198.911z'/>
     </g>
-</svg>;
+</svg>
+</div>;
