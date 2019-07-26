@@ -11,5 +11,6 @@ import SiteManager from './SiteManager/SiteManager';
 import Icons from './Icons/Icons';
 import ContinentsView from './ContinentsView/ContinentsView';
 import Loader from './Loader/Loader';
+import Map from './Map/Map';
 
-export { Select, Button, Card, GridSection, Header, Input, PageNotFound, Tab, CardDetails, SiteManager, Icons, ContinentsView, Loader };
+export { Select, Button, Card, GridSection, Header, Input, PageNotFound, Tab, CardDetails, SiteManager, Icons, ContinentsView, Loader, Map };
