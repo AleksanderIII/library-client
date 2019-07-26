@@ -7,3 +7,4 @@ export * from './tab';
 export * from './gridSection';
 export * from './icons';
 export * from './siteManager';
+export * from './tooltip';

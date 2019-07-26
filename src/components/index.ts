@@ -12,5 +12,6 @@ import Icons from './Icons/Icons';
 import ContinentsView from './ContinentsView/ContinentsView';
 import Loader from './Loader/Loader';
 import Map from './Map/Map';
+import Tooltip from './Tooltip/Tooltip';
 
-export { Select, Button, Card, GridSection, Header, Input, PageNotFound, Tab, CardDetails, SiteManager, Icons, ContinentsView, Loader, Map };
+export { Select, Button, Card, GridSection, Header, Input, PageNotFound, Tab, CardDetails, SiteManager, Icons, ContinentsView, Loader, Map, Tooltip };

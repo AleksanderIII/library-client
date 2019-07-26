@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { Map } from '../../components';
 
 class ContinentsView extends React.Component {
@@ -8,8 +8,8 @@ class ContinentsView extends React.Component {
     return (
       <React.Fragment>
         <Map />
-        <div className='continentsView'>
-          <div>
+        {/* <div className='continentsView'>
+        <div>
             <Link to='/continents/All'>
               <p>Все</p>
             </Link>
@@ -35,7 +35,7 @@ class ContinentsView extends React.Component {
               <p>Австралия</p>
             </Link>
           </div>
-        </div >
+        </div >*/}
       </React.Fragment>
 
     );
