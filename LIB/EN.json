@@ -9,5 +9,12 @@
     "DESCRIPTION":"DESCRIPTION",
     "ADD_INFO": "Additional information",
     "FORM": "Form",
-    "MATERIAL": "Material"
+    "MATERIAL": "Material",
+    "Africa": "Africa",
+    "Asia": "Asia",
+    "Europe": "Europe",
+    "SouthAmerica": "South America",
+    "NorthAmerica": "North America",
+    "Oceania": "Australia & Oceania",
+    "SELECT_CONTINENT": "Please, select continent or push"
 }

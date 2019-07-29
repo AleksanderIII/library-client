@@ -1,15 +1,34 @@
 import * as React from 'react';
-import * as  ReactTooltip from 'react-tooltip';
 
-import { ITooltip } from '../../models';
+import { ITooltipProps, ITooltipState } from '../../models';
 
-export const Tooltip = (props: ITooltip) => {
-    return (
-        <div>
-            <p data-tip='hello world'>{props.children}</p>
-            <ReactTooltip />
-        </div>
-    );
-};
+class Tooltip extends React.Component<ITooltipProps, ITooltipState> {
+    constructor(props: ITooltipProps) {
+        super(props);
+        this.state = {
+            isShown: false
+        };
+    }
+
+    private toggleTooltip = () => {
+        this.setState({ isShown: !this.state.isShown });
+    }
+
+    public render(): JSX.Element {
+        return (
+            <div className='tooltip' onMouseEnter={() => this.toggleTooltip()} onMouseLeave={() => this.toggleTooltip()} >
+                {
+                    this.state.isShown ?
+                        <div className='tooltip__content'>
+                            {this.props.text}
+                        </div> : null
+                }
+                <div>
+                    {this.props.children}
+                </div>
+            </div >
+        );
+    }
+}
 
 export default Tooltip;

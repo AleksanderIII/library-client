@@ -9,5 +9,12 @@
     "DESCRIPTION": "Описание",
     "ADD_INFO": "Дополнительная информация",
     "FORM": "Форма",
-    "MATERIAL": "Материал"
+    "MATERIAL": "Материал",
+    "Africa": "Africa",
+    "Asia": "Asia",
+    "Europe": "Europe",
+    "SouthAmerica": "South America",
+    "NorthAmerica": "North America",
+    "Oceania": "Australia & Oceania",
+    "SELECT_CONTINENT": "Please, select continent or push"
 }

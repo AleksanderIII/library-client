@@ -1,16 +1,45 @@
-.map{
-    svg{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        height: 80vh;
+.map {
+	width: 100%;
+	z-index: 0;
 
-        g:hover{
-            path{
-                transition: fill 0.5s linear;
-                fill: grey;
-            }
-        }
-    }
+	svg {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		max-width: 100%;
+		max-height: 100%;
+
+		g:hover {
+			path {
+				transition: fill 0.5s linear;
+				fill: grey;
+			}
+		}
+	}
+}
+
+.mapTooltip {
+	position: fixed;
+	z-index: 2;
+	transform: translate(10px, 100%);
+	padding: 2px;
+	background: rgb(83, 83, 83);
+	color: aliceblue;
+	border: 1px solid rgb(255, 255, 255);
+	border-radius: 4px;
+}
+
+.mapLegend{
+	position: absolute;
+	display: flex;
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	a{
+		padding-left: 5px;
+		text-decoration: none;
+		color: gray;
+	}
 }

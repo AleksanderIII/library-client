@@ -9,7 +9,7 @@ export interface IAppState {
     filterData: IFiltersState;
 }
 
-export interface IViewState{
+export interface IViewState {
     isOpenedEditor: boolean;
     isLoading: boolean;
     dataType: string;
@@ -75,4 +75,17 @@ export interface IHeaderProps {
     language: string;
     isOpen: boolean;
     theme: string;
+}
+
+export interface ITooltipState {
+    isShown: boolean;
+}
+
+export interface IMapState {
+    isShownTooltip: boolean;
+    currentText: string;
+    coordinate: {
+        x: number;
+        y: number;
+    };
 }

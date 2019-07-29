@@ -1,3 +1,4 @@
-export interface ITooltip{
+export interface ITooltipProps{
     children: JSX.Element;
+    text: string;
 }
