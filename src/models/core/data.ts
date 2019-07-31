@@ -21,3 +21,13 @@ export interface ICardsByCountry {
 export interface IObj {
     [key: string]: boolean | string | number;
 }
+
+export interface IExportMoneyData {
+    [key: string]: string | number | undefined;
+    continent: string;
+    country: string;
+    value: string | number;
+    material?: string;
+    form?: string;
+    type?: string;
+}

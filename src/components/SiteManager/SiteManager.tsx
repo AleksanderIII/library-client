@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-//import DataService from '../../services/dataService';
+import ExportService from '../../services/ExportService';
 import { Icons } from '../../components';
 import { ISiteManagerProps } from '../../models';
-//import { exportToExcel } from '../../utils/jsonToExcel';
 import { Strings } from '../../constants';
 
 class SiteManager extends React.Component<ISiteManagerProps> {
@@ -13,11 +12,7 @@ class SiteManager extends React.Component<ISiteManagerProps> {
     }
 
     private exportExcel(): void {
-      /*  DataService.getData().then(data => {
-            //parse data to excel format
-            exportToExcel(data, `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}-version`);
-        },
-        );*/
+        ExportService.getExcel();
     }
 
     public render(): JSX.Element {

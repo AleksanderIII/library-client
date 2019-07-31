@@ -1,7 +1,7 @@
 import { IMoneyData, IMoneyEditorComponentProps } from '../models';
 const Configs = require('../config.json');
 
-export default class DataService {
+class DataService {
     public static getData(continent?: string): Promise<IMoneyData[]> {
         const params = continent ? continent : 'money';
         return fetch(`${Configs.dataCloud}/${params}`)
@@ -45,3 +45,5 @@ export default class DataService {
     }
 
 }
+
+export default DataService;

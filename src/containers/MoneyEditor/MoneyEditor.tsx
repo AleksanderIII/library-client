@@ -75,11 +75,9 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
 
   private getValue = (name: string, value: string) => {
     this.props.dispatch(MoneyEditorActions.changeOption(name, value));
-    console.log(name, value);
     if (name === 'country') {
       const code = CountriesLibrary.getCodeByRusName(value);
       this.props.dispatch(MoneyEditorActions.changeOption('code', code));
-      console.log(name, value, code);
     }
   }
 
