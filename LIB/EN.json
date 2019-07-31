@@ -16,5 +16,17 @@
     "SouthAmerica": "South America",
     "NorthAmerica": "North America",
     "Oceania": "Australia & Oceania",
-    "SELECT_CONTINENT": "Please, select continent or push"
+    "SELECT_CONTINENT": "Please, select continent or push",
+    "SETTINGS": "Settings",
+    "ALL": "All",
+    "THEME": "Theme",
+    "LANGUAGE": "Language",
+    "COLLECTION": "Collection",
+    "EXPORT": "Export",
+    "CENTURY": "Century",
+    "ADD": "Add",
+    "FRONT_URL": "URL to front side",
+    "BACK_URL": "URL to back side",
+    "YEAR": "Year",
+    "EDITOR": "Editor"
 }

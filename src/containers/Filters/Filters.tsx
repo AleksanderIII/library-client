@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Select } from '../../components';
 import { IAppState, IFiltersState, IDispatchProp } from '../../models';
 import { FiltersActions } from '../../actions';
+import { Strings } from '../../constants';
 
 class Filters extends React.Component<IFiltersState & IDispatchProp> {
   constructor(props: IFiltersState) {
@@ -38,7 +39,7 @@ class Filters extends React.Component<IFiltersState & IDispatchProp> {
       <div className='filters'>
         <h2>Фильтры</h2>
         <Select
-          name='Век'
+          name={Strings['CENTURY']}
           options={this.sort(this.props.century.options)}
           centralAlign={true}
           defaultValue={this.props.century.selected}
@@ -46,7 +47,7 @@ class Filters extends React.Component<IFiltersState & IDispatchProp> {
           getValue={this.updateValue}
         />
         <Select
-          name='Страна'
+          name={Strings['COUNTRY']}
           options={this.sort(this.props.country.options)}
           centralAlign={true}
           defaultValue={this.props.country.selected}

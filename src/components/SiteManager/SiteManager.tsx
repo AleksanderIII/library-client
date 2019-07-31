@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Icons } from '../../components';
 import { ISiteManagerProps } from '../../models';
 //import { exportToExcel } from '../../utils/jsonToExcel';
+import { Strings } from '../../constants';
 
 class SiteManager extends React.Component<ISiteManagerProps> {
     constructor(props: ISiteManagerProps) {
@@ -22,7 +23,7 @@ class SiteManager extends React.Component<ISiteManagerProps> {
     public render(): JSX.Element {
         return (
             <div className='siteManager'>
-                <h2>Экспорт</h2>
+                <h2>{Strings['EXPORT']}</h2>
                 <p>
                     <span onClick={this.exportExcel}>
                         <Icons name='excelIcon' />

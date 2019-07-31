@@ -54,7 +54,7 @@ class DataViewer extends React.Component<IDataViewerProps & IDispatchProp> {
                             </li>,
                         )
                     }
-                    <li onClick={() => this.props.dispatch(ViewActions.toggleEditor())}>Добавить</li>
+                    <li onClick={() => this.props.dispatch(ViewActions.toggleEditor())}>{Strings['ADD']}</li>
                 </ul>
                 {
                     this.props.isLoading ?

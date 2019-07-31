@@ -17,6 +17,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
 
     public render(): JSX.Element {
         const { name, options, centralAlign, defaultValue } = this.props;
+        const { selected } = this.state;
         const columnLength = 12;
         const oneColumnWidth = 160;
         const wordLength = 12;
@@ -27,12 +28,13 @@ class Select extends React.Component<ISelectProps, ISelectState> {
                 : Math.floor(options.length / optionsLengthDivider) + 1
             : 0;
         const columnWidth: number = columnsCount * oneColumnWidth;
-        const isNewDefault =
-            options && options
-                .map(elem => elem === this.state.selected)
-                .filter(elem => elem === true).length === 0 ||
-            defaultValue !== this.state.selected;
-        const displayedValue = isNewDefault ? defaultValue : this.state.selected;
+        const displayedBelongsToOptions = !!(options.find(elem => elem === selected));
+        let displayedValue: string;
+        if (displayedBelongsToOptions) {
+            displayedValue = selected;
+        } else {
+            displayedValue = defaultValue;
+        }
         return (
             <div className='select' onClick={this.toggleDropown}>
                 <p>

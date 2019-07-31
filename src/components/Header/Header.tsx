@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { Icons, Select } from '../../components';
 import { AppSettingsActions } from '../../actions';
+import { Strings } from '../../constants';
 import { IAppState, IDispatchProp, ICountable, IHeaderProps } from '../../models';
 import countriesLibrary from '../../utils/countriesLibrary';
 
@@ -57,16 +58,23 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
           }
 
         </div>
-        <h1>Коллекция</h1>
+        <h1>{Strings['COLLECTION']}</h1>
         <div className='header__settings' >
           <div onClick={() => this.props.dispatch(AppSettingsActions.toggleSettingsMenu())} >
             <Icons name='settings' />
             {
               this.props.isOpen ?
-                <ul className='header__settings__list'>
-                  <li>тема: <span>{this.props.theme}</span></li>
-                  <li>язык: <span>{this.props.language}</span> </li>
-                </ul>
+                <div className='header__settings__list'>
+                  <h2>{Strings['SETTINGS']}</h2>
+                  <ul>
+                    <li>
+                      {Strings['THEME']}: <span>{this.props.theme}</span>
+                    </li>
+                    <li>
+                    {Strings['LANGUAGE']}: <span>{this.props.language}</span>
+                    </li>
+                  </ul>
+                </div>
                 : null
             }
           </div>

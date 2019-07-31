@@ -81,7 +81,7 @@ class Map extends React.Component<{}, IMapState> {
                 </div>
                 <div className='mapLegend'>
                     <span>{Strings['SELECT_CONTINENT']}</span>
-                    <Link to={`/continents/All`}>All</Link>
+                    <Link to={`/continents/All`}>{Strings['ALL']}</Link>
                 </div>
             </React.Fragment >
         );
