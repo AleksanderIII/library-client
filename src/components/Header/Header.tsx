@@ -4,44 +4,23 @@ import { connect } from 'react-redux';
 
 import { Icons, Select } from '../../components';
 import { AppSettingsActions } from '../../actions';
-import { Strings } from '../../constants';
-import { IAppState, IDispatchProp, ICountable, IHeaderProps } from '../../models';
-import countriesLibrary from '../../utils/countriesLibrary';
+import { Strings, continents } from '../../constants';
+import { IAppState, IDispatchProp, IHeaderProps } from '../../models';
 
 class Header extends React.Component<IDispatchProp & IHeaderProps & RouteComponentProps> {
 
   private findingContinent(name: string): string {
-    const continentsList: ICountable = {
-      All: 'Все',
-      Africa: 'Африка',
-      Antarctica: 'Антарктика',
-      Asia: 'Азия',
-      Europe: 'Европа',
-      NorthAmerica: 'Северная Америка',
-      Oceania: 'Австралия и Океания',
-      SouthAmerica: 'Южная Америка'
-    };
-    return continentsList[name];
+    return Strings[`${name}`];
   }
 
   public changeContinent = (name: string, value: string): void => {
-    const continentsList: ICountable = {
-      All: 'Все',
-      Africa: 'Африка',
-      Antarctica: 'Антарктика',
-      Asia: 'Азия',
-      Europe: 'Европа',
-      NorthAmerica: 'Северная Америка',
-      Oceania: 'Австралия и Океания',
-      SouthAmerica: 'Южная Америка'
-    };
-    const listOfKeys = Object.keys(continentsList);
-    const targetContinent = listOfKeys.filter(elem => continentsList[elem] === value)[0];
-    this.props.history.push(`/continents/${targetContinent}`);
+    const listOfKeys = Object.keys(continents);
+    const targetContinent = listOfKeys.find(elem => Strings[`${continents[elem]}`] === value);
+    this.props.history.push(`/continents/${continents[targetContinent]}`);
   }
 
   public render(): JSX.Element {
-    const continents = ['Все'].concat(countriesLibrary.getContinents());
+    const continentsList = Object.keys(continents).map(continent => Strings[`${continents[continent]}`]);
     return (
       <div className='header'>
         <Link to='/continents'><span><Icons name='homeIcon' /></span></Link>
@@ -49,7 +28,7 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
           {
             window.location.pathname.includes('continents') && this.props.continent !== 'continents' ?
               <Select name='Континент'
-                options={continents}
+                options={continentsList}
                 centralAlign={false}
                 defaultValue={this.findingContinent(this.props.continent || '')}
                 propName='continents'
@@ -71,7 +50,7 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
                       {Strings['THEME']}: <span>{this.props.theme}</span>
                     </li>
                     <li>
-                    {Strings['LANGUAGE']}: <span>{this.props.language}</span>
+                      {Strings['LANGUAGE']}: <span>{this.props.language}</span>
                     </li>
                   </ul>
                 </div>

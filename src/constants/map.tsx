@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { IObj } from '../models';
+import { IIterable } from '../models';
 
-const continents: IObj = {
-    europe: 'Europe',
-    africa: 'Africa',
-    australia: 'Oceania',
-    asia: 'Asia',
-    southAmerica: 'SouthAmerica',
-    northAmerica: 'NorthAmerica'
+const continents: IIterable = {
+    all: 'ALL',
+    europe: 'EUROPE',
+    africa: 'AFRICA',
+    australia: 'OCEANIA',
+    asia: 'ASIA',
+    southAmerica: 'SOUTH_AMERICA',
+    northAmerica: 'NORTH_AMERICA'
   };
 
 const africa = <g id='africa' transform='translate(0,239) scale(0.016963,-0.016963)'>
@@ -797,8 +798,7 @@ const northAmerica = <g id='northAmerica' transform='translate(0,239) scale(0.01
         l10.91,19l-20.006,48.992l-56.994,34.916l-20.984,13.988l-136.01,31.002l-62.004,8.002L5154.833,8198.911L5154.833,8198.911z'/>
 </g>;
 
-// tslint:disable-next-line:one-variable-per-declaration
-const worldMaps: {[key: string]: any} = {
+const worldMap: {[key: string]: JSX.Element} = {
     africa,
     asia,
     australia,
@@ -806,7 +806,8 @@ const worldMaps: {[key: string]: any} = {
     southAmerica,
     northAmerica,
 };
+
 export {
-    worldMaps,
+    worldMap,
     continents
 };

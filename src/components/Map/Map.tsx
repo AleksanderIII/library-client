@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { IMapState } from '../../models';
 
-import { worldMaps, continents, Strings } from '../../constants';
+import { worldMap, continents, Strings } from '../../constants';
 
 class Map extends React.Component<{}, IMapState> {
     constructor(props: IMapState) {
@@ -74,14 +74,14 @@ class Map extends React.Component<{}, IMapState> {
                                     onMouseOver={() => this.toggleTooltip()}
                                     onMouseOut={() => this.toggleTooltip()}
                                     to={`/continents/${continents[continent]}`} >
-                                    {worldMaps[continent]}
+                                    {worldMap[continent]}
                                 </Link>)
                         }
                     </svg>
                 </div>
                 <div className='mapLegend'>
                     <span>{Strings['SELECT_CONTINENT']}</span>
-                    <Link to={`/continents/All`}>{Strings['ALL']}</Link>
+                    <Link to={`/continents/ALL`}>{Strings['ALL']}</Link>
                 </div>
             </React.Fragment >
         );

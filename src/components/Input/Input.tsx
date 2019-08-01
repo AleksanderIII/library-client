@@ -8,12 +8,6 @@ class Input extends React.Component<IInputProps, IInputState> {
     this.state = {
       value: ''
     };
-    this.changeHandler = this.changeHandler.bind(this);
-    this.resetValue = this.resetValue.bind(this);
-  }
-
-  private resetValue = () => {
-    this.setState({ value: '' });
   }
 
   private changeHandler = (event: React.FormEvent<HTMLInputElement>) => {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { GridSection } from '../../components';
-import { IGridProps, IMoneyData, ICardsByCountry, IObj } from '../../models';
+import { IGridProps, IMoneyData, ICardsByCountry, IIterable } from '../../models';
 
 class Grid extends React.Component<IGridProps> {
   constructor(props: IGridProps) {
@@ -10,7 +10,7 @@ class Grid extends React.Component<IGridProps> {
   }
   private getDataByCounties(data: IMoneyData[], targetCountry: string): ICardsByCountry {
     const result: ICardsByCountry = {};
-    const Obj: IObj = {};
+    const Obj: IIterable = {};
     data.forEach(element => {
       if (element.country) {
         Obj[element.country] = true;

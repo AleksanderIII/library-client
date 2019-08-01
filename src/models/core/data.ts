@@ -18,7 +18,7 @@ export interface ICardsByCountry {
     [key: string]: IMoneyData[];
 }
 
-export interface IObj {
+export interface IIterable {
     [key: string]: boolean | string | number;
 }
 

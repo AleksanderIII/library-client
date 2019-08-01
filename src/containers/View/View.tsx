@@ -5,7 +5,7 @@ import { Route, RouteComponentProps } from 'react-router-dom';
 import { Filters, MoneyEditor, DataViewer } from '../';
 import { IAppState, IDispatchProp, IViewState } from '../../models';
 import { ViewActions } from '../../actions';
-import { SiteManager, Header, ContinentsView } from '../../components';
+import { SiteManager, Header, Map } from '../../components';
 
 class View extends React.Component<IViewState & IDispatchProp & RouteComponentProps> {
   private unlisten: any;
@@ -35,7 +35,7 @@ class View extends React.Component<IViewState & IDispatchProp & RouteComponentPr
       <React.Fragment>
         <Header />
         <div className='view'>
-          <Route exact path={`${this.props.match.path}`} component={ContinentsView} />
+          <Route exact path={`${this.props.match.path}`} component={Map} />
           <Route exact path={`${this.props.match.path}/:id`} render={() =>
             <div className='view__moneyView'>
               <div className='view__manager'>
