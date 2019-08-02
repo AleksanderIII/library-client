@@ -2,32 +2,25 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Route, RouteComponentProps } from 'react-router-dom';
 
-import { Filters, MoneyEditor, DataViewer } from '../';
 import { IAppState, IDispatchProp, IViewState } from '../../models';
-import { ViewActions } from '../../actions';
 import { SiteManager, Header, Map } from '../../components';
+import { Filters, MoneyEditor, DataViewer } from '../../containers';
+import { ViewActions } from '../../actions';
 
 class View extends React.Component<IViewState & IDispatchProp & RouteComponentProps> {
-  private unlisten: any;
-  constructor(props: IViewState & IDispatchProp & RouteComponentProps) {
-    super(props);
-  }
 
   public componentDidMount(): void {
-    const pathParts = this.props.location.pathname.split('/');
-    const continentFromPath = pathParts[pathParts.length - 1];
-    if (continentFromPath !== 'continents') {
-      this.props.dispatch(ViewActions.setContinent(continentFromPath));
-    }
-    this.unlisten = this.props.history.listen((location, action) => {
-      const pathParts = location.pathname.split('/');
-      const continentFromPath = pathParts[pathParts.length - 1];
-      this.props.dispatch(ViewActions.setContinent(continentFromPath));
-    });
+    this.listenContinentChange();
   }
 
-  public componentWillUnmount(): void {
-    this.unlisten();
+  private listenContinentChange = () => {
+    this.props.history.listen((location) => {
+      const pathParts = location.pathname.split('/');
+      const continentFromPath = pathParts[pathParts.length - 1];
+      if (continentFromPath !== 'continents') {
+        this.props.dispatch(ViewActions.setContinent(continentFromPath));
+      }
+    });
   }
 
   public render(): JSX.Element {

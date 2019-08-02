@@ -60,7 +60,7 @@ class Grid extends React.Component<IGridProps> {
       });
     }
     return (
-      <div className='grid'>
+      <div id='grid' className='grid'>
         {
           countryNames ?
             countryNames.map((elem, index) =>

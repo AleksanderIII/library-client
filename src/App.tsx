@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { PageNotFound, CardDetails } from './components';
+
 import configureStore from './configureStore';
+import { PageNotFound, CardDetails } from './components';
 import { View, Registration } from './containers';
 
 import './styles/main.less';

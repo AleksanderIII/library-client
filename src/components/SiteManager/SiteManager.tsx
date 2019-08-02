@@ -15,6 +15,10 @@ class SiteManager extends React.Component<ISiteManagerProps> {
         ExportService.getExcel();
     }
 
+    private exportPDF(): void {
+        ExportService.getPDF();
+    }
+
     public render(): JSX.Element {
         return (
             <div className='siteManager'>
@@ -23,7 +27,7 @@ class SiteManager extends React.Component<ISiteManagerProps> {
                     <span onClick={this.exportExcel}>
                         <Icons name='excelIcon' />
                     </span>
-                    <span>
+                    <span  onClick={this.exportPDF}>
                         <Icons name='pdfIcon' />
                     </span>
                 </p>

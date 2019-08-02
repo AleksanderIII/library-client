@@ -1,6 +1,6 @@
 import { IMoneyData } from '../core/data';
 
-export interface IDataViewerProps {
+export interface IDataViewerState {
     data: {
         [key: string]: IMoneyData[];
         cash: IMoneyData[];

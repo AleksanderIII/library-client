@@ -36,7 +36,6 @@ class DataViewer extends React.Component<IDataViewerProps & IDispatchProp> {
         if (continent === 'ALL') {
             this.props.dispatch(ViewActions.getViewDataRequest());
         } else {
-            console.log(continent);
             this.props.dispatch(ViewActions.getViewDataByContinentRequest(continent));
         }
     }

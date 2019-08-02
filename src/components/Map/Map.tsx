@@ -25,6 +25,7 @@ class Map extends React.Component<{}, IMapState> {
 
     public componentWillUnmount(): void {
         window.removeEventListener('mouseover', this.textCapture);
+        window.removeEventListener('mousemove', this.controlCoordinates);
     }
 
     private toggleTooltip = () => {

@@ -1,5 +1,7 @@
 import DataService from './dataService';
 const { json2excel } = require('js2excel');
+import * as html2canvas from 'html2canvas';
+import * as JsPDF from 'jspdf';
 
 import { IMoneyData, IExportMoneyData } from '../models';
 import { sortObjectsByField } from '../utils';
@@ -42,7 +44,7 @@ class ExportService {
                     separatedData.push({ ...blankRow, continent: row.continent });
                     separatedData.push({ ...blankRow, country: row.country });
                 }
-                separatedData.push({...row, continent: ''});
+                separatedData.push({ ...row, continent: '' });
             });
             return separatedData;
         };
@@ -70,6 +72,17 @@ class ExportService {
         } catch (e) {
             console.log(e);
         }
+    }
+
+    public static getPDF = () => {
+        const input = document.getElementById('grid');
+        html2canvas(input)
+            .then((canvas) => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new JsPDF();
+                pdf.addImage(imgData, 'PNG', 0, 0);
+                pdf.save('download.pdf');
+            });
     }
 
 }

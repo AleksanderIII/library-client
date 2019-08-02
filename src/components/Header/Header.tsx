@@ -8,12 +8,13 @@ import { Strings, continents } from '../../constants';
 import { IAppState, IDispatchProp, IHeaderProps } from '../../models';
 
 class Header extends React.Component<IDispatchProp & IHeaderProps & RouteComponentProps> {
-
-  private findingContinent(name: string): string {
-    return Strings[`${name}`];
+  private continentChecking(name: string): string {
+    const continentsList = Object.keys(continents);
+    const validContinent = continentsList.some(continent => continents[continent] === name);
+    return validContinent ? Strings[`${name}`] : Strings[`ALL`];
   }
 
-  public changeContinent = (name: string, value: string): void => {
+  private changeContinent = (name: string, value: string): void => {
     const listOfKeys = Object.keys(continents);
     const targetContinent = listOfKeys.find(elem => Strings[`${continents[elem]}`] === value);
     this.props.history.push(`/continents/${continents[targetContinent]}`);
@@ -30,7 +31,7 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
               <Select name='Континент'
                 options={continentsList}
                 centralAlign={false}
-                defaultValue={this.findingContinent(this.props.continent || '')}
+                defaultValue={this.continentChecking(this.props.continent || '')}
                 propName='continents'
                 getValue={this.changeContinent}
               /> : null
