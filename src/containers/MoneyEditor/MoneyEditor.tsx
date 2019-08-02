@@ -23,9 +23,9 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
   }
 
   public componentDidMount(): void {
-    const enumValues = this.props.type === Strings[`${Editor.Filters.Options.TYPE.COINS}`] ?
-      Editor.Filters.Options.COINSVALUES :
-      Editor.Filters.Options.PAPERVALUES;
+    const enumValues = this.props.type === Strings[`${Editor.Selectors.Options.TYPE.COINS}`] ?
+      Editor.Selectors.Options.COINSVALUES :
+      Editor.Selectors.Options.PAPERVALUES;
     const values = Object.keys(enumValues).map(key => enumValues[key as any]);
     this.setState({ values });
   }
@@ -34,8 +34,8 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
     const continentsList = CountriesLibrary.getContinents();
     const countriesList = CountriesLibrary.getCountries(this.props.continent);
     const moneyType = [
-      Strings[`${Editor.Filters.Options.TYPE.COINS}`],
-      Strings[`${Editor.Filters.Options.TYPE.CASH}`],
+      Strings[`${Editor.Selectors.Options.TYPE.COINS}`],
+      Strings[`${Editor.Selectors.Options.TYPE.CASH}`],
     ];
     return (
       <div className='editor'>
@@ -43,10 +43,10 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
           <p className='editor__container__closeBtn' onClick={() => this.props.dispatch(ViewActions.toggleEditor())} >&#215;</p>
           <h2>{Strings['EDITOR']}</h2>
           <div className='editor__container__content'>
-            {this.createSelector(Strings[`${Editor.Filters.Names.CONTINENT}`], continentsList, true, continentsList[0], 'continent', this.getValue, this.updateValue)}
-            {this.createSelector(Strings[`${Editor.Filters.Names.COUNTRY}`], countriesList, true, this.props.country, 'country', this.getValue)}
-            {this.createSelector(Strings[`${Editor.Filters.Names.TYPE}`], moneyType, true, moneyType[0], 'type', this.getValue, this.updateValue)}
-            {this.createSelector(Strings[`${Editor.Filters.Names.VALUE}`], this.state.values, true, this.state.values[0], 'value', this.getValue)}
+            {this.createSelector(Strings[`${Editor.Selectors.Names.CONTINENT}`], continentsList, true, continentsList[0], 'continent', this.getValue, this.updateValue)}
+            {this.createSelector(Strings[`${Editor.Selectors.Names.COUNTRY}`], countriesList, true, this.props.country, 'country', this.getValue)}
+            {this.createSelector(Strings[`${Editor.Selectors.Names.TYPE}`], moneyType, true, moneyType[0], 'type', this.getValue, this.updateValue)}
+            {this.createSelector(Strings[`${Editor.Selectors.Names.VALUE}`], this.state.values, true, this.state.values[0], 'value', this.getValue)}
             <Input name={'date'} placeholder={Strings['YEAR']} maxLength={+'4'} getValue={this.getValue} />
             <Input name={'frontImageUrl'} placeholder={Strings['FRONT_URL']} getValue={this.getValue} />
             <Input name={'backImageUrl'} placeholder={Strings['BACK_URL']} getValue={this.getValue} />
@@ -82,10 +82,10 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
   }
 
   private updateValue = (name: string) => {
-    if (name === Strings[`${Editor.Filters.Options.TYPE.COINS}`] || name === Strings[`${Editor.Filters.Options.TYPE.CASH}`]) {
-      const enumValues = name === Strings[`${Editor.Filters.Options.TYPE.COINS}`] ?
-        Editor.Filters.Options.COINSVALUES :
-        Editor.Filters.Options.PAPERVALUES;
+    if (name === Strings[`${Editor.Selectors.Options.TYPE.COINS}`] || name === Strings[`${Editor.Selectors.Options.TYPE.CASH}`]) {
+      const enumValues = name === Strings[`${Editor.Selectors.Options.TYPE.COINS}`] ?
+        Editor.Selectors.Options.COINSVALUES :
+        Editor.Selectors.Options.PAPERVALUES;
 
       const values = Object.keys(enumValues).map(key => enumValues[key as any]);
       this.props.dispatch(MoneyEditorActions.changeOption('type', name));

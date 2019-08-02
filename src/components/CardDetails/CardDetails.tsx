@@ -54,11 +54,11 @@ class CardDetails extends React.Component<ICardDetailsState & IDispatchProp, ICa
                             <img src={this.props.data.backImageUrl} alt='It missed' />
                         </div>
                         <div className='cardDetails__container__content'>
-                            {this.createInput(Strings[Editor.Filters.Names.DATE], date || '-', 'date')}
-                            {this.createInput(Strings[Editor.Filters.Names.VALUE], value || '-', 'value')}
-                            {this.createInput(Strings[Editor.Filters.Names.MATERIAL], material || '-', 'material')}
-                            {this.createInput(Strings[Editor.Filters.Names.FORM], form || '-', 'form')}
-                            {this.createInput(Strings[Editor.Filters.Names.ADD_INFO], addInformation || '-', 'addInfo')}
+                            {this.createInput(Strings[Editor.Selectors.Names.DATE], date || '-', 'date')}
+                            {this.createInput(Strings[Editor.Selectors.Names.VALUE], value || '-', 'value')}
+                            {this.createInput(Strings[Editor.Selectors.Names.MATERIAL], material || '-', 'material')}
+                            {this.createInput(Strings[Editor.Selectors.Names.FORM], form || '-', 'form')}
+                            {this.createInput(Strings[Editor.Selectors.Names.ADD_INFO], addInformation || '-', 'addInfo')}
                         </div>
                     </div>
                     <div className='cardDetails__container__manage'>

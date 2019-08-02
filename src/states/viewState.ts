@@ -1,14 +1,14 @@
-import { IViewState } from '../models';
+import { IViewState, Editor } from '../models';
 
 export default function getInitialViewState(): IViewState {
     return {
         isOpenedEditor: false,
         isLoading: false,
-        dataType: 'coins',
+        dataType: Editor.Selectors.Options.TYPE.COINS,
         continent: 'continents',
         data: {
-            cash: [],
-            coins: []
+            [Editor.Selectors.Options.TYPE.CASH]: [],
+            [Editor.Selectors.Options.TYPE.COINS]: []
         }
     };
 }

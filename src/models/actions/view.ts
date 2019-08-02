@@ -1,5 +1,6 @@
 import { ViewActions } from '../../constants';
 import { IMoneyData } from '../../models';
+import { Editor } from '../core';
 
 export type ViewActionTypes = IGetMoneyRequest
     | IGetDataSuccessfully
@@ -34,7 +35,7 @@ export interface IGetMoneyByContinent {
 
 export interface ISetMoneyType {
     type: ViewActions.SET_MONEY_TYPE;
-    value: string;
+    value: Editor.Selectors.Options.TYPE;
 }
 
 export interface ISetContinent {

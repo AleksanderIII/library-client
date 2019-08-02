@@ -31,7 +31,6 @@ class GridSection extends React.Component<IGridSectionProps & IDispatchProp, IGr
 
   public nextSlide(): void {
     const slidesQuantity = this.props.countryData.length / 4;
-    console.log(Math.ceil(slidesQuantity) * 200, -(this.state.top - 200));
     if (Math.ceil(slidesQuantity) * 200 > -(this.state.top - 200)) {
       const newTopCoordinate = this.state.top - 200;
       this.setState({ top: newTopCoordinate });

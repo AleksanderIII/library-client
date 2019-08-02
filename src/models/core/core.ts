@@ -11,7 +11,7 @@ export interface ICountable {
 }
 
 export namespace Editor {
-  export namespace Filters {
+  export namespace Selectors {
     export enum Names {
       CONTINENT = 'CONTINENT',
       COUNTRY = 'COUNTRY',

@@ -55,8 +55,8 @@ class Card extends React.Component<ICardProps, ICardState> {
           </div>
           <div className='card__content__description' >
             <h3>{Strings['DESCRIPTION']}</h3>
-            <span className='card__content__date'>{Strings[Editor.Filters.Names.DATE]}:{this.props.date}</span>
-            <span className='card__content__value'>{Strings[Editor.Filters.Names.VALUE]}: {this.props.value}</span>
+            <span className='card__content__date'>{Strings[Editor.Selectors.Names.DATE]}:{this.props.date}</span>
+            <span className='card__content__value'>{Strings[Editor.Selectors.Names.VALUE]}: {this.props.value}</span>
           </div>
         </div>
       </div >

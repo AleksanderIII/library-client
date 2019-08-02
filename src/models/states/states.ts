@@ -1,4 +1,5 @@
 import { IMoneyData } from '../core/data';
+import { Editor } from '../core';
 
 export interface IAppState {
     appSettings: IAppSettingsState;
@@ -12,12 +13,12 @@ export interface IAppState {
 export interface IViewState {
     isOpenedEditor: boolean;
     isLoading: boolean;
-    dataType: string;
+    dataType: Editor.Selectors.Options.TYPE;
     continent: string;
     data: {
         [key: string]: IMoneyData[]
-        cash: IMoneyData[],
-        coins: IMoneyData[]
+        [Editor.Selectors.Options.TYPE.COINS]: IMoneyData[],
+        [Editor.Selectors.Options.TYPE.CASH]: IMoneyData[]
     };
 }
 

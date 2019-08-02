@@ -37,7 +37,7 @@ class View extends React.Component<IViewState & IDispatchProp & RouteComponentPr
                 <SiteManager />
               </div>
               <div className='view__container'>
-                <DataViewer />
+                <DataViewer continent={this.props.continent} />
               </div>
             </div>
           } />
@@ -47,10 +47,11 @@ class View extends React.Component<IViewState & IDispatchProp & RouteComponentPr
   }
 }
 
-const mapStateToProps = (state: IAppState): { isOpenedEditor: boolean, isLoading: boolean } => {
+const mapStateToProps = (state: IAppState): { isOpenedEditor: boolean, isLoading: boolean, continent: string } => {
   return {
     isOpenedEditor: state.view.isOpenedEditor,
     isLoading: state.view.isLoading,
+    continent: state.view.continent
   };
 };
 

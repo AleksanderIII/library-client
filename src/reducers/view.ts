@@ -1,5 +1,5 @@
 import { ViewActions } from '../constants';
-import { IViewState, ViewActionTypes } from '../models';
+import { IViewState, ViewActionTypes, Editor } from '../models';
 import getInitialState from '../states/viewState';
 
 export default function view(state: IViewState = getInitialState(), action: ViewActionTypes): IViewState {
@@ -18,8 +18,8 @@ export default function view(state: IViewState = getInitialState(), action: View
       return {
         ...state,
         data: {
-          coins: action.coins,
-          cash: action.cash,
+          [Editor.Selectors.Options.TYPE.COINS]: action.coins,
+          [Editor.Selectors.Options.TYPE.CASH]: action.cash,
         },
         isLoading: false
       };
