@@ -2,13 +2,11 @@ import * as React from 'react';
 
 import { GridSection } from '../../components';
 import { IGridProps, IMoneyData, ICardsByCountry, IIterable } from '../../models';
+import { Strings } from '../../constants';
+import { sortSimpleStrings } from '../../utils';
 
 class Grid extends React.Component<IGridProps> {
-  constructor(props: IGridProps) {
-    super(props);
-    this.getDataByCounties = this.getDataByCounties.bind(this);
-  }
-  private getDataByCounties(data: IMoneyData[], targetCountry: string): ICardsByCountry {
+  private getDataByCountries = (data: IMoneyData[], targetCountry: string) => {
     const result: ICardsByCountry = {};
     const Obj: IIterable = {};
     data.forEach(element => {
@@ -41,31 +39,24 @@ class Grid extends React.Component<IGridProps> {
   }
 
   public render(): JSX.Element {
+    const { data, centuryFilter, countryFilter } = this.props;
     let countriesData: ICardsByCountry;
     let countryNames;
-    if (this.props.data && this.props.data.length) {
-      let viewMoneyData = this.props.data;
-      if (this.props.centuryFilter !== 'Все') {
-        viewMoneyData = viewMoneyData.filter(elem => `${Math.ceil(elem.date / 100)}` === this.props.centuryFilter);
+    if (data && data.length) {
+      let viewMoneyData = data;
+      if (centuryFilter !== 'Все') {
+        viewMoneyData = viewMoneyData.filter(elem => `${Math.ceil(elem.date / 100)}` === centuryFilter);
       }
-      countriesData = this.getDataByCounties(viewMoneyData, this.props.countryFilter || '');
-      countryNames = Object.keys(countriesData).sort((a, b) => {
-        if (a > b) {
-          return 1;
-        }
-        if (a < b) {
-          return -1;
-        }
-        return 0;
-      });
+      countriesData = this.getDataByCountries(viewMoneyData, countryFilter || '');
+      countryNames = sortSimpleStrings(Object.keys(countriesData));
     }
     return (
-      <div id='grid' className='grid'>
+      <div className='grid'>
         {
           countryNames ?
-            countryNames.map((elem, index) =>
-              < GridSection key={`${elem}-${index}`} countryName={elem} countryData={countriesData[elem]} />)
-            : <div>Это континент не имеет информацию по странам</div>
+            countryNames.map((countryName, index) =>
+              < GridSection key={`${countryName}-${index}`} countryName={countryName} countryData={countriesData[countryName]} />)
+            : <div>{Strings[`NO_CONTINENT_DATA`]}</div>
         }
       </div>
     );

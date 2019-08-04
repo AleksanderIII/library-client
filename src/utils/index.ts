@@ -34,3 +34,16 @@ export const sortObjectsByField = (data: IExportMoneyData[], fieldName: string) 
         return x < y ? -1 : x > y ? 1 : 0;
     });
 };
+
+export const sortSimpleStrings = (data: string[]) => {
+    data.sort((a, b) => {
+        if (a > b) {
+            return 1;
+        }
+        if (a < b) {
+            return -1;
+        }
+        return 0;
+    });
+    return data;
+};

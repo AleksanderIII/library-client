@@ -28,5 +28,6 @@
     "FRONT_URL": "URL to front side",
     "BACK_URL": "URL to back side",
     "YEAR": "Year",
-    "EDITOR": "Editor"
+    "EDITOR": "Editor",
+    "NO_CONTINENT_DATA": "This continent doesn't have money data"
 }
