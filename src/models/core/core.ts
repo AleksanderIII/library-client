@@ -50,3 +50,15 @@ export namespace Editor {
     }
   }
 }
+
+export namespace Filters{
+  export enum Names{
+    CENTURY = 'CENTURY',
+  }
+
+  export namespace Options{
+    export enum CENTURY{
+      ALL = 'ALL'
+    }
+  }
+}

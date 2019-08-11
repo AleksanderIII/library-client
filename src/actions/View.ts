@@ -22,7 +22,8 @@ export const getViewDataByContinentRequest = (continent: string) => {
     });
     DataService.getData(continent).then(data => {
       dispatch(dataRecieved(data));
-    });
+    })
+      .catch(console.log);
   };
 };
 
@@ -33,7 +34,8 @@ export const removeCardRequest = (id: string) => {
     });
     DataService.removeCard(id).then(data => {
       dispatch(dataRecieved(data));
-    });
+    })
+      .catch(console.log);
   };
 };
 

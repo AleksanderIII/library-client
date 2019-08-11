@@ -10,17 +10,23 @@ import { ViewActions } from '../../actions';
 class View extends React.Component<IViewState & IDispatchProp & RouteComponentProps> {
 
   public componentDidMount(): void {
+    const pathParts = location.pathname.split('/');
+    this.changeContinent(pathParts);
     this.listenContinentChange();
   }
 
   private listenContinentChange = () => {
     this.props.history.listen((location) => {
       const pathParts = location.pathname.split('/');
-      const continentFromPath = pathParts[pathParts.length - 1];
-      if (continentFromPath !== 'continents') {
-        this.props.dispatch(ViewActions.setContinent(continentFromPath));
-      }
+      this.changeContinent(pathParts);
     });
+  }
+
+  private changeContinent = (pathParts: string[]) => {
+    const continentFromPath = pathParts[pathParts.length - 1];
+    if (continentFromPath !== 'continents') {
+      this.props.dispatch(ViewActions.setContinent(continentFromPath));
+    }
   }
 
   public render(): JSX.Element {
