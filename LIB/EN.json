@@ -6,7 +6,7 @@
     "CASH": "Cash",
     "COINS": "Coins",
     "DATE": "Date",
-    "DESCRIPTION": "DESCRIPTION",
+    "DESCRIPTION": "Description",
     "ADD_INFO": "Additional information",
     "FORM": "Form",
     "MATERIAL": "Material",
@@ -34,5 +34,6 @@
     "REGISTRATION": "Registration",
     "NAME": "Name",
     "PASSWORD": "Password",
-    "REGISTER": "Register"
+    "REGISTER": "Register",
+    "CREATION_YEAR": "Creation year"
 }

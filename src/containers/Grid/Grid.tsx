@@ -7,60 +7,55 @@ import { sortSimpleStrings } from '../../utils';
 
 class Grid extends React.Component<IGridProps> {
 
-  private getDataByCountries = (data: IMoneyData[], targetCountry: string) => {
-    const cardsByCountry: IIterable = {};
-    data.forEach(element => {
-      if (element.country) {
-        cardsByCountry[element.country] = true;
+  private getDataByCountries = (data: IMoneyData[], targetCountry: string): ICardsByCountry => {
+    const cardsByCountries: ICardsByCountry = {};
+    data.forEach(dataElement => {
+      if (!cardsByCountries[dataElement.country]) {
+        cardsByCountries[dataElement.country] = [];
       }
-    });
-    let countriesList;
-    if (targetCountry !== Strings[Filters.Options.COUNTRY.ALL]) {
-      countriesList = [`${targetCountry}`];
-    } else {
-      countriesList = Object.keys(cardsByCountry);
-    }
-
-    const result: ICardsByCountry = {};
-    countriesList.forEach(element => {
-      result[element] = data.filter(elementData => {
-        if (element === elementData.country) {
-          return {
-            _id: elementData._id,
-            value: elementData.value,
-            frontImageUrl: elementData.frontImageUrl,
-            backImageUrl: elementData.backImageUrl,
-            date: elementData.date,
-            code: elementData.code,
-          };
-        }
+      cardsByCountries[dataElement.country].push({
+        _id: dataElement._id,
+        value: dataElement.value,
+        frontImageUrl: dataElement.frontImageUrl,
+        backImageUrl: dataElement.backImageUrl,
+        date: dataElement.date,
+        code: dataElement.code,
+        continent: dataElement.continent,
+        country: dataElement.country,
       });
     });
-    return result;
+
+    if (targetCountry === Strings[Filters.Options.COUNTRY.ALL]) {
+      return cardsByCountries;
+    }
+    return { [targetCountry]: cardsByCountries[targetCountry] };
+  }
+
+  private filterDataByCentury = (data: IMoneyData[], century: string) => {
+    if (century !== Strings[Filters.Options.CENTURY.ALL]) {
+      return data.filter(dataElement => `${Math.ceil(dataElement.date / 100)}` === century);
+    }
+    return data;
   }
 
   public render(): JSX.Element {
     const { data, centuryFilter, countryFilter } = this.props;
-    let countriesData: ICardsByCountry;
-    let countries;
+    let dataByCountries: ICardsByCountry;
+    let orderedData;
     if (data && data.length) {
-      let viewMoneyData = data;
-      if (centuryFilter !== Strings[Filters.Options.CENTURY.ALL]) {
-        viewMoneyData = viewMoneyData.filter(elem => `${Math.ceil(elem.date / 100)}` === centuryFilter);
-      }
-      countriesData = this.getDataByCountries(viewMoneyData, countryFilter || '');
-      countries = sortSimpleStrings(Object.keys(countriesData));
+      dataByCountries = this.getDataByCountries(this.filterDataByCentury(data, centuryFilter), countryFilter);
+      orderedData = sortSimpleStrings(Object.keys(dataByCountries));
     }
 
     return (
       <div className='grid'>
         {
-          countries ?
-            countries.map((countryName, index) =>
+          orderedData ?
+            orderedData.map((countryName, index) =>
               <GridSection
                 key={`${countryName}-${index}`}
                 countryName={countryName}
-                countryData={countriesData[countryName]}
+                countryData={dataByCountries[countryName]}
               />)
             : <div>
               {Strings[`NO_CONTINENT_DATA`]}

@@ -34,5 +34,6 @@
     "REGISTRATION": "Регистрация",
     "NAME": "Имя",
     "PASSWORD": "Пароль",
-    "REGISTER": "Зарегистрироваться"
+    "REGISTER": "Зарегистрироваться",
+    "CREATION_YEAR": "Год создания"
 }

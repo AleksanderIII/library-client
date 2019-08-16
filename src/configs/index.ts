@@ -13,6 +13,9 @@ export class AppConfig {
             singleColumnSelectSize: 12,
             displayedWordLength: 12,
             elementsPerColumn: 9
+        },
+        card: {
+            defaultPictureUrl: 'https://res.cloudinary.com/dwg7mxlg4/image/upload/v1553694922/Money-library/coin_PNG36944.png'
         }
     };
 }

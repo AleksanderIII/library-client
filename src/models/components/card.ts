@@ -4,7 +4,7 @@ export interface ICardProps {
     value: number | string;
     frontImageUrl: string;
     backImageUrl: string;
-    removeCard?(id: string): void;
+    removeCard(id: string): void;
     date?: number;
 }
 

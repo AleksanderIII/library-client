@@ -90,3 +90,11 @@ export namespace Registration {
     REGISTER = 'REGISTER'
   }
 }
+
+export namespace CardInformation {
+  export enum Fields {
+    DESCRIPTION = 'DESCRIPTION',
+    CREATION_YEAR = 'CREATION_YEAR',
+    VALUE = 'VALUE'
+  }
+}

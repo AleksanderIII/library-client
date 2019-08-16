@@ -12,24 +12,22 @@ class CardDetails extends React.Component<ICardDetailsState & IDispatchProp, ICa
         this.state = {
             isActiveEdit: false
         };
-        this.getInputValue = this.getInputValue.bind(this);
-        this.toggleEdit = this.toggleEdit.bind(this);
-        this.createInput = this.createInput.bind(this);
     }
 
     public componentDidMount(): void {
-        this.props.dispatch(CardDetailsActions.getCardDataRequest(window.location.pathname.replace('/', '')));
+        const cardId = window.location.pathname.replace('/', '');
+        this.props.dispatch(CardDetailsActions.getCardDataRequest(cardId));
     }
 
-    public toggleEdit(): void {
+    private toggleEdit = () => {
         this.setState({ isActiveEdit: !this.state.isActiveEdit });
     }
 
-    public getInputValue(): void {
+    private getInputValue = () => {
         console.log(1);
     }
 
-    public createInput(title: string, value: string | number, name: string): JSX.Element {
+    private createInput = (title: string, value: string | number, name: string): JSX.Element => {
         return <React.Fragment>
             <span>{title}: {value || '-'}</span>
             <span className={`cardDetails__container__content__input ${this.state.isActiveEdit ? '' : 'hidden'}`}>
