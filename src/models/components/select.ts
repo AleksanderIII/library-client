@@ -10,5 +10,5 @@ export interface ISelectProps {
 
 export interface ISelectState {
     selected?: string;
-    clicked: boolean;
+    opened: boolean;
 }

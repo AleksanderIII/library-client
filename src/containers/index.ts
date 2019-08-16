@@ -1,15 +1,15 @@
-import Filters from './Filters/Filters';
+import FilterView from './Filters/Filters';
 import Grid from './Grid/Grid';
 import MoneyEditor from './MoneyEditor/MoneyEditor';
 import View from './View/View';
 import DataViewer from './DataViewer/DataViewer';
-import Registration from './Registration/Resgistaration';
+import RegistrationView from './Registration/Resgistaration';
 
 export {
-    Filters,
+    FilterView,
     Grid,
     View,
     MoneyEditor,
     DataViewer,
-    Registration
+    RegistrationView
 };

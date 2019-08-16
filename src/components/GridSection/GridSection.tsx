@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { IGridSectionProps, IDispatchProp, IGridSectionState } from '../../models';
+import { IGridSectionProps, IDispatchProp, IGridSectionState, Icons } from '../../models';
 import { ViewActions } from '../../actions';
-import { Card, Icons } from '../../components';
+import { Card, Icon } from '../../components';
+import { AppConfig } from '../../configs';
 
 import '../../public/flags.css';
 
@@ -23,16 +24,16 @@ class GridSection extends React.Component<IGridSectionProps & IDispatchProp, IGr
   }
 
   public previousSlide(): void {
-    if (this.state.top + 200 <= 0) {
-      const newTopCoordinate = this.state.top + 200;
+    if (this.state.top + AppConfig.components.gridSection.sliderStep <= 0) {
+      const newTopCoordinate = this.state.top + AppConfig.components.gridSection.sliderStep;
       this.setState({ top: newTopCoordinate });
     }
   }
 
   public nextSlide(): void {
     const slidesQuantity = this.props.countryData.length / 4;
-    if (Math.ceil(slidesQuantity) * 200 > -(this.state.top - 200)) {
-      const newTopCoordinate = this.state.top - 200;
+    if (Math.ceil(slidesQuantity) * AppConfig.components.gridSection.sliderStep > -(this.state.top - AppConfig.components.gridSection.sliderStep)) {
+      const newTopCoordinate = this.state.top - AppConfig.components.gridSection.sliderStep;
       this.setState({ top: newTopCoordinate });
     }
   }
@@ -47,8 +48,8 @@ class GridSection extends React.Component<IGridSectionProps & IDispatchProp, IGr
                 <img className={`flag flag-${this.props.countryData[0] ? this.props.countryData[0].code.toLowerCase() : ''}`} />
                 <h2>{this.props.countryName} </h2>
                 <p className='gridSection__header__controls'>
-                  <span onClick={this.previousSlide}> <Icons name='arrowUp' /></span>
-                  <span onClick={this.nextSlide}><Icons name='arrowDown' /></span>
+                  <span onClick={this.previousSlide}> <Icon name={Icons.Names.ARROW_UP} /></span>
+                  <span onClick={this.nextSlide}><Icon name={Icons.Names.ARROW_DOWN} /></span>
                 </p>
               </div>
               <hr />

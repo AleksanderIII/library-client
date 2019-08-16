@@ -1,94 +1,106 @@
 import * as React from 'react';
 
-import { ISelectProps, ISelectState } from '../../models';
-import { } from '../../constants';
+import { ISelectProps, ISelectState, Icons } from '../../models';
+import { AppConfig } from '../../configs';
+import { Icon } from '../../components';
 
 class Select extends React.Component<ISelectProps, ISelectState> {
     constructor(props: ISelectProps) {
         super(props);
         this.state = {
-            clicked: false,
+            opened: false,
             selected: this.props.defaultValue
         };
-
-        this.clickHandler = this.clickHandler.bind(this);
-        this.toggleDropown = this.toggleDropown.bind(this);
     }
 
-    public render(): JSX.Element {
-        const { name, options, centralAlign, defaultValue } = this.props;
-        const { selected } = this.state;
-        const columnLength = 12;
-        const oneColumnWidth = 160;
-        const wordLength = 12;
-        const optionsLengthDivider = 9;
-        const columnsCount: number = options
-            ? options.length < columnLength
-                ? 1
-                : Math.floor(options.length / optionsLengthDivider) + 1
-            : 0;
-        const columnWidth: number = columnsCount * oneColumnWidth;
-        const displayedBelongsToOptions = !!(options.find(elem => elem === selected));
-        let displayedValue: string;
-        if (displayedBelongsToOptions) {
-            displayedValue = selected;
+    private calculateColumnsQuantity = (options: string[], singleColumnSelectSize: number, columnSizeInMultiColumn: number): number => {
+        if (options) {
+            const optionsQuantity = options.length;
+            return optionsQuantity < singleColumnSelectSize ? 1 :
+                Math.floor(optionsQuantity / columnSizeInMultiColumn) + 1;
         } else {
-            displayedValue = defaultValue;
+            return 0;
         }
-        return (
-            <div className='select' onClick={this.toggleDropown}>
-                <p>
-                    <b>{`${name}: `}</b>
-                    {displayedValue && displayedValue.length > wordLength
-                        ? `${displayedValue.substr(0, wordLength)}..`
-                        : displayedValue}
-                    {this.state.clicked ? '\u25B2' : '\u25BC'}
-                </p>
-                <div
-                    className={
-                        this.state.clicked ? 'select__content display' : 'select__content'
-                    }
-                >
-                    {this.state.clicked && (
-                        <ul
-                            className={
-                                centralAlign
-                                    ? 'select__content__dropdown dropdown-central-align'
-                                    : 'select__content__dropdown'
-                            }
-                            style={{ columnCount: columnsCount, width: `${columnWidth}px` }}
-                        >
-                            {options &&
-                                options.map((elem, orderNum) => (
-                                    <li
-                                        key={orderNum}
-                                        className={displayedValue === elem ? 'selected' : ''}
-                                        onClick={this.clickHandler}
-                                    >
-                                        {elem}
-                                    </li>
-                                ))}
-                        </ul>
-                    )}
-                </div>
-            </div>
-        );
     }
 
-    private clickHandler(event: React.MouseEvent): void {
-        const selectedOption: string = event.currentTarget.textContent || '';
+    private getValueForDisplaying = (options: string[], selected: string, defaultValue: string) => {
+        const isSelectedFromOptions = !!(options.find(option => option === selected));
+        return isSelectedFromOptions ? selected : defaultValue;
+    }
+
+    private shrinkStringValue = (value: string, maxSize: number): string => {
+        return value && value.length > maxSize
+            ? `${value.substr(0, maxSize)}..`
+            : value;
+    }
+
+    private clickHandler = (event: React.MouseEvent) => {
+        const selectedOption: string = event.currentTarget.textContent;
         this.setState({ selected: selectedOption });
 
         if (this.props.getValue) {
             this.props.getValue(this.props.propName, selectedOption);
         }
+
         if (this.props.selectValue) {
             this.props.selectValue(selectedOption);
         }
     }
 
-    private toggleDropown(): void {
-        this.setState({ clicked: !this.state.clicked });
+    private openDropown = () => {
+        this.setState({ opened: !this.state.opened });
     }
+
+    private closeDropown = () => {
+        this.setState({ opened: false });
+    }
+
+    public render(): JSX.Element {
+        const { selected, opened } = this.state;
+        const { name, options, centralAlign, defaultValue } = this.props;
+        const { columnWidth, singleColumnSelectSize, displayedWordLength, elementsPerColumn } = AppConfig.components.select;
+
+        const columnsQuantity = this.calculateColumnsQuantity(options, singleColumnSelectSize, elementsPerColumn);
+        const columnsWidth = columnsQuantity * columnWidth;
+
+        const displayedValue = this.shrinkStringValue(this.getValueForDisplaying(options, selected, defaultValue), displayedWordLength);
+
+        return (
+            <div className='select' onClick={this.openDropown} onMouseLeave={this.closeDropown} >
+                <p>
+                    <b>{name}:</b>
+                    {displayedValue}
+                    <span className='select__arrow'>
+                        {
+                            opened ? <Icon name={Icons.Names.ANGLE_UP} /> :
+                                <Icon name={Icons.Names.ANGLE_DOWN} />
+                        }
+                    </span>
+                </p>
+                <div className={opened ? 'select__content display' : 'select__content'}
+                >
+                    {
+                        opened && (
+                            <ul
+                                className={centralAlign ? 'select__content__dropdown dropdown-central-align' : 'select__content__dropdown'}
+                                style={{ columnCount: columnsQuantity, width: `${columnsWidth}px` }}
+                            >
+                                {
+                                    options.map((option, optionNumber) => (
+                                        <li
+                                            key={optionNumber}
+                                            className={displayedValue === option ? 'selected' : ''}
+                                            onClick={this.clickHandler}
+                                        >
+                                            {option}
+                                        </li>
+                                    ))}
+                            </ul>
+                        )}
+                </div>
+            </div>
+        );
+    }
+
 }
 export default Select;

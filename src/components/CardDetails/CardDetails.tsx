@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Editor, IDispatchProp, ICardDetailsState, IAppState, ICardDetailsComponentState } from '../../models';
-import { Icons, Input } from '../../components';
+import { Editor, IDispatchProp, ICardDetailsState, IAppState, ICardDetailsComponentState, Icons } from '../../models';
+import { Icon, Input } from '../../components';
 import { Strings } from '../../constants';
 import { CardDetailsActions } from '../../actions';
 
@@ -63,13 +63,13 @@ class CardDetails extends React.Component<ICardDetailsState & IDispatchProp, ICa
                     </div>
                     <div className='cardDetails__container__manage'>
                         <span>
-                            <Icons name='trashIcon' />
+                            <Icon name={Icons.Names.TRASH} />
                         </span>
                         <span>
-                            <Icons name='save' />
+                            <Icon name={Icons.Names.SAVE} />
                         </span>
                         <span onClick={this.toggleEdit}>
-                            <Icons name='edit' />
+                            <Icon name={Icons.Names.EDIT} />
                         </span>
                     </div>
                 </div>

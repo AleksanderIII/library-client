@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import ExportService from '../../services/ExportService';
-import { Icons } from '../../components';
-import { ISiteManagerProps } from '../../models';
+import { Icon } from '../../components';
+import { ISiteManagerProps, Icons } from '../../models';
 import { Strings } from '../../constants';
 
 class SiteManager extends React.Component<ISiteManagerProps> {
@@ -25,10 +25,10 @@ class SiteManager extends React.Component<ISiteManagerProps> {
                 <h2>{Strings['EXPORT']}</h2>
                 <p>
                     <span onClick={this.exportExcel}>
-                        <Icons name='excelIcon' />
+                        <Icon name={Icons.Names.EXCEL} />
                     </span>
                     <span  onClick={this.exportPDF}>
-                        <Icons name='pdfIcon' />
+                        <Icon name={Icons.Names.PDF} />
                     </span>
                 </p>
             </div>

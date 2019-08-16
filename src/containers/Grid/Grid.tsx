@@ -15,7 +15,7 @@ class Grid extends React.Component<IGridProps> {
       }
     });
     let countriesList;
-    if (targetCountry !== 'Все') {
+    if (targetCountry !== Strings[Filters.Options.COUNTRY.ALL]) {
       countriesList = [`${targetCountry}`];
     } else {
       countriesList = Object.keys(cardsByCountry);

@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { Icons, Select } from '../../components';
+import { Icon, Select } from '../../components';
 import { AppSettingsActions } from '../../actions';
 import { Strings, continents } from '../../constants';
-import { IAppState, IDispatchProp, IHeaderProps } from '../../models';
+import { IAppState, IDispatchProp, IHeaderProps, Icons, Settings, SiteComponents } from '../../models';
 
 class Header extends React.Component<IDispatchProp & IHeaderProps & RouteComponentProps> {
   private continentChecking(name: string): string {
@@ -24,7 +24,7 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
     const continentsList = Object.keys(continents).map(continent => Strings[`${continents[continent]}`]);
     return (
       <div className='header'>
-        <Link to='/continents'><span><Icons name='homeIcon' /></span></Link>
+        <Link to='/continents'><span><Icon name={Icons.Names.HOME} /></span></Link>
         <div className='header__navigation' >
           {
             window.location.pathname.includes('continents') && this.props.continent !== 'continents' ?
@@ -41,17 +41,17 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
         <h1>{Strings['COLLECTION']}</h1>
         <div className='header__settings' >
           <div onClick={() => this.props.dispatch(AppSettingsActions.toggleSettingsMenu())} >
-            <Icons name='settings' />
+            <Icon name={Icons.Names.SETTINGS} />
             {
               this.props.isOpen ?
                 <div className='header__settings__list'>
-                  <h2>{Strings['SETTINGS']}</h2>
+                  <h2>{Strings[SiteComponents.Names.SETTINGS]}</h2>
                   <ul>
                     <li>
-                      {Strings['THEME']}: <span>{this.props.theme}</span>
+                      {Strings[Settings.Names.THEME]}: <span>{this.props.theme}</span>
                     </li>
                     <li>
-                      {Strings['LANGUAGE']}: <span>{this.props.language}</span>
+                      {Strings[Settings.Names.LANGUAGE]}: <span>{this.props.language}</span>
                     </li>
                   </ul>
                 </div>
@@ -59,7 +59,7 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
             }
           </div>
         </div>
-        <span><Icons name='signIcon' /></span>
+        <span><Icon name={Icons.Names.SIGN_IN} /></span>
       </div>
     );
   }

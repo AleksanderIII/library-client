@@ -3,14 +3,7 @@ import { connect } from 'react-redux';
 
 import { Button, Input, Select } from '../../components';
 import { Strings } from '../../constants';
-import {
-  IDispatchProp,
-  IMoneyEditorProps,
-  IMoneyEditorComponentProps,
-  IMoneyEditorState,
-  IAppState,
-  Editor
-} from '../../models';
+import { IDispatchProp, IMoneyEditorProps, IMoneyEditorComponentProps, IMoneyEditorState, IAppState, Editor } from '../../models';
 import CountriesLibrary from '../../utils/countriesLibrary';
 import { ViewActions, MoneyEditorActions } from '../../actions';
 

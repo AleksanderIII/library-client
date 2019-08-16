@@ -8,9 +8,9 @@ import Select from './Select/Select';
 import Tab from './Tab/Tab';
 import CardDetails from './CardDetails/CardDetails';
 import SiteManager from './SiteManager/SiteManager';
-import Icons from './Icons/Icons';
+import Icon from './Icon/Icon';
 import Loader from './Loader/Loader';
 import Map from './Map/Map';
 import Tooltip from './Tooltip/Tooltip';
 
-export { Select, Button, Card, GridSection, Header, Input, PageNotFound, Tab, CardDetails, SiteManager, Icons, Loader, Map, Tooltip };
+export { Select, Button, Card, GridSection, Header, Input, PageNotFound, Tab, CardDetails, SiteManager, Icon, Loader, Map, Tooltip };

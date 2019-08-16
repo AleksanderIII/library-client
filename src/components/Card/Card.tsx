@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { ICardProps, Editor, ICardState } from '../../models';
-import { Icons } from '../../components';
+import { ICardProps, Editor, ICardState, Icons } from '../../models';
+import { Icon } from '../../components';
 
 import { Strings } from '../../constants';
 
@@ -20,9 +20,9 @@ class Card extends React.Component<ICardProps, ICardState> {
 
   private getManageIcons = () => {
     return <p className='card__manageIcons'>
-      <span><Link to={`/${this.props._id}`} ><Icons name='openIcon' /></Link></span>
+      <span><Link to={`/${this.props._id}`} ><Icon name={Icons.Names.OPEN} /></Link></span>
       <span onClick={() => this.props.removeCard && this.props.removeCard(this.props._id)}>
-        <Icons name='trashIcon' />
+        <Icon name={Icons.Names.TRASH} />
       </span>
     </p>;
   }
@@ -30,12 +30,7 @@ class Card extends React.Component<ICardProps, ICardState> {
   public render(): JSX.Element {
     return (
       <div className='card'>
-        <p className='card__manageIcons'>
-          <span><Link to={`/${this.props._id}`} ><Icons name='openIcon' /></Link></span>
-          <span onClick={() => this.props.removeCard && this.props.removeCard(this.props._id)}>
-            <Icons name='trashIcon' />
-          </span>
-        </p>
+        {this.getManageIcons()}
 
         <div className='card__content'>
           <div onMouseEnter={this.rotateImage} className={this.state.isFrontSide ? 'card__content__img' : 'card__content__img rotate'} >

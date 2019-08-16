@@ -2,11 +2,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { IRegistrationState, IDispatchProp } from '../../models';
+import { IRegistrationState, IDispatchProp, SiteComponents, Registration } from '../../models';
+import { Strings } from '../../constants';
 import { Button, Input } from '../../components';
 import { UserDataActions } from '../../actions';
 
-class Registration extends React.Component<IRegistrationState & IDispatchProp> {
+class RegistrationView extends React.Component<IRegistrationState & IDispatchProp> {
     constructor(props: IRegistrationState & IDispatchProp) {
         super(props);
         this.changeValue = this.changeValue.bind(this);
@@ -25,11 +26,11 @@ class Registration extends React.Component<IRegistrationState & IDispatchProp> {
         return (
             <div >
                 <div className='form'>
-                    <h1>Вход</h1>
-                    <Input placeholder='Имя' maxLength={10} name='name' getValue={this.changeValue} />
-                    <Input placeholder='Пароль' maxLength={10} name='password' getValue={this.changeValue} />
+                    <h1>{Strings[SiteComponents.Names.REGISTRATION]}</h1>
+                    <Input placeholder={Strings[Registration.Fields.NAME]} maxLength={10} name='name' getValue={this.changeValue} />
+                    <Input placeholder={Strings[Registration.Fields.PASSWORD]} maxLength={10} name='password' getValue={this.changeValue} />
                     <Link to='/continents'>
-                        <Button text='Зарегистрироваться' handleClick={() => this.postData()} />
+                        <Button text={Strings[Registration.Fields.REGISTER]} handleClick={() => this.postData()} />
                     </Link>
                 </div>
             </div>
@@ -37,4 +38,4 @@ class Registration extends React.Component<IRegistrationState & IDispatchProp> {
     }
 }
 
-export default connect()(Registration);
+export default connect()(RegistrationView);

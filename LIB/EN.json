@@ -2,11 +2,11 @@
     "CONTINENT": "Continent",
     "COUNTRY": "Country",
     "TYPE": "Type",
-    "VALUE": "Value", 
-    "CASH" : "Cash",
-    "COINS" : "Coins",
+    "VALUE": "Value",
+    "CASH": "Cash",
+    "COINS": "Coins",
     "DATE": "Date",
-    "DESCRIPTION":"DESCRIPTION",
+    "DESCRIPTION": "DESCRIPTION",
     "ADD_INFO": "Additional information",
     "FORM": "Form",
     "MATERIAL": "Material",
@@ -29,5 +29,10 @@
     "BACK_URL": "URL to back side",
     "YEAR": "Year",
     "EDITOR": "Editor",
-    "NO_CONTINENT_DATA": "This continent doesn't have money data"
+    "NO_CONTINENT_DATA": "This continent doesn't have money data",
+    "FILTERS": "Filters",
+    "REGISTRATION": "Registration",
+    "NAME": "Name",
+    "PASSWORD": "Password",
+    "REGISTER": "Register"
 }

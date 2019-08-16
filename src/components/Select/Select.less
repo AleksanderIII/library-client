@@ -4,13 +4,22 @@
 	color: brown;
 
 	p {
-		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		width: 160px;
-		clear: both;
 		padding: 5px;
 		overflow: hidden;
 		border-radius: 5px;
 		background: rgba(240, 236, 228, 0.877);
+
+		b{
+			margin-right: 3px;
+		}
+
+		&__arrow{
+			margin-left: 3px;
+		}
 	}
 
 	&__content {

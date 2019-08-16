@@ -1,10 +1,10 @@
 import { IMoneyData, IMoneyEditorComponentProps } from '../models';
-const Configs = require('../config.json');
+import { AppConfig } from '../configs';
 
 class DataService {
     public static getData(continent?: string): Promise<IMoneyData[]> {
         const params = continent ? continent : 'money';
-        return fetch(`${Configs.dataCloud}/${params}`)
+        return fetch(`${AppConfig.services.moneyData.url}/${params}`)
             .then(res => res.json());
     }
 
@@ -17,7 +17,7 @@ class DataService {
             method: 'POST',
             body: JSON.stringify(moneyData)
         };
-        return fetch(`${Configs.dataCloud}/money`, params)
+        return fetch(`${AppConfig.services.moneyData.url}/money`, params)
             .then(data => console.log(data))
             .catch(error => console.log(error));
     }
@@ -26,7 +26,7 @@ class DataService {
         const params = {
             method: 'DELETE'
         };
-        return fetch(`${Configs.dataCloud}/money/${id}`, params)
+        return fetch(`${AppConfig.services.moneyData.url}/money/${id}`, params)
             .then(data => data.json())
             .catch(error => console.log(error));
     }
@@ -39,7 +39,7 @@ class DataService {
             },
             method: 'GET',
         };
-        return fetch(`${Configs.dataCloud}/money/${id}`, params)
+        return fetch(`${AppConfig.services.moneyData.url}/money/${id}`, params)
             .then(data => data.json())
             .catch(error => console.log(error));
     }

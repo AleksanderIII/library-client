@@ -10,6 +10,15 @@ export interface ICountable {
   [key: string]: string;
 }
 
+export namespace SiteComponents {
+  export enum Names {
+    EDITOR = 'EDITOR',
+    FILTERS = 'FILTERS',
+    SETTINGS = 'SETTINGS',
+    REGISTRATION = 'REGISTRATION'
+  }
+}
+
 export namespace Editor {
   export namespace Selectors {
     export enum Names {
@@ -51,14 +60,33 @@ export namespace Editor {
   }
 }
 
-export namespace Filters{
-  export enum Names{
+export namespace Filters {
+  export enum Names {
     CENTURY = 'CENTURY',
+    COUNTRY = 'COUNTRY'
   }
 
-  export namespace Options{
-    export enum CENTURY{
+  export namespace Options {
+    export enum CENTURY {
       ALL = 'ALL'
     }
+    export enum COUNTRY {
+      ALL = 'ALL'
+    }
+  }
+}
+
+export namespace Settings {
+  export enum Names {
+    LANGUAGE = 'LANGUAGE',
+    THEME = 'THEME'
+  }
+}
+
+export namespace Registration {
+  export enum Fields {
+    NAME = 'NAME',
+    PASSWORD = 'PASSWORD',
+    REGISTER = 'REGISTER'
   }
 }

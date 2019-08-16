@@ -2,12 +2,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { Select } from '../../components';
-import { IAppState, IFiltersState, IDispatchProp } from '../../models';
+import { IAppState, IFiltersState, IDispatchProp, SiteComponents, Filters } from '../../models';
 import { FiltersActions } from '../../actions';
 import { Strings } from '../../constants';
 import { sortStrings } from '../../utils';
 
-class Filters extends React.Component<IFiltersState & IDispatchProp> {
+class FilterView extends React.Component<IFiltersState & IDispatchProp> {
   constructor(props: IFiltersState) {
     super(props);
     this.updateValue = this.updateValue.bind(this);
@@ -20,9 +20,9 @@ class Filters extends React.Component<IFiltersState & IDispatchProp> {
   public render(): JSX.Element {
     return (
       <div className='filters'>
-        <h2>Фильтры</h2>
+        <h2>{Strings[SiteComponents.Names.FILTERS]}</h2>
         <Select
-          name={Strings['CENTURY']}
+          name={Strings[Filters.Names.CENTURY]}
           options={sortStrings(this.props.century.options)}
           centralAlign={true}
           defaultValue={this.props.century.selected}
@@ -30,7 +30,7 @@ class Filters extends React.Component<IFiltersState & IDispatchProp> {
           getValue={this.updateValue}
         />
         <Select
-          name={Strings['COUNTRY']}
+          name={Strings[Filters.Names.COUNTRY]}
           options={sortStrings(this.props.country.options)}
           centralAlign={true}
           defaultValue={this.props.country.selected}
@@ -48,4 +48,4 @@ const mapStateToProps = (state: IAppState): IFiltersState => {
     century: state.filterData.century
   };
 };
-export default connect(mapStateToProps)(Filters);
+export default connect(mapStateToProps)(FilterView);

@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import configureStore from './configureStore';
 import { PageNotFound, CardDetails } from './components';
-import { View, Registration } from './containers';
+import { View, RegistrationView } from './containers';
 
 import './styles/main.less';
 
@@ -18,7 +18,7 @@ class App extends React.Component {
                     <BrowserRouter>
                         <Switch>
                             <Route path='/continents' component={View} />
-                            <Route exact path='/registration' component={Registration} />
+                            <Route exact path='/registration' component={RegistrationView} />
                             <Route exact path='/:id' component={CardDetails} />
                             <Route path='*' component={PageNotFound} />
                         </Switch>
