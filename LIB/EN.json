@@ -29,11 +29,12 @@
     "BACK_URL": "URL to back side",
     "YEAR": "Year",
     "EDITOR": "Editor",
-    "NO_CONTINENT_DATA": "This continent doesn't have money data",
+    "NO_CONTINENT_DATA": "This continent doesn't have data in {{dataType}} section",
     "FILTERS": "Filters",
     "REGISTRATION": "Registration",
     "NAME": "Name",
     "PASSWORD": "Password",
     "REGISTER": "Register",
-    "CREATION_YEAR": "Creation year"
+    "CREATION_YEAR": "Creation year",
+    "NO_SUCH_DATA": "We don't have such data"
 }

@@ -64,6 +64,7 @@ class DataViewer extends React.Component<IDataViewerProps & IDataViewerOwnProps 
                                 data={this.props.data[this.props.dataType]}
                                 countryFilter={this.props.countryFilter}
                                 centuryFilter={this.props.centuryFilter}
+                                dataType={this.props.dataType}
                             />
                         </div>
                 }

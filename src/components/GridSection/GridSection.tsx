@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { IGridSectionProps, IDispatchProp, IGridSectionState, Icons } from '../../models';
+import { Strings } from '../../constants';
 import { ViewActions } from '../../actions';
 import { Card, Icon } from '../../components';
 import { AppConfig } from '../../configs';
@@ -11,26 +12,23 @@ import '../../public/flags.css';
 class GridSection extends React.Component<IGridSectionProps & IDispatchProp, IGridSectionState> {
   constructor(props: IGridSectionProps & IDispatchProp) {
     super(props);
-    this.removeCard = this.removeCard.bind(this);
-    this.previousSlide = this.previousSlide.bind(this);
-    this.nextSlide = this.nextSlide.bind(this);
     this.state = {
       top: 0
     };
   }
 
-  public removeCard(id: string): void {
+  public removeCard = (id: string) => {
     this.props.dispatch(ViewActions.removeCardRequest(id));
   }
 
-  public previousSlide(): void {
+  public previousSlide = () => {
     if (this.state.top + AppConfig.components.gridSection.sliderStep <= 0) {
       const newTopCoordinate = this.state.top + AppConfig.components.gridSection.sliderStep;
       this.setState({ top: newTopCoordinate });
     }
   }
 
-  public nextSlide(): void {
+  public nextSlide = () => {
     const slidesQuantity = this.props.countryData.length / 4;
     if (Math.ceil(slidesQuantity) * AppConfig.components.gridSection.sliderStep > -(this.state.top - AppConfig.components.gridSection.sliderStep)) {
       const newTopCoordinate = this.state.top - AppConfig.components.gridSection.sliderStep;
@@ -39,10 +37,11 @@ class GridSection extends React.Component<IGridSectionProps & IDispatchProp, IGr
   }
 
   public render(): JSX.Element {
+    const { countryData } = this.props;
     return (
       <div>
         {
-          this.props.countryData.length ?
+          countryData && countryData.length ?
             <div className='gridSection'>
               <div className='gridSection__header'>
                 <img className={`flag flag-${this.props.countryData[0] ? this.props.countryData[0].code.toLowerCase() : ''}`} />
@@ -69,7 +68,7 @@ class GridSection extends React.Component<IGridSectionProps & IDispatchProp, IGr
                   }
                 </div>
               </div>
-            </div> : <div>По этой стране нет таких данных</div>
+            </div> : <div>{Strings['NO_SUCH_DATA']}</div>
         }
       </div>
     );

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { GridSection } from '../../components';
 import { Strings } from '../../constants';
-import { IGridProps, IMoneyData, ICardsByCountry, IIterable, Filters } from '../../models';
+import { IGridProps, IMoneyData, ICardsByCountry, Filters } from '../../models';
 import { sortSimpleStrings } from '../../utils';
 
 class Grid extends React.Component<IGridProps> {
@@ -39,7 +39,7 @@ class Grid extends React.Component<IGridProps> {
   }
 
   public render(): JSX.Element {
-    const { data, centuryFilter, countryFilter } = this.props;
+    const { data, centuryFilter, countryFilter, dataType } = this.props;
     let dataByCountries: ICardsByCountry;
     let orderedData;
     if (data && data.length) {
@@ -47,6 +47,7 @@ class Grid extends React.Component<IGridProps> {
       orderedData = sortSimpleStrings(Object.keys(dataByCountries));
     }
 
+    const noDataMessage = Strings[`NO_CONTINENT_DATA`].replace('{{dataType}}', Strings[dataType]);
     return (
       <div className='grid'>
         {
@@ -58,7 +59,7 @@ class Grid extends React.Component<IGridProps> {
                 countryData={dataByCountries[countryName]}
               />)
             : <div>
-              {Strings[`NO_CONTINENT_DATA`]}
+              {noDataMessage}
             </div>
         }
       </div>

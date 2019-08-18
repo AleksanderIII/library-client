@@ -3,7 +3,6 @@ export * from './card';
 export * from './input';
 export * from './moneyEditor';
 export * from './select';
-export * from './tab';
 export * from './gridSection';
 export * from './icons';
 export * from './siteManager';
