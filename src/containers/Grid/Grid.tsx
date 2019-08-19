@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { GridSection } from '../../components';
+import GridSection from './GridSection';
 import { Strings } from '../../constants';
 import { IGridProps, IMoneyData, ICardsByCountry, Filters } from '../../models';
 import { sortSimpleStrings } from '../../utils';

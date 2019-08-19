@@ -1,3 +1,55 @@
+.view{
+    position: relative;
+    height: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 60px 20px 20px 20px;
+
+    &__moneyView{
+        color: rgb(65, 65, 65);
+        display: flex;
+    }
+
+    &__manager{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__container{
+        position: relative;
+        flex: 5;
+        margin: 10px;
+        margin-right: 50px;
+        background: rgba(250, 248, 248, 0.712);
+        min-height: 60vh;
+        height: 100%;
+        
+        ul li{
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid rgb(65, 65, 65);;
+            border-radius: 5px;
+        }
+
+        ul li:last-child{
+            float: right;
+        }
+
+        ul li:hover{
+            color: white;
+            background: rgb(241, 191, 191);
+        }
+
+        .content{
+            padding: 20px;
+            border: 1px solid rgb(65, 65, 65);
+            border-radius: 10px;
+            max-height: 100%;
+        }
+    }
+}
+
 .cardDetails {
     position: relative;
     min-height: 100vh;
@@ -65,4 +117,27 @@
             }
         }
     }
+}
+
+.form{
+    position: absolute;
+    width: 40%;
+    max-width: 500px;
+    padding: 25px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    h1{
+        text-align: center;
+    }
+}
+
+.page-not-found{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 2em;
 }

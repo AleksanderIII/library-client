@@ -3,8 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import configureStore from './configureStore';
-import { PageNotFound, CardDetails } from './components';
-import { View, RegistrationView } from './containers';
+import { PageNotFound, CardDetails, View, RegistrationView } from './containers';
 
 import './styles/main.less';
 

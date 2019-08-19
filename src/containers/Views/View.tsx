@@ -4,7 +4,7 @@ import { Route, RouteComponentProps } from 'react-router-dom';
 
 import { IAppState, IDispatchProp, IViewState } from '../../models';
 import { SiteManager, Header, Map } from '../../components';
-import { FilterView, MoneyEditor, DataViewer } from '../../containers';
+import { FilterView, MoneyEditor, DataViewer } from '..';
 import { ViewActions } from '../../actions';
 
 class View extends React.Component<IViewState & IDispatchProp & RouteComponentProps> {
