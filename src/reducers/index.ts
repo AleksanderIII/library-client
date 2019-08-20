@@ -6,7 +6,7 @@ import moneyEditor from './moneyEditor';
 import view from './view';
 import cardDetails from './cardDetails';
 import userData from './userData';
-import filterData from './filterData';
+import filters from './filters';
 
 export default combineReducers({
   appSettings: appSettings as Reducer<IAppSettingsState>,
@@ -14,5 +14,5 @@ export default combineReducers({
   view: view as Reducer<IViewState>,
   cardDetails: cardDetails as Reducer<ICardDetailsState>,
   userData: userData as Reducer<IUserDataState>,
-  filterData: filterData as Reducer<IFiltersState>
+  filters: filters as Reducer<IFiltersState>
 });

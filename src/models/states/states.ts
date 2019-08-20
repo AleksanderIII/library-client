@@ -7,7 +7,7 @@ export interface IAppState {
     moneyEditor: IMoneyEditorComponentProps;
     cardDetails: ICardDetailsState;
     userData: IUserDataState;
-    filterData: IFiltersState;
+    filters: IFiltersState;
 }
 
 export interface IViewState {
@@ -61,13 +61,9 @@ export interface IUserDataState {
 }
 
 export interface IFiltersState {
-    country: {
-        options: string[],
-        selected: string
-    };
-    century: {
-        options: string[],
-        selected: string
+    data: {
+        country:  IFilter,
+        century: IFilter
     };
 }
 
@@ -89,4 +85,9 @@ export interface IMapState {
         x: number;
         y: number;
     };
+}
+
+export interface IFilter{
+    options: string[];
+    selected: string;
 }

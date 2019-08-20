@@ -76,8 +76,8 @@ class DataViewer extends React.Component<IDataViewerProps & IDataViewerOwnProps 
 const mapStateToProps = (state: IAppState): IDataViewerProps => {
     return {
         data: state.view.data,
-        countryFilter: state.filterData.country.selected,
-        centuryFilter: state.filterData.century.selected,
+        countryFilter: state.filters.data.country.selected,
+        centuryFilter: state.filters.data.century.selected,
         dataType: state.view.dataType,
         isLoading: state.view.isLoading
     };

@@ -13,6 +13,6 @@ export function getInitialState(): IAppState {
         view: getInitialViewState(),
         cardDetails: getInitialCardDetailsState(),
         userData: getInitialUserDataState(),
-        filterData: getInitialFiltersState(),
+        filters: getInitialFiltersState(),
     };
 }

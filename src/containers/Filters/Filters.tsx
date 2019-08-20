@@ -2,38 +2,34 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { Select } from '../../components';
-import { IAppState, IFiltersState, IDispatchProp, SiteComponents, Filters } from '../../models';
+import { IAppState, IFilterViewProps, IDispatchProp, SiteComponents, Filters } from '../../models';
 import { FiltersActions } from '../../actions';
 import { Strings } from '../../constants';
 import { sortStrings } from '../../utils';
 
-class FilterView extends React.Component<IFiltersState & IDispatchProp> {
-  constructor(props: IFiltersState) {
-    super(props);
-    this.updateValue = this.updateValue.bind(this);
-  }
-
-  public updateValue(name: string, value: string): void {
+class FilterView extends React.Component<IFilterViewProps & IDispatchProp> {
+  private updateValue = (name: string, value: string) => {
     this.props.dispatch(FiltersActions.updateValue(name, value));
   }
 
   public render(): JSX.Element {
+    const { country, century } = this.props.filters;
     return (
       <div className='filters'>
         <h2>{Strings[SiteComponents.Names.FILTERS]}</h2>
         <Select
           name={Strings[Filters.Names.CENTURY]}
-          options={sortStrings(this.props.century.options)}
+          options={sortStrings(century.options)}
           centralAlign={true}
-          defaultValue={this.props.century.selected}
+          defaultValue={century.selected}
           propName='century'
           getValue={this.updateValue}
         />
         <Select
           name={Strings[Filters.Names.COUNTRY]}
-          options={sortStrings(this.props.country.options)}
+          options={sortStrings(country.options)}
           centralAlign={true}
-          defaultValue={this.props.country.selected}
+          defaultValue={country.selected}
           propName='country'
           getValue={this.updateValue}
         />
@@ -42,10 +38,9 @@ class FilterView extends React.Component<IFiltersState & IDispatchProp> {
   }
 }
 
-const mapStateToProps = (state: IAppState): IFiltersState => {
+const mapStateToProps = (state: IAppState): IFilterViewProps => {
   return {
-    country: state.filterData.country,
-    century: state.filterData.century
+    filters: state.filters.data
   };
 };
 export default connect(mapStateToProps)(FilterView);
