@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { IIterable } from '../models';
 
-const continents: IIterable = {
+const continents: {
+    [key: string]: string
+} = {
     all: 'ALL',
     europe: 'EUROPE',
     africa: 'AFRICA',
@@ -9,7 +10,7 @@ const continents: IIterable = {
     asia: 'ASIA',
     southAmerica: 'SOUTH_AMERICA',
     northAmerica: 'NORTH_AMERICA'
-  };
+};
 
 const africa = <g id='africa' transform='translate(0,239) scale(0.016963,-0.016963)'>
     <path fill='#DDDDDD' d='M11330.843,9689.892l-109.037-4.98l-18.998-5.008l-35.004,1.008h-32.93l-21.07-12.004l-28.957-12.004

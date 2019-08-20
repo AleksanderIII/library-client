@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { IDataViewerProps, IDataViewerOwnProps, IDispatchProp, IAppState, Editor } from '../../models';
+import { IDataViewerProps, IDataViewerOwnProps, IDispatchProp, IAppState, Tabs } from '../../models';
 import { Strings } from '../../constants';
 import { ViewActions } from '../../actions';
 import { Loader } from '../../components';
@@ -28,10 +28,7 @@ class DataViewer extends React.Component<IDataViewerProps & IDataViewerOwnProps 
     }
 
     private getMoneyTypeTabs = () => {
-        const moneyTypes = [
-            Editor.Selectors.Options.TYPE.COINS,
-            Editor.Selectors.Options.TYPE.CASH,
-        ];
+        const moneyTypes = Object.keys(Tabs.Money).map((tabName: keyof typeof Tabs.Money) => Tabs.Money[tabName]);
         return (
             <React.Fragment>
                 {
@@ -39,7 +36,7 @@ class DataViewer extends React.Component<IDataViewerProps & IDataViewerOwnProps 
                         <li className={moneyType === this.props.dataType ? 'selected' : ''}
                             key={`${index}-dataType`}
                             onClick={() => this.props.dispatch(ViewActions.setMoneyType(`${moneyType}`))}>
-                            {Strings[`${moneyType}`]}
+                            {Strings[`${moneyType.toUpperCase()}`]}
                         </li>,
                     )
                 }

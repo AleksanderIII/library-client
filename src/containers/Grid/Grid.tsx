@@ -47,7 +47,7 @@ class Grid extends React.Component<IGridProps> {
       orderedData = sortSimpleStrings(Object.keys(dataByCountries));
     }
 
-    const noDataMessage = Strings[`NO_CONTINENT_DATA`].replace('{{dataType}}', Strings[dataType]);
+    const noDataMessage = Strings[`NO_CONTINENT_DATA`].replace('{{dataType}}', Strings[dataType.toUpperCase()]);
     return (
       <div className='grid'>
         {

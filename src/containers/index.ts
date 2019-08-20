@@ -1,7 +1,6 @@
-import FilterView from './Filters/Filters';
 import Grid from './Grid/Grid';
 import MoneyEditor from './MoneyEditor/MoneyEditor';
-import { View, CardDetails, Resgistaration, PageNotFound } from './Views';
+import { View, CardDetails, Resgistaration, PageNotFound, FilterView } from './Views';
 import DataViewer from './DataViewer/DataViewer';
 import RegistrationView from './Views/Resgistaration';
 

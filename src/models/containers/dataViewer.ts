@@ -1,15 +1,15 @@
 import { IMoneyData } from '../core/data';
-import { Editor } from '../core';
+import { Tabs } from '../core';
 
 export interface IDataViewerProps {
     data: {
         [key: string]: IMoneyData[];
-        [Editor.Selectors.Options.TYPE.CASH]: IMoneyData[];
-        [Editor.Selectors.Options.TYPE.COINS]: IMoneyData[];
+        [Tabs.Money.CASH]: IMoneyData[];
+        [Tabs.Money.COINS]: IMoneyData[];
     };
     countryFilter?: string;
     centuryFilter?: string;
-    dataType: Editor.Selectors.Options.TYPE;
+    dataType: Tabs.Money;
     isLoading: boolean;
 }
 

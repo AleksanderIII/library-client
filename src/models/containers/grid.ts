@@ -1,4 +1,4 @@
-import { IMoneyData, Editor } from '../../models/core';
+import { IMoneyData, Tabs } from '../../models/core';
 export interface IGridSectionState {
     top: number;
 }
@@ -6,7 +6,7 @@ export interface IGridProps {
     data: IMoneyData[];
     countryFilter?: string;
     centuryFilter?: string;
-    dataType: Editor.Selectors.Options.TYPE;
+    dataType: Tabs.Money;
 }
 export interface IGridSectionProps {
     countryName: string;
