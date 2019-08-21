@@ -6,7 +6,7 @@ export default function getInitialViewState(): IViewState {
         isOpenedEditor: false,
         isLoading: false,
         dataType: Tabs.Money.COINS,
-        continent: continents.all,
+        continent: '',
         data: {
             [Tabs.Money.CASH]: [],
             [Tabs.Money.COINS]: []

@@ -9,11 +9,3 @@ export const getAppSettingsRequest = () => {
         });
     };
 };
-
-export const toggleSettingsMenu = () => {
-    return (dispatch: Dispatch<IAppState>) => {
-        dispatch({
-            type: AppSettingsActions.TOGGLE_SETTINGS_MENU
-        });
-    };
-};

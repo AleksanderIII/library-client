@@ -24,7 +24,6 @@ export interface IViewState {
 
 export interface IAppSettingsState {
     language: string;
-    isOpen: boolean;
     theme: string;
 }
 
@@ -62,22 +61,17 @@ export interface IUserDataState {
 
 export interface IFiltersState {
     data: {
-        country:  IFilter,
+        country: IFilter,
         century: IFilter
     };
 }
-
 export interface IHeaderProps {
-    continent?: string;
-    language: string;
-    isOpen: boolean;
-    theme: string;
+    appSettings: IAppSettingsState;
+    continent: string;
 }
-
 export interface ITooltipState {
     isShown: boolean;
 }
-
 export interface IMapState {
     isShownTooltip: boolean;
     currentText: string;
@@ -86,8 +80,11 @@ export interface IMapState {
         y: number;
     };
 }
-
-export interface IFilter{
+export interface IFilter {
     options: string[];
     selected: string;
+}
+
+export interface IHeaderState{
+    isOpenedSettings: boolean;
 }
