@@ -12,7 +12,7 @@ export class AppConfig {
             columnWidth: 160,
             singleColumnSelectSize: 12,
             displayedWordLength: 12,
-            elementsPerColumn: 9
+            elementsPerColumn: 12
         },
         card: {
             defaultPictureUrl: 'https://res.cloudinary.com/dwg7mxlg4/image/upload/v1553694922/Money-library/coin_PNG36944.png'

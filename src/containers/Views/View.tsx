@@ -4,7 +4,7 @@ import { Route, RouteComponentProps } from 'react-router-dom';
 
 import { IAppState, IDispatchProp, IViewState } from '../../models';
 import { SiteManager, Header, Map } from '../../components';
-import { FilterView, MoneyEditor, DataViewer, Popup } from '../../containers';
+import { FilterView, DataViewer, Popup } from '../../containers';
 import { ViewActions } from '../../actions';
 
 class View extends React.Component<IViewState & IDispatchProp & RouteComponentProps> {
@@ -38,7 +38,6 @@ class View extends React.Component<IViewState & IDispatchProp & RouteComponentPr
           <Route exact path={`${this.props.match.path}/:id`} render={() =>
             <div className='view__moneyView'>
               <div className='view__manager'>
-                {this.props.isOpenedEditor && <MoneyEditor />}
                 <FilterView />
                 <SiteManager />
               </div>
@@ -54,9 +53,8 @@ class View extends React.Component<IViewState & IDispatchProp & RouteComponentPr
   }
 }
 
-const mapStateToProps = (state: IAppState): { isOpenedEditor: boolean, isLoading: boolean, continent: string } => {
+const mapStateToProps = (state: IAppState): { isLoading: boolean, continent: string } => {
   return {
-    isOpenedEditor: state.view.isOpenedEditor,
     isLoading: state.view.isLoading,
     continent: state.view.continent
   };

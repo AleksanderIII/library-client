@@ -33,7 +33,6 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
     return (
       <div className='editor'>
         <div className='editor__container'  >
-          <h2>{Strings['EDITOR']}</h2>
           <div className='editor__container__content'>
             {this.createSelector(Strings[`${Editor.Selectors.Names.CONTINENT}`], continentsList, true, continentsList[0], 'continent', this.getValue, this.updateValue)}
             {this.createSelector(Strings[`${Editor.Selectors.Names.COUNTRY}`], countriesList, true, this.props.country, 'country', this.getValue)}
