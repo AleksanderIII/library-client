@@ -13,5 +13,6 @@ export namespace Icons {
         ARROW_UP = 'ArrowUp',
         ANGLE_DOWN = 'AngleDown',
         ANGLE_UP = 'AngleUp',
+        WINDOW_CLOSE = 'WindowClose'
     }
 }

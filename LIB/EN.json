@@ -24,7 +24,7 @@
     "COLLECTION": "Collection",
     "EXPORT": "Export",
     "CENTURY": "Century",
-    "ADD": "Add",
+    "ADD": "Add to collection",
     "FRONT_URL": "URL to front side",
     "BACK_URL": "URL to back side",
     "YEAR": "Year",
@@ -36,5 +36,9 @@
     "PASSWORD": "Password",
     "REGISTER": "Register",
     "CREATION_YEAR": "Creation year",
-    "NO_SUCH_DATA": "We don't have such data"
+    "NO_SUCH_DATA": "We don't have such data",
+    "LIGHT": "Light",
+    "DARK": "DARK",
+    "ENGLISH": "English",
+    "RUSSIAN": "Russian"
 }

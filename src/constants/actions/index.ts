@@ -4,3 +4,4 @@ export * from './appSettings';
 export * from './cardDetails';
 export * from './userData';
 export * from './filters';
+export * from './popup';

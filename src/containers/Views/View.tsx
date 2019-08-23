@@ -4,7 +4,7 @@ import { Route, RouteComponentProps } from 'react-router-dom';
 
 import { IAppState, IDispatchProp, IViewState } from '../../models';
 import { SiteManager, Header, Map } from '../../components';
-import { FilterView, MoneyEditor, DataViewer } from '..';
+import { FilterView, MoneyEditor, DataViewer, Popup } from '../../containers';
 import { ViewActions } from '../../actions';
 
 class View extends React.Component<IViewState & IDispatchProp & RouteComponentProps> {
@@ -47,6 +47,7 @@ class View extends React.Component<IViewState & IDispatchProp & RouteComponentPr
               </div>
             </div>
           } />
+          <Popup />
         </div>
       </React.Fragment>
     );

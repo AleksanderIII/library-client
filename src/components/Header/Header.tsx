@@ -3,16 +3,13 @@ import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Icon, Select } from '../../components';
-import { AppSettingsActions, ViewActions } from '../../actions';
+import { PopupActions, ViewActions } from '../../actions';
 import { Strings, continents } from '../../constants';
-import { IAppState, IDispatchProp, IHeaderProps, Icons, Settings, SiteComponents, IHeaderState } from '../../models';
+import { IAppState, IDispatchProp, IHeaderProps, Icons, Settings, SiteComponents } from '../../models';
 
-class Header extends React.Component<IDispatchProp & IHeaderProps & RouteComponentProps, IHeaderState> {
+class Header extends React.Component<IDispatchProp & IHeaderProps & RouteComponentProps> {
   constructor(props: IDispatchProp & IHeaderProps & RouteComponentProps) {
     super(props);
-    this.state = {
-      isOpenedSettings: false
-    };
   }
 
   private continentChecking(name: string): string {
@@ -45,12 +42,42 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
     this.props.dispatch(ViewActions.setContinent(''));
   }
 
-  private toggleSettingsMenu = () => {
-    this.setState({ isOpenedSettings: !this.state.isOpenedSettings });
+  private showSettingsMenu = () => {
+    const { language, theme } = this.props.appSettings;
+    const themes = theme.options.map(theme => Strings[theme]);
+    const languages = language.options.map(language => Strings[language]);
+    const content =
+      <div className='header__settings__list'>
+        <ul>
+          <li>
+            <Select name={Strings[Settings.Names.THEME]}
+              defaultValue={Strings[theme.selected]}
+              centralAlign={true}
+              propName={Strings[Settings.Names.THEME]}
+              getValue={console.log}
+              options={themes}
+            />
+          </li>
+          <li>
+            <Select name={Strings[Settings.Names.LANGUAGE]}
+              defaultValue={Strings[language.selected]}
+              centralAlign={true}
+              propName={Strings[Settings.Names.LANGUAGE]}
+              getValue={console.log}
+              options={languages}
+            />
+          </li>
+        </ul>
+      </div>;
+    const popupContent = {
+      header: Strings[SiteComponents.Names.SETTINGS],
+      content
+    };
+
+    this.props.dispatch(PopupActions.show(popupContent));
   }
 
   public render(): JSX.Element {
-    const { language, theme } = this.props.appSettings;
     const continentsList = Object.keys(continents).map(continent => Strings[`${continents[continent]}`]);
     return (
       <div className='header'>
@@ -66,23 +93,8 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
         }
         <h1>{Strings['COLLECTION']}</h1>
         <div className='header__settings' >
-          <div onClick={() => this.toggleSettingsMenu()} >
+          <div onClick={() => this.showSettingsMenu()} >
             <Icon name={Icons.Names.SETTINGS} />
-            {
-              this.state.isOpenedSettings ?
-                <div className='header__settings__list'>
-                  <h2>{Strings[SiteComponents.Names.SETTINGS]}</h2>
-                  <ul>
-                    <li>
-                      {Strings[Settings.Names.THEME]}: <span>{theme}</span>
-                    </li>
-                    <li>
-                      {Strings[Settings.Names.LANGUAGE]}: <span>{language}</span>
-                    </li>
-                  </ul>
-                </div>
-                : null
-            }
           </div>
         </div>
         <span><Icon name={Icons.Names.SIGN_IN} /></span>

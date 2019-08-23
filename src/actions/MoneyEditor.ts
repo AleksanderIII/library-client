@@ -15,11 +15,9 @@ export const postMoneyData = () => {
 };
 
 export const changeOption = (optionName: string, value: string) => {
-    return (dispatch: Dispatch<IAppState>) => {
-        dispatch({
-            value,
-            optionName,
-            type: MoneyEditorActions.CHANGE_OPTION
-        });
+    return {
+        value,
+        optionName,
+        type: MoneyEditorActions.CHANGE_OPTION
     };
 };

@@ -25,11 +25,9 @@ export const getFiltersData = () => {
 };
 
 export const updateValue = (name: string, value: string) => {
-    return (dispatch: Dispatch<IAppState>) => {
-        dispatch({
-            type: FiltersActions.UPDATE_VALUE,
-            name,
-            value
-        });
+    return {
+        type: FiltersActions.UPDATE_VALUE,
+        name,
+        value
     };
 };

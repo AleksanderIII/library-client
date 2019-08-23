@@ -1,120 +1,141 @@
-span svg{
+span svg {
     cursor: pointer;
     padding: 5px 4px;
     font-weight: bold;
 }
 
-.file-pdf, .file-excel{
+.file-pdf,
+.file-excel {
     font-size: 28px;
     margin: 1px;
 }
 
 .file-excel {
     color: rgb(60, 180, 60);
+
+    &:hover {
+        color: rgb(36, 117, 36);
+    }
 }
 
-.file-excel:hover{
-    color: rgb(36, 117, 36);
-}
-
-.file-pdf{
+.file-pdf {
     color: rgb(248, 149, 142);
+
+    &:hover {
+        color: rgb(148, 68, 62);
+    }
 }
 
-.file-pdf:hover{
-    color: rgb(148, 68, 62);
-}
-
-.trash-alt, .folder-open, .edit, .save{
+.trash-alt,
+.folder-open,
+.edit,
+.save {
     font-size: 20px;
     margin: 1px;
 }
 
-.trash-alt{
+.trash-alt {
     color: rgb(250, 128, 128);
-}
 
-.trash-alt:hover{
-    color: rgb(138, 18, 18);
+    &:hover {
+        color: rgb(138, 18, 18);
+    }
 }
-
-.folder-open{
+.folder-open {
     color: rgb(144, 161, 86);
-}
 
-.folder-open:hover{
-    color: rgb(170, 211, 154);
-}
-
-.home, .sign-in-alt{
-    font-size: 36px;
-}
-
-.home{
-    color: rgb(102, 190, 180);
-}
-
-.home:hover{
-    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-    color: rgb(9, 104, 93);
-}
-
-@keyframes shake {
-10%, 90% {
-      transform: translate3d(-1px, 0, 0);
-}
-    
-20%, 80% {
-      transform: translate3d(2px, 0, 0);
-}
-  
-30%, 50%, 70% {
-      transform: translate3d(-4px, 0, 0);
-}
-  
-40%, 60% {
-      transform: translate3d(4px, 0, 0);
+    &:hover {
+        color: rgb(170, 211, 154);
     }
 }
 
-.sign-in-alt{
+.home,
+.sign-in-alt {
+    font-size: 36px;
+}
+
+.home {
+    color: rgb(102, 190, 180);
+
+    &:hover {
+        animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+        color: rgb(9, 104, 93);
+    }
+}
+
+
+.windowClose {
+    padding: 0;
+    color: rgb(226, 77, 77);
+    font-size: 26px;
+
+    &:hover {
+        color: red;
+    }
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.sign-in-alt {
     color: rgb(125, 173, 127);
+
+    &:hover {
+        color: rgb(29, 144, 35);
+    }
 }
 
-.sign-in-alt:hover{
-    color: rgb(29, 144, 35);
+.save {
+    color: rgb(122, 204, 241);
+
+    &:hover {
+        color: rgb(59, 158, 204)
+    }
 }
 
-.save{
-    color: rgb(122, 204, 241)
+.edit {
+    color: rgb(241, 241, 88);
+
+    &:hover {
+        color: rgb(204, 204, 22)
+    }
 }
 
-.save:hover{
-    color: rgb(59, 158, 204)
-}
-
-.edit{
-    color: rgb(241, 241, 88)
-}
-
-.edit:hover{
-    color: rgb(204, 204, 22)
-}
-
-.settings{
+.settings {
     color: rgb(111, 129, 145);
     font-size: 26px;
-    transition: transform .7s ease-in-out; 
+    transition: transform .7s ease-in-out;
+
+    &:hover {
+        transform: rotate(90deg);
+    }
 }
 
-.settings:hover{
-    transform: rotate(90deg);
-}
-
-.icon{
+.icon {
     transition: background-color .5s linear;
     transition: color .5s linear;
 }

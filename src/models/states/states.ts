@@ -8,6 +8,7 @@ export interface IAppState {
     cardDetails: ICardDetailsState;
     userData: IUserDataState;
     filters: IFiltersState;
+    popup: IPopupState;
 }
 
 export interface IViewState {
@@ -23,8 +24,14 @@ export interface IViewState {
 }
 
 export interface IAppSettingsState {
-    language: string;
-    theme: string;
+    language: {
+        options: string[],
+        selected: string
+    };
+    theme: {
+        options: string[],
+        selected: string
+    };
 }
 
 export interface IMoneyEditorComponentProps {
@@ -85,6 +92,17 @@ export interface IFilter {
     selected: string;
 }
 
-export interface IHeaderState{
+export interface IHeaderState {
     isOpenedSettings: boolean;
+}
+
+export interface IPopupState {
+    isShown: boolean;
+    container: IPopup;
+}
+
+export interface IPopup {
+    header: string;
+    content: JSX.Element | string;
+    footer?: string;
 }

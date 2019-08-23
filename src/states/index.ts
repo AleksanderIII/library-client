@@ -5,6 +5,7 @@ import getInitialViewState from './viewState';
 import getInitialCardDetailsState from './cardDetails';
 import getInitialUserDataState from './userData';
 import getInitialFiltersState from './filtersState';
+import getInitialPopupState from './popup';
 
 export function getInitialState(): IAppState {
     return {
@@ -14,5 +15,6 @@ export function getInitialState(): IAppState {
         cardDetails: getInitialCardDetailsState(),
         userData: getInitialUserDataState(),
         filters: getInitialFiltersState(),
+        popup: getInitialPopupState()
     };
 }

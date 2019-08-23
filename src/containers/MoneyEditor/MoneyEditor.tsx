@@ -5,7 +5,7 @@ import { Button, Input, Select } from '../../components';
 import { Strings } from '../../constants';
 import { IDispatchProp, IMoneyEditorProps, IMoneyEditorComponentProps, IMoneyEditorState, IAppState, Editor } from '../../models';
 import CountriesLibrary from '../../utils/countriesLibrary';
-import { ViewActions, MoneyEditorActions } from '../../actions';
+import { ViewActions, MoneyEditorActions, PopupActions } from '../../actions';
 
 class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorComponentProps & IDispatchProp, IMoneyEditorState> {
   constructor(props: IMoneyEditorProps & IMoneyEditorComponentProps & IDispatchProp) {
@@ -33,7 +33,6 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
     return (
       <div className='editor'>
         <div className='editor__container'  >
-          <p className='editor__container__closeBtn' onClick={() => this.props.dispatch(ViewActions.toggleEditor())} >&#215;</p>
           <h2>{Strings['EDITOR']}</h2>
           <div className='editor__container__content'>
             {this.createSelector(Strings[`${Editor.Selectors.Names.CONTINENT}`], continentsList, true, continentsList[0], 'continent', this.getValue, this.updateValue)}
@@ -95,7 +94,7 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
 
   private postData = () => {
     this.props.dispatch(MoneyEditorActions.postMoneyData());
-    this.props.dispatch(ViewActions.toggleEditor());
+    this.props.dispatch(PopupActions.hide());
     this.props.dispatch(ViewActions.getViewDataRequest());
   }
 }

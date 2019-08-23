@@ -81,6 +81,14 @@ export namespace Settings {
     LANGUAGE = 'LANGUAGE',
     THEME = 'THEME'
   }
+  export enum Themes {
+    LIGHT = 'LIGHT',
+    DARK = 'DARK'
+  }
+  export enum Languages {
+    RUSSIAN = 'RUSSIAN',
+    ENGLISH = 'ENGLISH'
+  }
 }
 
 export namespace Registration {
@@ -99,8 +107,8 @@ export namespace CardInformation {
   }
 }
 
-export namespace Tabs{
-  export enum Money{
+export namespace Tabs {
+  export enum Money {
     CASH = 'cash',
     COINS = 'coins'
   }

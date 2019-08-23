@@ -4,7 +4,7 @@ import { Tabs } from '../core';
 
 export type ViewActionTypes = IGetMoneyRequest
     | IGetDataSuccessfully
-    | IToggleEditor
+    | IOpenEditor
     | IGetMoneyByContinent
     | IRemoveCard
     | ISetMoneyType
@@ -21,8 +21,8 @@ export interface IGetDataSuccessfully {
     coins: IMoneyData[];
 }
 
-export interface IToggleEditor {
-    type: ViewActions.TOGGLE_EDITOR;
+export interface IOpenEditor {
+    type: ViewActions.OPEN_EDITOR;
 }
 
 export interface IRemoveCard {

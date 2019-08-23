@@ -23,10 +23,10 @@ export default function view(state: IViewState = getInitialState(), action: View
         },
         isLoading: false
       };
-    case ViewActions.TOGGLE_EDITOR:
+    case ViewActions.OPEN_EDITOR:
       return {
         ...state,
-        isOpenedEditor: !state.isOpenedEditor
+        isOpenedEditor: true
       };
     case ViewActions.SET_MONEY_TYPE:
       return {

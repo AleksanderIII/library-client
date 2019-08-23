@@ -1,8 +1,10 @@
+import * as React from 'react';
 import { Dispatch } from 'redux';
-import { ViewActions } from '../constants';
-import { IAppState, IMoneyData } from '../models';
+import { ViewActions, Strings } from '../constants';
+import { IAppState, IMoneyData, IPopup, SiteComponents } from '../models';
 import DataService from '../services/dataService';
-import { FiltersActions } from '../actions';
+import { FiltersActions, PopupActions } from '../actions';
+import { MoneyEditor } from '../containers';
 
 export const getViewDataRequest = () => {
   return (dispatch: Dispatch<IAppState>) => {
@@ -52,11 +54,17 @@ export const dataRecieved = (data: IMoneyData[]) => {
   };
 };
 
-export const toggleEditor = () => {
+export const openEditor = () => {
   return (dispatch: Dispatch<IAppState>) => {
     dispatch({
-      type: ViewActions.TOGGLE_EDITOR
+      type: ViewActions.OPEN_EDITOR
     });
+    const content = React.createElement(MoneyEditor);
+    const popupContainer: IPopup = {
+      header: Strings[SiteComponents.Names.EDITOR],
+      content
+    };
+    dispatch(PopupActions.show(popupContainer));
   };
 };
 
@@ -71,10 +79,8 @@ export const setMoneyType = (value: string) => {
 };
 
 export const setContinent = (value: string) => {
-  return (dispatch: Dispatch<IAppState>) => {
-    dispatch({
-      type: ViewActions.SET_CONTINENT,
-      value
-    });
+  return {
+    type: ViewActions.SET_CONTINENT,
+    value
   };
 };

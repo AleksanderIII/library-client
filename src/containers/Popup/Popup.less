@@ -1,0 +1,31 @@
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    &__header {
+        h2 {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid black;
+
+            &__closeBtn {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+
+    &__content {
+        max-height: 50vh;
+        overflow: auto;
+    }
+
+    &__footer {
+        border-top: 1px solid black;
+    }
+}

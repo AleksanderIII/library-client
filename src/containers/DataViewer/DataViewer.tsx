@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { IDataViewerProps, IDataViewerOwnProps, IDispatchProp, IAppState, Tabs } from '../../models';
 import { Strings } from '../../constants';
-import { ViewActions } from '../../actions';
+import { ViewActions, PopupActions } from '../../actions';
 import { Loader } from '../../components';
 import { Grid } from '../../containers';
 
@@ -51,7 +51,9 @@ class DataViewer extends React.Component<IDataViewerProps & IDataViewerOwnProps 
                     {
                         this.getMoneyTypeTabs()
                     }
-                    <li onClick={() => this.props.dispatch(ViewActions.toggleEditor())}>{Strings['ADD']}</li>
+                    <li onClick={() => this.props.dispatch(ViewActions.openEditor())}>
+                        {Strings['ADD']}
+                    </li>
                 </ul>
                 {
                     this.props.isLoading ?
@@ -65,7 +67,7 @@ class DataViewer extends React.Component<IDataViewerProps & IDataViewerOwnProps 
                             />
                         </div>
                 }
-            </React.Fragment>
+            </React.Fragment >
         );
     }
 }
