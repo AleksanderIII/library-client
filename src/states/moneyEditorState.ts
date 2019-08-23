@@ -6,7 +6,7 @@ export default function getInitialMoneyEditorState(): IMoneyEditorComponentProps
         continent: 'Африка',
         country: 'Ангола',
         date: '-',
-        type: Strings[Editor.Selectors.Options.TYPE.COINS],
+        type: Editor.Selectors.Options.TYPE.COINS,
         value: Editor.Selectors.Options.COINSVALUES.ONE,
         frontImageUrl: '-',
         backImageUrl: '-',

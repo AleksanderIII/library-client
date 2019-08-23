@@ -18,7 +18,7 @@ class FilterView extends React.Component<IFilterViewProps & IDispatchProp> {
       <div className='filters'>
         <h2>{Strings[SiteComponents.Names.FILTERS]}</h2>
         <Select
-          name={Strings[Filters.Names.CENTURY]}
+          name={Filters.Names.CENTURY}
           options={sortStrings(century.options)}
           centralAlign={true}
           defaultValue={century.selected}
@@ -26,7 +26,7 @@ class FilterView extends React.Component<IFilterViewProps & IDispatchProp> {
           getValue={this.updateValue}
         />
         <Select
-          name={Strings[Filters.Names.COUNTRY]}
+          name={Filters.Names.COUNTRY}
           options={sortStrings(country.options)}
           centralAlign={true}
           defaultValue={country.selected}

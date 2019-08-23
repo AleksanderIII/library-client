@@ -25,14 +25,14 @@ class Grid extends React.Component<IGridProps> {
       });
     });
 
-    if (targetCountry === Strings[Filters.Options.COUNTRY.ALL]) {
+    if (targetCountry === Filters.Options.COUNTRY.ALL) {
       return cardsByCountries;
     }
     return { [targetCountry]: cardsByCountries[targetCountry] };
   }
 
   private filterDataByCentury = (data: IMoneyData[], century: string) => {
-    if (century !== Strings[Filters.Options.CENTURY.ALL]) {
+    if (century !== Filters.Options.CENTURY.ALL) {
       return data.filter(dataElement => `${Math.ceil(dataElement.date / 100)}` === century);
     }
     return data;

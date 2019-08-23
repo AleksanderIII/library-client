@@ -3,6 +3,7 @@ import * as React from 'react';
 import { ISelectProps, ISelectState, Icons } from '../../models';
 import { AppConfig } from '../../configs';
 import { Icon } from '../../components';
+import { Strings } from '../../constants';
 
 class Select extends React.Component<ISelectProps, ISelectState> {
     constructor(props: ISelectProps) {
@@ -34,8 +35,8 @@ class Select extends React.Component<ISelectProps, ISelectState> {
             : value;
     }
 
-    private clickHandler = (event: React.MouseEvent) => {
-        const selectedOption: string = event.currentTarget.textContent;
+    private clickHandler = (orderNumber: number) => {
+        const selectedOption: string = this.props.options[orderNumber];
         this.setState({ selected: selectedOption });
 
         if (this.props.getValue) {
@@ -68,8 +69,8 @@ class Select extends React.Component<ISelectProps, ISelectState> {
         return (
             <div className='select' onClick={this.openDropown} onMouseLeave={this.closeDropown} >
                 <p>
-                    <b>{name}:</b>
-                    {displayedValue}
+                    <b>{Strings[name]}:</b>
+                    {Strings[displayedValue]}
                     <span className='select__arrow'>
                         {
                             opened ? <Icon name={Icons.Names.ANGLE_UP} /> :
@@ -90,9 +91,9 @@ class Select extends React.Component<ISelectProps, ISelectState> {
                                         <li
                                             key={optionNumber}
                                             className={displayedValue === option ? 'selected' : ''}
-                                            onClick={this.clickHandler}
+                                            onClick={() => this.clickHandler(optionNumber)}
                                         >
-                                            {option}
+                                            {Strings[option]}
                                         </li>
                                     ))}
                             </ul>

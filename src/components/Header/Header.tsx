@@ -3,35 +3,32 @@ import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Icon, Select } from '../../components';
-import { PopupActions, ViewActions } from '../../actions';
+import { PopupActions, ViewActions, AppSettingsActions } from '../../actions';
 import { Strings, continents } from '../../constants';
 import { IAppState, IDispatchProp, IHeaderProps, Icons, Settings, SiteComponents } from '../../models';
 
 class Header extends React.Component<IDispatchProp & IHeaderProps & RouteComponentProps> {
-  constructor(props: IDispatchProp & IHeaderProps & RouteComponentProps) {
-    super(props);
-  }
 
   private continentChecking(name: string): string {
     const continentsList = Object.keys(continents);
     const validContinent = continentsList.some(continent => continents[continent] === name);
-    return validContinent ? Strings[`${name}`] : '';
+    return validContinent ? `${name}` : '';
   }
 
   private changeContinent = (name: string, value: string): void => {
     const listOfKeys = Object.keys(continents);
-    const targetContinent = listOfKeys.find(elem => Strings[`${continents[elem]}`] === value);
+    const targetContinent = listOfKeys.find(elem => `${continents[elem]}` === value);
     this.props.history.push(`/continents/${continents[targetContinent]}`);
   }
 
   private getNavigationComponent = (continentsList: string[]) => {
     return <div className='header__navigation' >
       {
-        <Select name={Strings['CONTINENT']}
+        <Select name={'CONTINENT'}
           options={continentsList}
           centralAlign={false}
           defaultValue={this.continentChecking(this.props.continent)}
-          propName='continents'
+          propName={'CONTINENT'}
           getValue={this.changeContinent}
         />
       }
@@ -44,26 +41,29 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
 
   private showSettingsMenu = () => {
     const { language, theme } = this.props.appSettings;
-    const themes = theme.options.map(theme => Strings[theme]);
-    const languages = language.options.map(language => Strings[language]);
+    const themes = theme.options.map(theme => theme);
+    const languages = language.options.map(language => language);
     const content =
       <div className='header__settings__list'>
         <ul>
           <li>
-            <Select name={Strings[Settings.Names.THEME]}
-              defaultValue={Strings[theme.selected]}
+            <Select name={Settings.Names.THEME}
+              defaultValue={theme.selected}
               centralAlign={true}
-              propName={Strings[Settings.Names.THEME]}
+              propName={Settings.Names.THEME}
               getValue={console.log}
               options={themes}
             />
           </li>
           <li>
-            <Select name={Strings[Settings.Names.LANGUAGE]}
-              defaultValue={Strings[language.selected]}
+            <Select name={Settings.Names.LANGUAGE}
+              defaultValue={language.selected}
               centralAlign={true}
-              propName={Strings[Settings.Names.LANGUAGE]}
-              getValue={console.log}
+              propName={Settings.Names.LANGUAGE}
+              getValue={(language) => {
+                console.log(language);
+                /* this.props.dispatch(AppSettingsActions.updateLanguage())*/
+              }}
               options={languages}
             />
           </li>
@@ -78,7 +78,7 @@ class Header extends React.Component<IDispatchProp & IHeaderProps & RouteCompone
   }
 
   public render(): JSX.Element {
-    const continentsList = Object.keys(continents).map(continent => Strings[`${continents[continent]}`]);
+    const continentsList = Object.keys(continents).map(continent => `${continents[continent]}`);
     return (
       <div className='header'>
         <Link to='/continents' onClick={() => this.hideNavigationComponent()} >
