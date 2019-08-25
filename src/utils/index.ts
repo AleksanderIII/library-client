@@ -2,10 +2,10 @@ import { IExportMoneyData } from '../models';
 
 export function sortStrings(collection: string[]): string[] {
     return collection.sort((a, b) => {
-        if (a === 'Все') {
+        if (a === 'ALL') {
             return -1;
         }
-        if (b === 'Все') {
+        if (b === 'ALL') {
             return 1;
         }
         if (a > b) {

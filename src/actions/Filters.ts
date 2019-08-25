@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { FiltersActions } from '../constants';
-import { IAppState, ICountable } from '../models';
+import { IAppState, ICountable, Filters } from '../models';
 
 export const getFiltersData = () => {
     return (dispatch: Dispatch<IAppState>, getState: () => IAppState) => {
@@ -18,8 +18,8 @@ export const getFiltersData = () => {
 
         dispatch({
             type: FiltersActions.GET_FILTERS_DATA,
-            countries: ['Все'].concat(uniqueCountries),
-            centuries: ['Все'].concat(uniqueCentures),
+            countries: [Filters.Options.COUNTRY.ALL as string].concat(uniqueCountries),
+            centuries: [Filters.Options.CENTURY.ALL as string].concat(uniqueCentures),
         });
     };
 };
