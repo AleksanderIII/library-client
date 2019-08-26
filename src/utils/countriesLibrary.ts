@@ -1,15 +1,9 @@
 import * as library from 'countries-list';
+import { continents } from '../constants';
 const continentsRus = require('./continentsRus.json');
 const countriesRus = require('./countriesRus.json');
 
 class CountriesLibrary {
-  public static getContinents(): string[] {
-    const continentsData: { [key: string]: string } = library.continents;
-    const continentKeys: string[] = Object.keys(continentsData);
-    const continents = continentKeys.map(key => continentsRus[`${key}`]);
-    return continents;
-  }
-
   public static getCodeByRusName(name: string): string {
     const countriesData: {
       [key: string]: {
@@ -33,14 +27,20 @@ class CountriesLibrary {
     return code;
   }
 
-  public static getCountries(continent: string): string[] {
-    const continentsData: { [key: string]: string } = library.continents;
-    const continentKeys: string[] = Object.keys(continentsData);
-    const continents = continentKeys.map(key => continentsRus[`${key}`]);
-    const selectedContinentIndex = continents
-      .map((elem, index) => { if (elem === continent) { return index; } })
-      .filter(elem => elem !== undefined)[0];
-    continent = continentKeys[selectedContinentIndex];
+  private static getConteinentCode = (continent: string): string => {
+    switch (continent) {
+      case continents.africa: return 'AF';
+      case continents.europe: return 'EU';
+      case continents.australia: return 'OC';
+      case continents.asia: return 'AS';
+      case continents.southAmerica: return 'SA';
+      case continents.northAmerica: return 'NA';
+      default: return continents.all;
+    }
+  }
+
+  public static getCountries(continent: string, language: string): string[] {
+    const continentCode = this.getConteinentCode(continent);
 
     const countriesData: {
       [key: string]: {

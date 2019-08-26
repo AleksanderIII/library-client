@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { Button, Input, Select } from '../../components';
-import { Strings } from '../../constants';
+import { Strings, continents } from '../../constants';
 import { IDispatchProp, IMoneyEditorProps, IMoneyEditorComponentProps, IMoneyEditorState, IAppState, Editor } from '../../models';
 import CountriesLibrary from '../../utils/countriesLibrary';
 import { ViewActions, MoneyEditorActions, PopupActions } from '../../actions';
@@ -24,8 +24,8 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
   }
 
   public render(): JSX.Element {
-    const continentsList = CountriesLibrary.getContinents();
-    const countriesList = CountriesLibrary.getCountries(this.props.continent);
+    const continentsList = Object.keys(continents).map(continent => continents[continent]);
+    const countriesList = CountriesLibrary.getCountries(this.props.continent, this.props.);
     const moneyType = [
       `${Editor.Selectors.Options.TYPE.COINS}`,
       `${Editor.Selectors.Options.TYPE.CASH}`,
@@ -99,7 +99,9 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
 }
 
 const mapStateToProps = (state: IAppState): IMoneyEditorComponentProps => {
-  return state.moneyEditor;
+  return {
+    moneyEditor: state.moneyEditor
+  };
 };
 
 export default connect(mapStateToProps)(MoneyEditor);
