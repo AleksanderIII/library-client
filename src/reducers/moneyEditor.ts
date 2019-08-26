@@ -1,8 +1,8 @@
 import { MoneyEditorActions } from '../constants';
-import { IMoneyEditorComponentProps, MoneyEditorActionTypes } from '../models';
+import { IMoneyEditorState, MoneyEditorActionTypes } from '../models';
 import getInitialState from '../states/moneyEditorState';
 
-export default function moneyEditor(state: IMoneyEditorComponentProps = getInitialState(), action: MoneyEditorActionTypes): IMoneyEditorComponentProps {
+export default function moneyEditor(state: IMoneyEditorState = getInitialState(), action: MoneyEditorActionTypes): IMoneyEditorState {
     switch (action.type) {
         case MoneyEditorActions.POST_MONEY_DATA:
             return {

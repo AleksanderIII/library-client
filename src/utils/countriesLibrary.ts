@@ -1,23 +1,11 @@
 import * as library from 'countries-list';
 import { continents } from '../constants';
-const continentsRus = require('./continentsRus.json');
+import { ICountryData } from '../models';
 const countriesRus = require('./countriesRus.json');
 
 class CountriesLibrary {
   public static getCodeByRusName(name: string): string {
-    const countriesData: {
-      [key: string]: {
-        capital: string;
-        continent: string;
-        currency: string;
-        emoji: string;
-        emojiU: string;
-        languages: string[];
-        name: string;
-        native: string;
-        phone: string;
-      };
-    } = library.countries;
+    const countriesData: ICountryData = library.countries;
     const countries = Object.keys(countriesData);
     const code = countries.filter(elem => {
       if (countriesRus[`${elem}`] === name) {
@@ -35,36 +23,19 @@ class CountriesLibrary {
       case continents.asia: return 'AS';
       case continents.southAmerica: return 'SA';
       case continents.northAmerica: return 'NA';
-      default: return continents.all;
+      default: return 'AF';
     }
   }
 
-  public static getCountries(continent: string, language: string): string[] {
+  public static getCountriesByContinent(continent: string): string[] {
     const continentCode = this.getConteinentCode(continent);
-
-    const countriesData: {
-      [key: string]: {
-        capital: string;
-        continent: string;
-        currency: string;
-        emoji: string;
-        emojiU: string;
-        languages: string[];
-        name: string;
-        native: string;
-        phone: string;
-      };
-    } = library.countries;
-
-    const countries = Object.keys(countriesData);
-    const rusCountries = countries
-      .map(elem => {
-        if (countriesData[elem].continent === continent) {
-          return countriesRus[`${elem}`];
-        }
-      })
-      .filter(elem => elem !== undefined);
-    return rusCountries;
+    const countriesData: ICountryData = library.countries;
+    return Object.keys(countriesData).map(countryCode => {
+      if (countriesData[countryCode].continent === continentCode) {
+        return countriesData[countryCode].name;
+      }
+    }).filter(country => country !== undefined);
   }
+
 }
 export default CountriesLibrary;

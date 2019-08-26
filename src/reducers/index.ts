@@ -1,6 +1,6 @@
 import { combineReducers, Reducer } from 'redux';
 
-import { IAppSettingsState, IMoneyEditorComponentProps, IViewState, ICardDetailsState, IUserDataState, IFiltersState, IPopupState } from '../models/states/states';
+import { IAppSettingsState, IMoneyEditorState, IViewState, ICardDetailsState, IUserDataState, IFiltersState, IPopupState } from '../models/states/states';
 import appSettings from './appSettings';
 import moneyEditor from './moneyEditor';
 import view from './view';
@@ -11,7 +11,7 @@ import popup from './popup';
 
 export default combineReducers({
   appSettings: appSettings as Reducer<IAppSettingsState>,
-  moneyEditor: moneyEditor as Reducer<IMoneyEditorComponentProps>,
+  moneyEditor: moneyEditor as Reducer<IMoneyEditorState>,
   view: view as Reducer<IViewState>,
   cardDetails: cardDetails as Reducer<ICardDetailsState>,
   userData: userData as Reducer<IUserDataState>,

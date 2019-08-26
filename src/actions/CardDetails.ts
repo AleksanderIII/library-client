@@ -9,7 +9,6 @@ export const getCardDataRequest = (id: string) => {
             type: CardDetailsActions.GET_CARD_DETAILS_REQUEST
         });
         DataService.getCardData(id).then(data => {
-            console.log('fdfsdf', data);
             dispatch(cardDataSuccess(data));
         })
             .catch(e => dispatch(CardDataFailedRequest()));

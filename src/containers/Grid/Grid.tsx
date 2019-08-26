@@ -44,7 +44,6 @@ class Grid extends React.Component<IGridProps> {
     let orderedData;
     if (data && data.length) {
       dataByCountries = this.getDataByCountries(this.filterDataByCentury(data, centuryFilter), countryFilter);
-      console.log(dataByCountries);
       orderedData = sortSimpleStrings(Object.keys(dataByCountries));
     }
 

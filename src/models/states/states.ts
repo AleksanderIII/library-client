@@ -4,7 +4,7 @@ import { Tabs } from '../core';
 export interface IAppState {
     appSettings: IAppSettingsState;
     view: IViewState;
-    moneyEditor: IMoneyEditorComponentProps;
+    moneyEditor: IMoneyEditorState;
     cardDetails: ICardDetailsState;
     userData: IUserDataState;
     filters: IFiltersState;
@@ -34,7 +34,8 @@ export interface IAppSettingsState {
     };
 }
 
-export interface IMoneyEditorComponentProps {
+export interface IMoneyEditorState {
+    [key: string]: string;
     continent: string;
     country: string;
     date: string;
@@ -47,7 +48,7 @@ export interface IMoneyEditorComponentProps {
     code: string;
 }
 
-export interface IMoneyEditorState {
+export interface IMoneyEditorInternalState {
     values: string[];
 }
 

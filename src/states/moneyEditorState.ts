@@ -1,10 +1,10 @@
-import { IMoneyEditorComponentProps, Editor } from '../models';
-import { Strings, continents } from '../constants';
+import { IMoneyEditorState, Editor } from '../models';
+import { continents } from '../constants';
 
-export default function getInitialMoneyEditorState(): IMoneyEditorComponentProps {
+export default function getInitialMoneyEditorState(): IMoneyEditorState {
     return {
         continent: continents.africa,
-        country: 'Ангола',
+        country: 'Angola',
         date: '-',
         type: Editor.Selectors.Options.TYPE.COINS,
         value: Editor.Selectors.Options.COINSVALUES.ONE,

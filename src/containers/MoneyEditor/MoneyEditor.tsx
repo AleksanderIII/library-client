@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import { Button, Input, Select } from '../../components';
 import { Strings, continents } from '../../constants';
-import { IDispatchProp, IMoneyEditorProps, IMoneyEditorComponentProps, IMoneyEditorState, IAppState, Editor } from '../../models';
+import { IDispatchProp, IMoneyEditorInternalState, IMoneyEditorComponentProps, IAppState, Editor } from '../../models';
 import CountriesLibrary from '../../utils/countriesLibrary';
 import { ViewActions, MoneyEditorActions, PopupActions } from '../../actions';
 
-class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorComponentProps & IDispatchProp, IMoneyEditorState> {
-  constructor(props: IMoneyEditorProps & IMoneyEditorComponentProps & IDispatchProp) {
+class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatchProp, IMoneyEditorInternalState> {
+  constructor(props: IMoneyEditorComponentProps & IDispatchProp) {
     super(props);
     this.state = {
       values: []
@@ -16,7 +16,7 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
   }
 
   public componentDidMount(): void {
-    const enumValues = this.props.type === Editor.Selectors.Options.TYPE.COINS ?
+    const enumValues = this.props.editorData.type === Editor.Selectors.Options.TYPE.COINS ?
       Editor.Selectors.Options.COINSVALUES :
       Editor.Selectors.Options.PAPERVALUES;
     const values = Object.keys(enumValues).map(key => enumValues[key as any]);
@@ -24,8 +24,8 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
   }
 
   public render(): JSX.Element {
-    const continentsList = Object.keys(continents).map(continent => continents[continent]);
-    const countriesList = CountriesLibrary.getCountries(this.props.continent, this.props.);
+    const continentsList = Object.keys(continents).map(continent => continents[continent]).filter(continent => continent !== continents.all);
+    const countriesList = CountriesLibrary.getCountriesByContinent(this.props.editorData.continent);
     const moneyType = [
       `${Editor.Selectors.Options.TYPE.COINS}`,
       `${Editor.Selectors.Options.TYPE.CASH}`,
@@ -34,8 +34,8 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
       <div className='editor'>
         <div className='editor__container'  >
           <div className='editor__container__content'>
-            {this.createSelector(Editor.Selectors.Names.CONTINENT, continentsList, true, continentsList[0], Editor.Selectors.Names.CONTINENT, this.getValue, this.updateValue)}
-            {this.createSelector(Editor.Selectors.Names.COUNTRY, countriesList, true, this.props.country, Editor.Selectors.Names.COUNTRY, this.getValue)}
+            {this.createSelector(Editor.Selectors.Names.CONTINENT, continentsList, true, this.props.editorData.continent, Editor.Selectors.Names.CONTINENT, this.getValue, this.updateValue)}
+            {this.createSelector(Editor.Selectors.Names.COUNTRY, countriesList, true, this.props.editorData.country, Editor.Selectors.Names.COUNTRY, this.getValue)}
             {this.createSelector(Editor.Selectors.Names.TYPE, moneyType, true, moneyType[0], Editor.Selectors.Names.TYPE, this.getValue, this.updateValue)}
             {this.createSelector(Editor.Selectors.Names.VALUE, this.state.values, true, this.state.values[0], Editor.Selectors.Names.VALUE, this.getValue)}
             <Input name={'date'} placeholder={Strings['YEAR']} maxLength={+'4'} getValue={this.getValue} />
@@ -83,7 +83,7 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
       this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.VALUE, values[0]));
       this.setState({ values });
     } else {
-      const defaultCountry = CountriesLibrary.getCountries(name)[0];
+      const defaultCountry = CountriesLibrary.getCountriesByContinent(name)[0];
       this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.CONTINENT, name));
       this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.COUNTRY, defaultCountry));
       const code = CountriesLibrary.getCodeByRusName(defaultCountry);
@@ -100,7 +100,8 @@ class MoneyEditor extends React.Component<IMoneyEditorProps & IMoneyEditorCompon
 
 const mapStateToProps = (state: IAppState): IMoneyEditorComponentProps => {
   return {
-    moneyEditor: state.moneyEditor
+    language: state.appSettings.language.selected,
+    editorData: state.moneyEditor
   };
 };
 

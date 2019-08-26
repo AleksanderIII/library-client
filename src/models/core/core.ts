@@ -10,6 +10,20 @@ export interface ICountable {
   [key: string]: string;
 }
 
+export interface ICountryData {
+  [key: string]: {
+    capital: string;
+    continent: string;
+    currency: string;
+    emoji: string;
+    emojiU: string;
+    languages: string[];
+    name: string;
+    native: string;
+    phone: string;
+  };
+}
+
 export namespace SiteComponents {
   export enum Names {
     EDITOR = 'EDITOR',

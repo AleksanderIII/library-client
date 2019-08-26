@@ -1,4 +1,4 @@
-import { IMoneyData, IMoneyEditorComponentProps } from '../models';
+import { IMoneyData, IMoneyEditorState } from '../models';
 import { AppConfig } from '../configs';
 
 class DataService {
@@ -8,7 +8,7 @@ class DataService {
             .then(res => res.json());
     }
 
-    public static postData(moneyData: IMoneyEditorComponentProps): Promise<void> {
+    public static postData(moneyData: IMoneyEditorState): Promise<void> {
         const params = {
             headers: {
                 Accept: 'application/json',

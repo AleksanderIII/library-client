@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ISelectProps, ISelectState, Icons } from '../../models';
+import { ISelectProps, ISelectState, Icons, Editor } from '../../models';
 import { AppConfig } from '../../configs';
 import { Icon } from '../../components';
 import { Strings } from '../../constants';
@@ -93,7 +93,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
                                             className={displayedValue === option ? 'selected' : ''}
                                             onClick={() => this.clickHandler(optionNumber)}
                                         >
-                                            {Strings[option]}
+                                            {name !== Editor.Selectors.Names.COUNTRY ? Strings[option] : Strings.COUNTRIES[option]}
                                         </li>
                                     ))}
                             </ul>
