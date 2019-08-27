@@ -43,7 +43,8 @@ export namespace Editor {
       DATE = 'DATE',
       MATERIAL = 'MATERIAL',
       ADD_INFO = 'ADD_INFO',
-      FORM = 'FORM'
+      FORM = 'FORM',
+      CODE = 'CODE'
     }
     export namespace Options {
       export enum TYPE {

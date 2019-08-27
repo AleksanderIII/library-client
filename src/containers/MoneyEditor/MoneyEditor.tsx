@@ -65,7 +65,7 @@ class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatch
   }
 
   private getValue = (name: string, value: string) => {
-    this.props.dispatch(MoneyEditorActions.changeOption(name, value));
+    this.props.dispatch(MoneyEditorActions.changeOption(name.toLowerCase(), value));
     if (name === Editor.Selectors.Names.COUNTRY) {
       const code = CountriesLibrary.getCodeByRusName(value);
       this.props.dispatch(MoneyEditorActions.changeOption('code', code));
@@ -84,10 +84,10 @@ class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatch
       this.setState({ values });
     } else {
       const defaultCountry = CountriesLibrary.getCountriesByContinent(name)[0];
-      this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.CONTINENT, name));
-      this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.COUNTRY, defaultCountry));
+      this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.CONTINENT.toLowerCase(), name));
+      this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.COUNTRY.toLowerCase(), defaultCountry));
       const code = CountriesLibrary.getCodeByRusName(defaultCountry);
-      this.props.dispatch(MoneyEditorActions.changeOption('code', code));
+      this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.CODE.toLowerCase(), code));
     }
   }
 

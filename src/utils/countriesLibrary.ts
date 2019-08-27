@@ -8,7 +8,7 @@ class CountriesLibrary {
     const countriesData: ICountryData = library.countries;
     const countries = Object.keys(countriesData);
     const code = countries.filter(elem => {
-      if (countriesRus[`${elem}`] === name) {
+      if (countriesData[`${elem}`].name === name) {
         return elem;
       }
     })[0];
