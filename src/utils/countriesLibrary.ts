@@ -1,7 +1,6 @@
 import * as library from 'countries-list';
 import { continents } from '../constants';
 import { ICountryData } from '../models';
-const countriesRus = require('./countriesRus.json');
 
 class CountriesLibrary {
   public static getCodeByRusName(name: string): string {
