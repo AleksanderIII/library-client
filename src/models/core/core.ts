@@ -104,7 +104,7 @@ export namespace CardInformation {
 
 export namespace Tabs {
   export enum Money {
-    CASH = 'cash',
-    COINS = 'coins'
+    CASH = 'CASH',
+    COINS = 'COINS'
   }
 }

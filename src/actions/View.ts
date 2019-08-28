@@ -42,8 +42,8 @@ export const removeCardRequest = (id: string) => {
 };
 
 export const dataRecieved = (data: IMoneyData[]) => {
-  const cash = data.filter(elem => elem.type === 'Банкноты');
-  const coins = data.filter(elem => elem.type === 'Монеты');
+  const cash = data.filter(element => element.type === 'Банкноты');
+  const coins = data.filter(element => element.type === 'Монеты');
   return (dispatch: Dispatch<IAppState>) => {
     dispatch({
       coins,

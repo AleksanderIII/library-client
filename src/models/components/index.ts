@@ -6,3 +6,4 @@ export * from './select';
 export * from './icons';
 export * from './siteManager';
 export * from './tooltip';
+export * from './yearInput';

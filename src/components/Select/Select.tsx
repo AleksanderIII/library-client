@@ -29,12 +29,6 @@ class Select extends React.Component<ISelectProps, ISelectState> {
         return isSelectedFromOptions ? selected : defaultValue;
     }
 
-    private shrinkStringValue = (value: string, maxSize: number): string => {
-        return value && value.length > maxSize
-            ? `${value.substr(0, maxSize)}..`
-            : value;
-    }
-
     private clickHandler = (orderNumber: number) => {
         const selectedOption: string = this.props.options[orderNumber];
         this.setState({ selected: selectedOption });
@@ -56,21 +50,32 @@ class Select extends React.Component<ISelectProps, ISelectState> {
         this.setState({ opened: false });
     }
 
+    private selectLocalizeValue = (name: string, value: string): string => {
+        switch (name) {
+            case Editor.Selectors.Names.COUNTRY: return Strings.COUNTRIES[value];
+            case Editor.Selectors.Names.VALUE: return Strings.MONEY[value];
+            default: return Strings[value];
+        }
+    }
+
     public render(): JSX.Element {
         const { selected, opened } = this.state;
         const { name, options, centralAlign, defaultValue } = this.props;
-        const { columnWidth, singleColumnSelectSize, displayedWordLength, elementsPerColumn } = AppConfig.components.select;
+        const { columnWidth, singleColumnSelectSize, elementsPerColumn } = AppConfig.components.select;
 
         const columnsQuantity = this.calculateColumnsQuantity(options, singleColumnSelectSize, elementsPerColumn);
         const columnsWidth = columnsQuantity * columnWidth;
 
-        const displayedValue = this.shrinkStringValue(this.getValueForDisplaying(options, selected, defaultValue), displayedWordLength);
+        const displayedValue = this.getValueForDisplaying(options, selected, defaultValue);
         return (
             <div className='select' onClick={this.openDropown} onMouseLeave={this.closeDropown} >
                 <p>
                     <b>{Strings[name]}:</b>
-                    {name !== Editor.Selectors.Names.COUNTRY ?
-                        Strings[displayedValue] : Strings.COUNTRIES[displayedValue]}
+                    <i>
+                        {
+                            this.selectLocalizeValue(name, displayedValue)
+                        }
+                    </i>
                     <span className='select__arrow'>
                         {
                             opened ? <Icon name={Icons.Names.ANGLE_UP} /> :
@@ -78,26 +83,26 @@ class Select extends React.Component<ISelectProps, ISelectState> {
                         }
                     </span>
                 </p>
-                <div className={opened ? 'select__content display' : 'select__content'}
-                >
+                <div className={opened ? 'select__content display' : 'select__content'} >
                     {
-                        opened && (
-                            <ul
-                                className={centralAlign ? 'select__content__dropdown dropdown-central-align' : 'select__content__dropdown'}
-                                style={{ columnCount: columnsQuantity, width: `${columnsWidth}px` }}
-                            >
-                                {
-                                    options.map((option, optionNumber) => (
-                                        <li
-                                            key={optionNumber}
-                                            className={displayedValue === option ? 'selected' : ''}
-                                            onClick={() => this.clickHandler(optionNumber)}
-                                        >
-                                            {name !== Editor.Selectors.Names.COUNTRY ? Strings[option] : Strings.COUNTRIES[option]}
-                                        </li>
-                                    ))}
-                            </ul>
-                        )}
+                        opened &&
+                        <ul
+                            className={centralAlign ? 'select__content__dropdown dropdown-central-align' : 'select__content__dropdown'}
+                            style={{ columnCount: columnsQuantity, width: `${columnsWidth}px` }} >
+                            {
+                                options.map((option, optionNumber) => (
+                                    <li
+                                        key={optionNumber}
+                                        className={displayedValue === option ? 'selected' : ''}
+                                        onClick={() => this.clickHandler(optionNumber)}>
+                                        {
+                                            this.selectLocalizeValue(name, option)
+                                        }
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    }
                 </div>
             </div>
         );

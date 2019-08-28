@@ -11,7 +11,6 @@ export class AppConfig {
         select: {
             columnWidth: 160,
             singleColumnSelectSize: 12,
-            displayedWordLength: 12,
             elementsPerColumn: 12
         },
         card: {

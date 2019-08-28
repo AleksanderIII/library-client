@@ -5,7 +5,7 @@ export default function getInitialMoneyEditorState(): IMoneyEditorState {
     return {
         continent: continents.africa,
         country: 'Angola',
-        date: '-',
+        date: '2000',
         type: Editor.Selectors.Options.TYPE.COINS,
         value: '1',
         frontImageUrl: '-',

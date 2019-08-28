@@ -1,0 +1,41 @@
+.yearInput {
+	display: flex;
+	color: brown;
+	background-color: rgba(240, 236, 228, 0.88);
+	border-radius: 5px;
+
+	&__title {
+		padding: 2px;
+		align-self: center;
+	}
+
+	&__unit {
+		display: flex;
+		flex-direction: column;
+        margin: 0 3px;
+
+		&__digit {
+			padding: 2px 8px;
+			border: 1px solid brown;
+			border-radius: 5px;
+			font-style: italic;
+			background: wheat;
+		}
+
+		&__angleUp {
+			margin: 0 auto;
+
+			svg {
+				padding: 0;
+			}
+		}
+
+		&__angleDown {
+			margin: 0 auto;
+
+			svg {
+				padding: 0;
+			}
+		}
+	}
+}
