@@ -7,7 +7,7 @@ export default function getInitialMoneyEditorState(): IMoneyEditorState {
         country: 'Angola',
         date: '-',
         type: Editor.Selectors.Options.TYPE.COINS,
-        value: Editor.Selectors.Options.COINSVALUES.ONE,
+        value: '1',
         frontImageUrl: '-',
         backImageUrl: '-',
         material: '-',

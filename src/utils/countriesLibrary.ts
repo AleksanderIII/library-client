@@ -3,12 +3,12 @@ import { continents } from '../constants';
 import { ICountryData } from '../models';
 
 class CountriesLibrary {
-  public static getCodeByRusName(name: string): string {
-    const countriesData: ICountryData = library.countries;
-    const countries = Object.keys(countriesData);
-    const code = countries.filter(elem => {
-      if (countriesData[`${elem}`].name === name) {
-        return elem;
+  private static countries: ICountryData = library.countries;
+
+  public static getCodeByName(name: string): string {
+    const code = Object.keys(this.countries).filter(countryCode => {
+      if (this.countries[`${countryCode}`].name === name) {
+        return countryCode;
       }
     })[0];
     return code;
@@ -28,13 +28,13 @@ class CountriesLibrary {
 
   public static getCountriesByContinent(continent: string): string[] {
     const continentCode = this.getConteinentCode(continent);
-    const countriesData: ICountryData = library.countries;
-    return Object.keys(countriesData).map(countryCode => {
-      if (countriesData[countryCode].continent === continentCode) {
-        return countriesData[countryCode].name;
+    return Object.keys(this.countries).map(countryCode => {
+      if (this.countries[countryCode].continent === continentCode) {
+        return this.countries[countryCode].name;
       }
     }).filter(country => country !== undefined);
   }
 
 }
+
 export default CountriesLibrary;

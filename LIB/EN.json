@@ -41,6 +41,18 @@
     "DARK": "DARK",
     "ENGLISH": "English",
     "RUSSIAN": "Russian",
+    "MONEY": {
+        "1": "1",
+        "2": "2",
+        "5": "5",
+        "10": "10",
+        "20": "20",
+        "50": "50",
+        "100": "100",
+        "200": "200",
+        "500": "500",
+        "1000": "1000"
+    },
     "COUNTRIES": {
         "Afghanistan": "Afghanistan",
         "Albania": "Albania",

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { Button, Input, Select } from '../../components';
+import { AppConfig } from '../../configs';
 import { Strings, continents } from '../../constants';
 import { IDispatchProp, IMoneyEditorInternalState, IMoneyEditorComponentProps, IAppState, Editor } from '../../models';
 import CountriesLibrary from '../../utils/countriesLibrary';
@@ -16,10 +17,10 @@ class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatch
   }
 
   public componentDidMount(): void {
-    const enumValues = this.props.editorData.type === Editor.Selectors.Options.TYPE.COINS ?
-      Editor.Selectors.Options.COINSVALUES :
-      Editor.Selectors.Options.PAPERVALUES;
-    const values = Object.keys(enumValues).map(key => enumValues[key as any]);
+    const moneyValues: { [key: string]: string } = this.props.editorData.type === Editor.Selectors.Options.TYPE.COINS ?
+      AppConfig.containers.editor.options.coins :
+      AppConfig.containers.editor.options.cash;
+    const values = Object.keys(moneyValues).map(value => moneyValues[value]);
     this.setState({ values });
   }
 
@@ -67,18 +68,18 @@ class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatch
   private getValue = (name: string, value: string) => {
     this.props.dispatch(MoneyEditorActions.changeOption(name.toLowerCase(), value));
     if (name === Editor.Selectors.Names.COUNTRY) {
-      const code = CountriesLibrary.getCodeByRusName(value);
+      const code = CountriesLibrary.getCodeByName(value);
       this.props.dispatch(MoneyEditorActions.changeOption('code', code));
     }
   }
 
   private updateValue = (name: string) => {
     if (name === Editor.Selectors.Options.TYPE.COINS || name === Editor.Selectors.Options.TYPE.CASH) {
-      const enumValues = name === Editor.Selectors.Options.TYPE.COINS ?
-        Editor.Selectors.Options.COINSVALUES :
-        Editor.Selectors.Options.PAPERVALUES;
+      const moneyValues: { [key: string]: string } = name === Editor.Selectors.Options.TYPE.COINS ?
+        AppConfig.containers.editor.options.coins :
+        AppConfig.containers.editor.options.cash;
 
-      const values = Object.keys(enumValues).map(key => enumValues[key as any]);
+      const values = Object.keys(moneyValues).map(value => moneyValues[value]);
       this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.TYPE, name));
       this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.VALUE, values[0]));
       this.setState({ values });
@@ -86,7 +87,7 @@ class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatch
       const defaultCountry = CountriesLibrary.getCountriesByContinent(name)[0];
       this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.CONTINENT.toLowerCase(), name));
       this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.COUNTRY.toLowerCase(), defaultCountry));
-      const code = CountriesLibrary.getCodeByRusName(defaultCountry);
+      const code = CountriesLibrary.getCodeByName(defaultCountry);
       this.props.dispatch(MoneyEditorActions.changeOption(Editor.Selectors.Names.CODE.toLowerCase(), code));
     }
   }

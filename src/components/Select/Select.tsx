@@ -65,12 +65,12 @@ class Select extends React.Component<ISelectProps, ISelectState> {
         const columnsWidth = columnsQuantity * columnWidth;
 
         const displayedValue = this.shrinkStringValue(this.getValueForDisplaying(options, selected, defaultValue), displayedWordLength);
-
         return (
             <div className='select' onClick={this.openDropown} onMouseLeave={this.closeDropown} >
                 <p>
                     <b>{Strings[name]}:</b>
-                    {Strings[displayedValue]}
+                    {name !== Editor.Selectors.Names.COUNTRY ?
+                        Strings[displayedValue] : Strings.COUNTRIES[displayedValue]}
                     <span className='select__arrow'>
                         {
                             opened ? <Icon name={Icons.Names.ANGLE_UP} /> :
