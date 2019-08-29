@@ -41,6 +41,8 @@
     "DARK": "DARK",
     "ENGLISH": "English",
     "RUSSIAN": "Russian",
+    "UPLOAD_FRONT_IMAGE": "Select front image",
+    "UPLOAD_BACK_IMAGE": "Select back image",
     "MONEY": {
         "1": "1",
         "2": "2",

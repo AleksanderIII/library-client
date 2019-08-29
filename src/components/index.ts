@@ -9,5 +9,6 @@ import Loader from './Loader/Loader';
 import Map from './Map/Map';
 import Tooltip from './Tooltip/Tooltip';
 import YearInput from './YearInput/YearInput';
+import ImageLodaer from './ImageLodaer/ImageLodaer';
 
-export { Select, Button, Card, Header, Input, SiteManager, Icon, Loader, Map, Tooltip, YearInput };
+export { Select, Button, Card, Header, Input, SiteManager, Icon, Loader, Map, Tooltip, YearInput, ImageLodaer };
