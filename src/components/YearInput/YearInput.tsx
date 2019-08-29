@@ -57,14 +57,14 @@ class YearInput extends React.Component<IYearInputProps, IYearInputState> {
                     currentYear.map((digit, index) => <div className='yearInput__unit' key={`${digit}-${index}`} >
                         <span className='yearInput__unit__angleUp'
                             onClick={() => this.increaseValue(index)} >
-                            <Icon name={Icons.Names.ANGLE_UP} />
+                            <Icon name={Icons.Names.CARET_DOWN} />
                         </span>
                         <span className='yearInput__unit__digit'>
                             {digit}
                         </span>
                         <span className='yearInput__unit__angleDown'
                             onClick={() => this.reduceValue(index)} >
-                            <Icon name={Icons.Names.ANGLE_DOWN} />
+                            <Icon name={Icons.Names.CARET_UP} />
                         </span>
                     </div>)
                 }

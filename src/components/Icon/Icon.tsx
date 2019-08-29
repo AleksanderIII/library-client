@@ -4,7 +4,7 @@ import { IIconProps, Icons } from '../../models';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileExcel, faTrashAlt, faFolderOpen, faFilePdf, faHome, faSignInAlt, faSave, faEdit, faCog, faChevronCircleDown, faChevronCircleUp, faAngleUp, faAngleDown, faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import { faFileExcel, faTrashAlt, faFolderOpen, faFilePdf, faHome, faSignInAlt, faSave, faEdit, faCog, faChevronCircleDown, faChevronCircleUp, faAngleUp, faAngleDown, faWindowClose, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faFileExcel);
 library.add(faTrashAlt);
@@ -20,6 +20,8 @@ library.add(faChevronCircleUp);
 library.add(faAngleUp);
 library.add(faAngleDown);
 library.add(faWindowClose);
+library.add(faCaretUp);
+library.add(faCaretDown);
 class Icon extends React.Component<IIconProps> {
     public render(): JSX.Element {
         switch (this.props.name) {
@@ -37,6 +39,8 @@ class Icon extends React.Component<IIconProps> {
             case Icons.Names.ANGLE_UP: return <FontAwesomeIcon className='icon angleUp' icon='angle-up' />;
             case Icons.Names.ANGLE_DOWN: return <FontAwesomeIcon className='icon angleDown' icon='angle-down' />;
             case Icons.Names.WINDOW_CLOSE: return <FontAwesomeIcon className='icon windowClose' icon='window-close' />;
+            case Icons.Names.CARET_UP: return <FontAwesomeIcon className='icon caretUp' icon='caret-down' />;
+            case Icons.Names.CARET_DOWN: return <FontAwesomeIcon className='icon caretDown' icon='caret-up' />;
             default: return <span>is not defined</span>;
         }
 

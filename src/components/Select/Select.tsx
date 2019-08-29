@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ISelectProps, ISelectState, Icons, Editor } from '../../models';
 import { AppConfig } from '../../configs';
-import { Icon } from '../../components';
+import { Icon, Tooltip } from '../../components';
 import { Strings } from '../../constants';
 
 class Select extends React.Component<ISelectProps, ISelectState> {
