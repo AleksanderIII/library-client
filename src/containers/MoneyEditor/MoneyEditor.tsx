@@ -40,8 +40,8 @@ class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatch
             {this.createSelector(Editor.Selectors.Names.TYPE, moneyType, true, moneyType[0], Editor.Selectors.Names.TYPE, this.getValue, this.updateValue)}
             {this.createSelector(Editor.Selectors.Names.VALUE, this.state.values, true, this.state.values[0], Editor.Selectors.Names.VALUE, this.getValue)}
             <YearInput name={Editor.Selectors.Names.DATE} defaultValue={this.props.editorData.date} getValue={this.getValue} />
-            <ImageLodaer name={'UPLOAD_FRONT_IMAGE'} />
-            <ImageLodaer name={'UPLOAD_BACK_IMAGE'} />
+            <ImageLodaer />
+            <ImageLodaer />
             <Input name={'frontImageUrl'} placeholder={Strings['FRONT_URL']} getValue={this.getValue} />
             <Input name={'backImageUrl'} placeholder={Strings['BACK_URL']} getValue={this.getValue} />
             <Input name={'material'} placeholder={Strings['MATERIAL']} getValue={this.getValue} />
