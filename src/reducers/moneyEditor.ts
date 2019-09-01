@@ -13,6 +13,11 @@ export default function moneyEditor(state: IMoneyEditorState = getInitialState()
                 ...state,
                 [action.optionName]: action.value
             };
+        case MoneyEditorActions.RESET_DATA: {
+            return {
+                ...getInitialState()
+            };
+        }
         default:
             return state;
     }

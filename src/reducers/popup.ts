@@ -13,6 +13,10 @@ export default function popup(state: IPopupState = getInitialPopupState(), actio
         case PopupActions.HIDE:
             return {
                 ...state,
+                container: {
+                    header: '',
+                    content: ''
+                },
                 isShown: false
             };
         default:

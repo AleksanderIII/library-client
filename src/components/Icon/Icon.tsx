@@ -4,7 +4,7 @@ import { IIconProps, Icons } from '../../models';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileExcel, faTrashAlt, faFolderOpen, faFilePdf, faHome, faSignInAlt, faSave, faEdit, faCog, faChevronCircleDown, faChevronCircleUp, faAngleUp, faAngleDown, faWindowClose, faCaretDown, faCaretUp, faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCheckSquare, faFileExcel, faTrashAlt, faFolderOpen, faFilePdf, faHome, faSignInAlt, faSave, faEdit, faCog, faChevronCircleDown, faChevronCircleUp, faAngleUp, faAngleDown, faWindowClose, faCaretDown, faCaretUp, faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faFileExcel);
 library.add(faTrashAlt);
@@ -23,6 +23,7 @@ library.add(faWindowClose);
 library.add(faCaretUp);
 library.add(faCaretDown);
 library.add(faCloudUploadAlt);
+library.add(faCheckSquare);
 
 class Icon extends React.Component<IIconProps> {
     public render(): JSX.Element {
@@ -44,6 +45,7 @@ class Icon extends React.Component<IIconProps> {
             case Icons.Names.CARET_UP: return <FontAwesomeIcon className='icon caretUp' icon='caret-down' />;
             case Icons.Names.CARET_DOWN: return <FontAwesomeIcon className='icon caretDown' icon='caret-up' />;
             case Icons.Names.CLOUD_UPLOAD: return <FontAwesomeIcon className='icon cloudUpload' icon='cloud-upload-alt' />;
+            case Icons.Names.CHECK: return <FontAwesomeIcon className='icon check' icon='check-square' />;
             default: return <span>is not defined</span>;
         }
 

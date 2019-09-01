@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dispatch } from 'redux';
 import { ViewActions, Strings } from '../constants';
-import { IAppState, IMoneyData, IPopup, SiteComponents } from '../models';
+import { IAppState, IMoneyData, IPopup, SiteComponents, Tabs } from '../models';
 import DataService from '../services/dataService';
 import { FiltersActions, PopupActions } from '../actions';
 import { MoneyEditor } from '../containers';
@@ -42,8 +42,8 @@ export const removeCardRequest = (id: string) => {
 };
 
 export const dataRecieved = (data: IMoneyData[]) => {
-  const cash = data.filter(element => element.type === 'Банкноты');
-  const coins = data.filter(element => element.type === 'Монеты');
+  const cash = data.filter(element => element.type === Tabs.Money.CASH);
+  const coins = data.filter(element => element.type === Tabs.Money.COINS);
   return (dispatch: Dispatch<IAppState>) => {
     dispatch({
       coins,

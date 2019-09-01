@@ -22,7 +22,7 @@ class FilterView extends React.Component<IFilterViewProps & IDispatchProp> {
           options={sortStrings(century.options)}
           centralAlign={true}
           defaultValue={century.selected}
-          propName='century'
+          propName={Filters.Names.CENTURY}
           getValue={this.updateValue}
         />
         <Select
@@ -30,7 +30,7 @@ class FilterView extends React.Component<IFilterViewProps & IDispatchProp> {
           options={sortStrings(country.options)}
           centralAlign={true}
           defaultValue={country.selected}
-          propName='country'
+          propName={Filters.Names.COUNTRY}
           getValue={this.updateValue}
         />
       </div>

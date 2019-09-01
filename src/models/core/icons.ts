@@ -16,6 +16,7 @@ export namespace Icons {
         WINDOW_CLOSE = 'WindowClose',
         CARET_UP = 'CaretUp',
         CARET_DOWN = 'CaretDown',
-        CLOUD_UPLOAD = 'CLOUD_UPLOAD'
+        CLOUD_UPLOAD = 'CLOUD_UPLOAD',
+        CHECK = 'CHECK'
     }
 }

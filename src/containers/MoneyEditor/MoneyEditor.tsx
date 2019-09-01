@@ -40,10 +40,8 @@ class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatch
             {this.createSelector(Editor.Selectors.Names.TYPE, moneyType, true, moneyType[0], Editor.Selectors.Names.TYPE, this.getValue, this.updateValue)}
             {this.createSelector(Editor.Selectors.Names.VALUE, this.state.values, true, this.state.values[0], Editor.Selectors.Names.VALUE, this.getValue)}
             <YearInput name={Editor.Selectors.Names.DATE} defaultValue={this.props.editorData.date} getValue={this.getValue} />
-            <ImageLodaer />
-            <ImageLodaer />
-            <Input name={'frontImageUrl'} placeholder={Strings['FRONT_URL']} getValue={this.getValue} />
-            <Input name={'backImageUrl'} placeholder={Strings['BACK_URL']} getValue={this.getValue} />
+            <ImageLodaer name={Editor.Selectors.Names.FRONT_IMAGE_URL} comment={'UPLOAD_FRONT_IMAGE'} getValue={this.getValue} />
+            <ImageLodaer name={Editor.Selectors.Names.BACK_IMAGE_URL} comment={'UPLOAD_BACK_IMAGE'} getValue={this.getValue} />
             <Input name={'material'} placeholder={Strings['MATERIAL']} getValue={this.getValue} />
             <Input name={'form'} placeholder={Strings['FORM']} getValue={this.getValue} />
             <Button text={Strings['ADD']} handleClick={this.postData} />
@@ -68,10 +66,16 @@ class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatch
   }
 
   private getValue = (name: string, value: string) => {
-    this.props.dispatch(MoneyEditorActions.changeOption(name.toLowerCase(), value));
-    if (name === Editor.Selectors.Names.COUNTRY) {
-      const code = CountriesLibrary.getCodeByName(value);
-      this.props.dispatch(MoneyEditorActions.changeOption('code', code));
+    switch (name) {
+      case Editor.Selectors.Names.FRONT_IMAGE_URL:
+        this.props.dispatch(MoneyEditorActions.changeOption('frontImageUrl', value)); break;
+      case Editor.Selectors.Names.BACK_IMAGE_URL:
+        this.props.dispatch(MoneyEditorActions.changeOption('backImageUrl', value)); break;
+      default: this.props.dispatch(MoneyEditorActions.changeOption(name.toLowerCase(), value));
+        if (name === Editor.Selectors.Names.COUNTRY) {
+          const code = CountriesLibrary.getCodeByName(value);
+          this.props.dispatch(MoneyEditorActions.changeOption('code', code));
+        }
     }
   }
 
@@ -97,7 +101,6 @@ class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatch
   private postData = () => {
     this.props.dispatch(MoneyEditorActions.postMoneyData());
     this.props.dispatch(PopupActions.hide());
-    this.props.dispatch(ViewActions.getViewDataRequest());
   }
 }
 

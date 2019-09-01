@@ -1,5 +1,5 @@
 import { FiltersActions } from '../constants';
-import { IFiltersState, FiltersActionTypes } from '../models';
+import { IFiltersState, FiltersActionTypes, Filters } from '../models';
 import getInitialFiltersState from '../states/filtersState';
 
 export default function filters(state: IFiltersState = getInitialFiltersState(), action: FiltersActionTypes): IFiltersState {
@@ -20,7 +20,7 @@ export default function filters(state: IFiltersState = getInitialFiltersState(),
                 }
             };
         case FiltersActions.UPDATE_VALUE: {
-            if (action.name === 'century') {
+            if (action.name === Filters.Names.CENTURY) {
                 return {
                     ...state,
                     data: {
@@ -32,7 +32,7 @@ export default function filters(state: IFiltersState = getInitialFiltersState(),
                     }
                 };
             }
-            if (action.name === 'country') {
+            if (action.name === Filters.Names.COUNTRY) {
                 {
                     return {
                         ...state,

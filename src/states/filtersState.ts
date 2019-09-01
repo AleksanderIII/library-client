@@ -1,15 +1,15 @@
-import { IFiltersState } from '../models';
+import { IFiltersState, Filters } from '../models';
 
 export default function getInitialFiltersState(): IFiltersState {
     return {
         data: {
             country: {
                 options: [],
-                selected: ''
+                selected: Filters.Options.COUNTRY.ALL
             },
             century: {
                 options: [],
-                selected: ''
+                selected: Filters.Options.COUNTRY.ALL
             }
         }
     };

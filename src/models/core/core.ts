@@ -44,7 +44,9 @@ export namespace Editor {
       MATERIAL = 'MATERIAL',
       ADD_INFO = 'ADD_INFO',
       FORM = 'FORM',
-      CODE = 'CODE'
+      CODE = 'CODE',
+      FRONT_IMAGE_URL = 'FRONT_IMAGE_URL',
+      BACK_IMAGE_URL = 'BACK_IMAGE_URL'
     }
     export namespace Options {
       export enum TYPE {

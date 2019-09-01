@@ -52,9 +52,9 @@ class Select extends React.Component<ISelectProps, ISelectState> {
 
     private selectLocalizeValue = (name: string, value: string): string => {
         switch (name) {
-            case Editor.Selectors.Names.COUNTRY: return Strings.COUNTRIES[value];
-            case Editor.Selectors.Names.VALUE: return Strings.MONEY[value];
-            default: return Strings[value];
+            case Editor.Selectors.Names.COUNTRY: return Strings.COUNTRIES[value] || value;
+            case Editor.Selectors.Names.VALUE: return Strings.MONEY[value] || value;
+            default: return Strings[value] || value;
         }
     }
 

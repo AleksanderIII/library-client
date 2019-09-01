@@ -1,25 +1,22 @@
-.button{
-    position: relative;
-    height: 50px;
-    white-space: nowrap; 
+.button {
+	position: relative;
+	height: 50px;
+	white-space: nowrap;
 
-    button{
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, 0);
-        z-index: 0;
-        margin: 5px;
-        padding: 10px;
-        border-radius: 5px;
-        border: none;
-        background: rgb(240, 231, 184);
-        color: brown;
-        outline: none;
-        font-weight: bold;
-    }
-    
-    button:hover{
-        color: rgb(80, 102, 76);
-        background: rgb(238, 213, 87);
-    }
+	button {
+		position: relative;
+		margin: 5px 0 0 0;
+		padding: 10px;
+		border-radius: 5px;
+		border: none;
+		background: rgb(240, 231, 184);
+		color: brown;
+		outline: none;
+		font-weight: bold;
+		transition: color 0.5s ease-in;
+
+		&:hover {
+			color: rgb(116, 33, 33);
+		}
+	}
 }

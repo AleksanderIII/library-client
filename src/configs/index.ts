@@ -15,6 +15,19 @@ export class AppConfig {
         },
         card: {
             defaultPictureUrl: 'https://res.cloudinary.com/dwg7mxlg4/image/upload/v1553694922/Money-library/coin_PNG36944.png'
+        },
+        imageLodaer: {
+            clodinary: {
+                cloudName: 'dwg7mxlg4',
+                uploadPreset: 'o8pfwvbd',
+                clientAllowedFormats: ['png', 'gif', 'jpeg'],
+                maxFileSize: 1000000,
+                showUploadMoreButton: false,
+                theme: 'white',
+                multiple: false,
+                sources: ['local', 'url', 'dropbox'],
+            },
+            folderUrl: 'https://res.cloudinary.com/dwg7mxlg4/image/upload/v1553694922/'
         }
     };
     public static containers = {
