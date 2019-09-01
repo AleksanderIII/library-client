@@ -45,7 +45,7 @@ class GridSection extends React.Component<IGridSectionProps & IDispatchProp, IGr
             <div className='gridSection'>
               <div className='gridSection__header'>
                 <img className={`flag flag-${this.props.countryData[0] ? this.props.countryData[0].code.toLowerCase() : ''}`} />
-                <h2>{this.props.countryName} </h2>
+                <h2>{Strings.COUNTRIES[this.props.countryName]} </h2>
                 <p className='gridSection__header__controls'>
                   <span onClick={this.previousSlide}> <Icon name={Icons.Names.ARROW_UP} /></span>
                   <span onClick={this.nextSlide}><Icon name={Icons.Names.ARROW_DOWN} /></span>
