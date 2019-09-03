@@ -52,19 +52,9 @@
 
 .cardDetails {
     position: relative;
-    min-height: 100vh;
     color: brown;
 
     &__container {
-        border-radius: 30px;
-        box-sizing: border-box;
-        border: 2px solid brown;
-        background-image: white;
-        margin: 5% 20%;
-        margin-bottom: 0;
-        padding: 50px;
-        padding-top: 20px;
-
         div {
             padding: 0px;
         }
@@ -106,15 +96,11 @@
         }
 
         &__content{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            margin: 40px;
-            margin-left: 80px;
+            display: flex;
+            flex-direction: column;
+            margin: 20px;
             align-items: center;
-
-            &__input{
-                width: 70%;
-            }
+            white-space: nowrap;
         }
     }
 }

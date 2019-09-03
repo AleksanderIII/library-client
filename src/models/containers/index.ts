@@ -3,3 +3,4 @@ export * from './dataViewer';
 export * from './registration';
 export * from './filterView';
 export * from './moneyEditor';
+export * from './cardDetails';

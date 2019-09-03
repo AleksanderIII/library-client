@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { Icon } from '../../components';
 import { CardDetails } from '..';
@@ -23,10 +23,10 @@ class Card extends React.Component<ICardProps & IDispatchProp, ICardState> {
 
   private showCardDetails = () => {
     const container = {
-      header: 'Details',
-      content: <CardDetails />,
+      header: Strings['CARD_DETAILS'],
+      content: <CardDetails cardId={this.props._id} />,
     };
-    CardDetailsActions.openCardDetails(container);
+    this.props.dispatch(CardDetailsActions.openCardDetails(container));
   }
 
   private getManageIcons = () => {
@@ -78,4 +78,4 @@ class Card extends React.Component<ICardProps & IDispatchProp, ICardState> {
   }
 }
 
-export default Card;
+export default connect()(Card);
