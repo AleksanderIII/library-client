@@ -1,7 +1,17 @@
 import { Dispatch } from 'redux';
-import { IAppState, IMoneyData } from '../models';
+import { IAppState, IMoneyData, IPopup } from '../models';
 import DataService from '../services/dataService';
 import { CardDetailsActions } from '../constants';
+import { PopupActions } from '.';
+
+export const openCardDetails = (container: IPopup) => {
+    return (dispatch: Dispatch<IAppState>) => {
+        dispatch({
+            type: CardDetailsActions.OPEN_CARD_DETAILS
+        });
+        dispatch(PopupActions.show(container));
+    };
+};
 
 export const getCardDataRequest = (id: string) => {
     return (dispatch: Dispatch<IAppState>) => {

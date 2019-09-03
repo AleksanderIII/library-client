@@ -1,5 +1,4 @@
 import Button from './Button/Button';
-import Card from './Card/Card';
 import Header from './Header/Header';
 import Input from './Input/Input';
 import Select from './Select/Select';
@@ -11,4 +10,4 @@ import Tooltip from './Tooltip/Tooltip';
 import YearInput from './YearInput/YearInput';
 import ImageLodaer from './ImageLodaer/ImageLodaer';
 
-export { Select, Button, Card, Header, Input, SiteManager, Icon, Loader, Map, Tooltip, YearInput, ImageLodaer };
+export { Select, Button, Header, Input, SiteManager, Icon, Loader, Map, Tooltip, YearInput, ImageLodaer };

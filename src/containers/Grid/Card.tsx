@@ -2,13 +2,15 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Icon } from '../../components';
+import { CardDetails } from '..';
 
-import { ICardProps, CardInformation, ICardState, Icons } from '../../models';
+import { ICardProps, CardInformation, ICardState, Icons, IDispatchProp } from '../../models';
 import { AppConfig } from '../../configs';
 import { Strings } from '../../constants';
+import { CardDetailsActions } from '../../actions';
 
-class Card extends React.Component<ICardProps, ICardState> {
-  constructor(props: ICardProps) {
+class Card extends React.Component<ICardProps & IDispatchProp, ICardState> {
+  constructor(props: ICardProps & IDispatchProp) {
     super(props);
     this.state = {
       isFrontSide: true
@@ -19,17 +21,26 @@ class Card extends React.Component<ICardProps, ICardState> {
     this.setState({ isFrontSide: !this.state.isFrontSide });
   }
 
+  private showCardDetails = () => {
+    const container = {
+      header: 'Details',
+      content: <CardDetails />,
+    };
+    CardDetailsActions.openCardDetails(container);
+  }
+
   private getManageIcons = () => {
+
     return <p className='card__manageIcons'>
-      <span>
-        <Link to={`/${this.props._id}`} >
-          <Icon name={Icons.Names.OPEN} />
-        </Link>
+      <span onClick={() => this.showCardDetails()} >
+        {/* <Link to={`/${this.props._id}`} >*/}
+        <Icon name={Icons.Names.OPEN} />
+        {/* </Link>*/}
       </span>
       <span onClick={() => this.props.removeCard(this.props._id)}>
         <Icon name={Icons.Names.TRASH} />
       </span>
-    </p>;
+    </p >;
   }
 
   private getMoneySideImage = (url: string, styleClass: string): JSX.Element => {

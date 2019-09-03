@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { IGridSectionProps, IDispatchProp, IGridSectionState, Icons } from '../../models';
 import { Strings } from '../../constants';
 import { ViewActions } from '../../actions';
-import { Card, Icon } from '../../components';
+import Card from './Card';
+import { Icon } from '../../components';
 import { AppConfig } from '../../configs';
 
 import '../../public/flags.css';
