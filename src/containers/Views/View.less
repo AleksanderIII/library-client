@@ -50,61 +50,6 @@
     }
 }
 
-.cardDetails {
-    position: relative;
-    color: brown;
-
-    &__container {
-        div {
-            padding: 0px;
-        }
-
-        &__header {
-            display: grid;
-            font-weight: bold;
-            grid-template-columns: 80px 1fr 80px;
-            align-items: center;
-            justify-items: center;
-
-            span {
-                width: fit-content;
-            }
-        }
-
-        &__mainInfo {
-            display: grid;
-            padding: 40px 0;
-            grid-template-columns: 2fr 3fr;
-
-            &__images{
-                display: grid;
-                grid-template-rows: 1fr 1fr;
-                justify-content: center;
-
-                img {
-                    max-height: 20vh;
-                    min-height: 20vh;
-                    margin: 10px;
-                }
-            }
-        }
-
-        &__manage{
-            padding: 20px;
-            text-align: center;
-            font-size: 30px;
-        }
-
-        &__content{
-            display: flex;
-            flex-direction: column;
-            margin: 20px;
-            align-items: center;
-            white-space: nowrap;
-        }
-    }
-}
-
 .form{
     position: absolute;
     width: 40%;
