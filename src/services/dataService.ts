@@ -1,4 +1,4 @@
-import { IMoneyData, IMoneyEditorState } from '../models';
+import { IMoneyData, IMoneyEditorState, ICardDetailsState } from '../models';
 import { AppConfig } from '../configs';
 
 class DataService {
@@ -18,6 +18,20 @@ class DataService {
             body: JSON.stringify(moneyData)
         };
         return fetch(`${AppConfig.services.moneyData.url}/money`, params)
+            .then(data => console.log(data))
+            .catch(error => console.log(error));
+    }
+
+    public static postCardData(data: ICardDetailsState['data']): Promise<void> {
+        const params = {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(data)
+        };
+        return fetch(`${AppConfig.services.moneyData.url}/card`, params)
             .then(data => console.log(data))
             .catch(error => console.log(error));
     }

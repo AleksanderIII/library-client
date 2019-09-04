@@ -3,6 +3,7 @@ export interface IInputProps {
     maxLength?: number;
     getValue(name: string, value: string): void;
     name: string;
+    defaultValue?: string;
 }
 
 export interface IInputState {

@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Button, Input, Select, YearInput, ImageLodaer } from '../../components';
+import { Button, Input, YearInput, ImageLodaer } from '../../components';
 import { AppConfig } from '../../configs';
 import { Strings, continents } from '../../constants';
 import { IDispatchProp, IMoneyEditorInternalState, IMoneyEditorComponentProps, IAppState, Editor } from '../../models';
 import CountriesLibrary from '../../utils/countriesLibrary';
 import { ViewActions, MoneyEditorActions, PopupActions } from '../../actions';
+import { createSelector } from '../utils';
 
 class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatchProp, IMoneyEditorInternalState> {
   constructor(props: IMoneyEditorComponentProps & IDispatchProp) {
@@ -35,10 +36,10 @@ class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatch
       <div className='editor'>
         <div className='editor__container'  >
           <div className='editor__container__content'>
-            {this.createSelector(Editor.Selectors.Names.CONTINENT, continentsList, true, this.props.editorData.continent, Editor.Selectors.Names.CONTINENT, this.getValue, this.updateValue)}
-            {this.createSelector(Editor.Selectors.Names.COUNTRY, countriesList, true, this.props.editorData.country, Editor.Selectors.Names.COUNTRY, this.getValue)}
-            {this.createSelector(Editor.Selectors.Names.TYPE, moneyType, true, moneyType[0], Editor.Selectors.Names.TYPE, this.getValue, this.updateValue)}
-            {this.createSelector(Editor.Selectors.Names.VALUE, this.state.values, true, this.state.values[0], Editor.Selectors.Names.VALUE, this.getValue)}
+            {createSelector(Editor.Selectors.Names.CONTINENT, continentsList, true, this.props.editorData.continent, Editor.Selectors.Names.CONTINENT, this.getValue, this.updateValue)}
+            {createSelector(Editor.Selectors.Names.COUNTRY, countriesList, true, this.props.editorData.country, Editor.Selectors.Names.COUNTRY, this.getValue)}
+            {createSelector(Editor.Selectors.Names.TYPE, moneyType, true, moneyType[0], Editor.Selectors.Names.TYPE, this.getValue, this.updateValue)}
+            {createSelector(Editor.Selectors.Names.VALUE, this.state.values, true, this.state.values[0], Editor.Selectors.Names.VALUE, this.getValue)}
             <YearInput name={Editor.Selectors.Names.DATE} defaultValue={this.props.editorData.date} getValue={this.getValue} />
             <ImageLodaer name={Editor.Selectors.Names.FRONT_IMAGE_URL} comment={'UPLOAD_FRONT_IMAGE'} getValue={this.getValue} />
             <ImageLodaer name={Editor.Selectors.Names.BACK_IMAGE_URL} comment={'UPLOAD_BACK_IMAGE'} getValue={this.getValue} />
@@ -48,20 +49,6 @@ class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatch
           </div>
         </div>
       </div>
-    );
-  }
-
-  private createSelector = (name: string, options: string[], centralAlignment: boolean, defaultValue: string, propName: string, getValue: (name: string, value: string) => void, calbackFunction?: (par: string) => void) => {
-    return (
-      <Select
-        name={name}
-        propName={propName}
-        options={options}
-        centralAlign={centralAlignment}
-        defaultValue={defaultValue}
-        selectValue={calbackFunction}
-        getValue={getValue}
-      />
     );
   }
 

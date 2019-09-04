@@ -41,3 +41,23 @@ export const CardDataFailedRequest = () => {
         });
     };
 };
+
+export const updateValue = (fieldName: string, value: string) => {
+    return {
+        type: CardDetailsActions.UPDATE_CARD_FIELDS,
+        fieldName,
+        value
+    };
+};
+
+export const publishUpdates = () => {
+    return (dispatch: Dispatch<IAppState>, getState: () => IAppState) => {
+        const state = getState();
+        dispatch({
+            type: CardDetailsActions.PUBLISH_CARD_UPDATES
+        });
+        DataService.postCardData(state.cardDetails.data)
+            .then(() => dispatch(PopupActions.hide()))
+            .catch(error => console.log(error));
+    };
+};

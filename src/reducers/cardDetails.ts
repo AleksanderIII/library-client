@@ -20,6 +20,14 @@ export default function view(state: ICardDetailsState = getInitialState(), actio
         ...state,
         isLoading: false
       };
+    case CardDetailsActions.UPDATE_CARD_FIELDS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.fieldName]: action.value
+        }
+      };
     default:
       return state;
   }

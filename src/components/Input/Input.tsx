@@ -6,7 +6,7 @@ class Input extends React.Component<IInputProps, IInputState> {
   constructor(props: IInputProps) {
     super(props);
     this.state = {
-      value: ''
+      value: this.props.defaultValue || ''
     };
   }
 
@@ -21,6 +21,7 @@ class Input extends React.Component<IInputProps, IInputState> {
         <input
           placeholder={this.props.placeholder}
           maxLength={this.props.maxLength}
+          value={this.state.value}
           onChange={this.changeHandler}
         />
       </div>

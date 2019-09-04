@@ -1,19 +1,26 @@
 import { CardDetailsActions } from '../../constants';
 import { IMoneyData } from '../core';
 
-export type CardDetailsActionTypes = IGetCardDetailsRequest
-    | IGetCardDetailsSuccessfully
-    | IGetCardDetailsFailure;
+export type CardDetailsActionTypes = IGetCardDetailsRequestAction
+    | IGetCardDetailsSuccessfullyAction
+    | IGetCardDetailsFailureAction
+    | IUpdateValueAction;
 
-export interface IGetCardDetailsRequest {
+export interface IGetCardDetailsRequestAction {
     type: CardDetailsActions.GET_CARD_DETAILS_REQUEST;
 }
 
-export interface IGetCardDetailsSuccessfully {
+export interface IGetCardDetailsSuccessfullyAction {
     type: CardDetailsActions.GET_CARD_DETAILS_SUCCESS;
     data: IMoneyData;
 }
 
-export interface IGetCardDetailsFailure {
+export interface IGetCardDetailsFailureAction {
     type: CardDetailsActions.GET_CARD_DETAILS_FAILURE;
+}
+
+export interface IUpdateValueAction {
+    type: CardDetailsActions.UPDATE_CARD_FIELDS;
+    fieldName: string;
+    value: string;
 }
