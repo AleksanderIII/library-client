@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 import { IAppState, IMoneyData, IPopup } from '../models';
 import DataService from '../services/dataService';
 import { CardDetailsActions } from '../constants';
-import { PopupActions } from '.';
+import { PopupActions, ViewActions } from '.';
 
 export const openCardDetails = (container: IPopup) => {
     return (dispatch: Dispatch<IAppState>) => {
@@ -58,6 +58,7 @@ export const publishUpdates = () => {
         });
         DataService.postCardData(state.cardDetails.data)
             .then(() => dispatch(PopupActions.hide()))
+            .then(() => dispatch(ViewActions.getViewDataRequest()))
             .catch(error => console.log(error));
     };
 };
