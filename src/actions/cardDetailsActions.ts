@@ -18,27 +18,25 @@ export const getCardDataRequest = (id: string) => {
         dispatch({
             type: CardDetailsActions.GET_CARD_DETAILS_REQUEST
         });
-        DataService.getCardData(id).then(data => {
-            dispatch(cardDataSuccess(data));
-        })
-            .catch(e => dispatch(CardDataFailedRequest()));
+        DataService.getCardData(id)
+            .then(data => dispatch(cardDataSuccess(data)))
+            .catch(error => {
+                dispatch(CardDataFailedRequest());
+                console.log(error);
+            });
     };
 };
 
 export const cardDataSuccess = (data: IMoneyData[]) => {
-    return (dispatch: Dispatch<IAppState>) => {
-        dispatch({
-            data,
-            type: CardDetailsActions.GET_CARD_DETAILS_SUCCESS
-        });
+    return {
+        data,
+        type: CardDetailsActions.GET_CARD_DETAILS_SUCCESS
     };
 };
 
 export const CardDataFailedRequest = () => {
-    return (dispatch: Dispatch<IAppState>) => {
-        dispatch({
-            type: CardDetailsActions.GET_CARD_DETAILS_FAILURE
-        });
+    return {
+        type: CardDetailsActions.GET_CARD_DETAILS_FAILURE
     };
 };
 

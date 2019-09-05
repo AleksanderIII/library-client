@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 import { MoneyEditorActions } from '../constants';
 import { IAppState } from '../models';
 import DataService from '../services/dataService';
-import { ViewActions } from '../actions';
+import { ViewActions } from '.';
 
 export const postMoneyData = () => {
     return (dispatch: Dispatch<IAppState>, getState: () => IAppState) => {

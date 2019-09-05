@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { ViewActions, Strings } from '../constants';
 import { IAppState, IMoneyData, IPopup, SiteComponents, Tabs } from '../models';
 import DataService from '../services/dataService';
-import { FiltersActions, PopupActions } from '../actions';
+import { FiltersActions, PopupActions } from '.';
 import { MoneyEditor } from '../containers';
 
 export const getViewDataRequest = () => {

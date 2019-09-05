@@ -1,10 +1,10 @@
-import * as AppSettingsActions from './AppSettings';
-import * as MoneyEditorActions from './MoneyEditor';
-import * as ViewActions from './View';
-import * as CardDetailsActions from './CardDetails';
-import * as UserDataActions from './UserData';
-import * as FiltersActions from './Filters';
-import * as PopupActions from './Popup';
+import * as AppSettingsActions from './appSettingsActions';
+import * as MoneyEditorActions from './moneyEditorActions';
+import * as ViewActions from './viewActions';
+import * as CardDetailsActions from './cardDetailsActions';
+import * as UserDataActions from './userDataActions';
+import * as FiltersActions from './filtersActions';
+import * as PopupActions from './popupActions';
 
 export {
     AppSettingsActions,
