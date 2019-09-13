@@ -1,7 +1,7 @@
-.input{
+.input {
     position: relative;
 
-    input{
+    input {
         width: 100%;
         box-sizing: border-box;
         border: none;
@@ -12,16 +12,24 @@
         margin: 5px 0;
         padding: 5px;
         overflow: hidden;
-        background: rgba(240, 236, 228, 0.548);
         border: 1px solid #f3e9c385;
         border-bottom: 2px solid rgba(240, 236, 228, 0.548);
 
-        &:hover{
+        &:hover {
             border-bottom: 2px solid wheat;
         }
 
-        &:focus{
+        &:focus {
             border-bottom: 2px solid wheat;
         }
     }
+
+    .valid {
+        background: rgba(240, 236, 228, 0.548);
+    }
+
+    .invalid {
+        background: rgb(248, 224, 224);
+    }
+
 }

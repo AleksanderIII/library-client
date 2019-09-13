@@ -13,3 +13,10 @@ export const updateLanguage = (language: Settings.Languages) => {
         language
     };
 };
+
+export const saveUserInfo = (userInfo: { name: string, isAdmin: boolean }) => {
+    return {
+        type: AppSettingsActions.SAVE_USER_DATA,
+        userInfo
+    };
+};

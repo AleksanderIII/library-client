@@ -94,6 +94,10 @@ export namespace Registration {
     PASSWORD = 'PASSWORD',
     REGISTER = 'REGISTER'
   }
+  export enum FieldTypes {
+    PASSWORD = 'PASSWORD',
+    NAME = 'NAME'
+  }
 }
 
 export namespace CardInformation {

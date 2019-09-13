@@ -2,6 +2,10 @@ import { IAppSettingsState, Settings } from '../models';
 
 export default function getAppSettingsInitialState(): IAppSettingsState {
     return {
+        userInfo: {
+            name: '',
+            isAdmin: false
+        },
         language: {
             options: [
                 Settings.Languages.ENGLISH,

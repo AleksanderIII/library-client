@@ -24,6 +24,10 @@ export interface IViewState {
 }
 
 export interface IAppSettingsState {
+    userInfo: {
+        name: string,
+        isAdmin: boolean
+    };
     language: {
         options: string[],
         selected: string

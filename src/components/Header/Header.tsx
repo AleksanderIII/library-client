@@ -3,7 +3,7 @@ import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Icon, Select } from '../../components';
-import { PopupActions, ViewActions, AppSettingsActions } from '../../actions';
+import { PopupActions, ViewActions } from '../../actions';
 import { Strings, continents } from '../../constants';
 import { IAppState, IDispatchProp, IHeaderProps, Icons, Settings, SiteComponents } from '../../models';
 

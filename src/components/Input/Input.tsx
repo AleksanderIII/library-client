@@ -22,13 +22,14 @@ class Input extends React.Component<IInputProps, IInputState> {
   public render(): JSX.Element {
     return (
       <div className='input'>
-        <input
+        < input
+          className={this.props.isValid ? 'valid' : 'invalid'}
           placeholder={this.props.placeholder}
           maxLength={this.props.maxLength}
           value={this.state.value}
           onChange={this.changeHandler}
         />
-      </div>
+      </div >
     );
   }
 }

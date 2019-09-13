@@ -2,7 +2,7 @@ import { AppConfig } from '../configs';
 import { IUserDataState } from '../models';
 
 class UserDataService {
-    public static publishUserData = (userData: IUserDataState): Promise<void> => {
+    public static publishUserData = (userData: IUserDataState): Promise<{ name: string, isAdmin: boolean }> => {
         const options = {
             headers: {
                 Accept: 'application/json',
@@ -12,8 +12,7 @@ class UserDataService {
             body: JSON.stringify(userData)
         };
         return fetch(`${AppConfig.services.userData.url}`, options)
-            .then(console.log)
-            .catch(error => console.log(error));
+            .then(response => response.json());
     }
 }
 
