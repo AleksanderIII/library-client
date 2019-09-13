@@ -1,10 +1,11 @@
 export class AppConfig {
     public static services = {
         moneyData: {
-            url: 'https://libraryserv.herokuapp.com'
+            moneyUrl: 'https://libraryserv.herokuapp.com/api/money',
+            cardUrl: 'https://libraryserv.herokuapp.com/api/card'
         },
         userData: {
-            url: 'https://libraryserv.herokuapp.com'
+            url: 'https://libraryserv.herokuapp.com/api/user'
         },
     };
     public static components = {

@@ -4,7 +4,7 @@ import { AppConfig } from '../configs';
 class MoneyDataService {
     public static getData(continent?: string): Promise<IMoneyData[]> {
         const params = continent ? continent : 'ALL';
-        return fetch(`${AppConfig.services.moneyData.url}/money/${params}`)
+        return fetch(`${AppConfig.services.moneyData.moneyUrl}/${params}`)
             .then(res => res.json());
     }
 
@@ -17,7 +17,7 @@ class MoneyDataService {
             method: 'POST',
             body: JSON.stringify(moneyData)
         };
-        return fetch(`${AppConfig.services.moneyData.url}/card`, params)
+        return fetch(`${AppConfig.services.moneyData.cardUrl}`, params)
             .then(data => console.log(data))
             .catch(error => console.log(error));
     }
@@ -28,10 +28,10 @@ class MoneyDataService {
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
             },
-            method: 'UPDATE',
+            method: 'PUT',
             body: JSON.stringify(data)
         };
-        return fetch(`${AppConfig.services.moneyData.url}/card`, params)
+        return fetch(`${AppConfig.services.moneyData.cardUrl}`, params)
             .then(data => console.log(data))
             .catch(error => console.log(error));
     }
@@ -40,7 +40,7 @@ class MoneyDataService {
         const params = {
             method: 'DELETE'
         };
-        return fetch(`${AppConfig.services.moneyData.url}/card/${id}`, params)
+        return fetch(`${AppConfig.services.moneyData.cardUrl}/${id}`, params)
             .then(data => data.json())
             .catch(error => console.log(error));
     }
@@ -53,7 +53,7 @@ class MoneyDataService {
             },
             method: 'GET',
         };
-        return fetch(`${AppConfig.services.moneyData.url}/card/${id}`, params)
+        return fetch(`${AppConfig.services.moneyData.cardUrl}/${id}`, params)
             .then(data => data.json())
             .catch(error => console.log(error));
     }
