@@ -11,7 +11,7 @@ class UserDataService {
             method: 'POST',
             body: JSON.stringify(userData)
         };
-        return fetch(`${AppConfig.services.userData.url}/user`, options)
+        return fetch(`${AppConfig.services.userData.url}`, options)
             .then(console.log)
             .catch(error => console.log(error));
     }
