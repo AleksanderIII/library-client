@@ -1,4 +1,4 @@
-import { IExportMoneyData } from '../models';
+import { IExportMoneyData, ValidationTypes } from '../models';
 
 export function sortStrings(collection: string[]): string[] {
     return collection.sort((a, b) => {
@@ -46,4 +46,27 @@ export const sortSimpleStrings = (data: string[]) => {
         return 0;
     });
     return data;
+};
+
+export const validateField = (data: string, type: ValidationTypes): boolean => {
+    if (!data || !data.length) {
+        return false;
+    }
+    switch (type) {
+        case ValidationTypes.NAME: {
+            const regExp = new RegExp(/^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/);
+            const isValid = regExp.test(data);
+            return isValid;
+        }
+        case ValidationTypes.PASSWORD: {
+            const regExp = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
+            const isValid = regExp.test(data);
+            return isValid;
+        }
+        case ValidationTypes.SIMPLE_STRING: {
+            const regExp = new RegExp(/^[а-яА-ЯёЁa-zA-Z]+$/i);
+            const isValid = regExp.test(data);
+            return isValid;
+        }
+    }
 };

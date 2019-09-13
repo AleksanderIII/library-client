@@ -44,6 +44,9 @@
     "UPLOAD_FRONT_IMAGE": "Select front image",
     "UPLOAD_BACK_IMAGE": "Select back image",
     "CARD_DETAILS": "Detailed description",
+    "NAME_VALIDATION_MESSAGE": "Use letters and digits, with hyphens, underscores and spaces as internal separators",
+    "PASSWORD_VALIDATION_MESSAGE": "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number",
+    "SIMPLE_STRING_VALIDATION_MESSAGE": "Use Russian and English letters only",
     "MONEY": {
         "1": "1",
         "2": "2",

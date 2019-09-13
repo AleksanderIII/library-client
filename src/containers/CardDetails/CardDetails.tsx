@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Editor, IDispatchProp, ICardDetailsState, IAppState, ICardDetailsComponentState, Icons, ICardDetailsProps } from '../../models';
+import { Editor, IDispatchProp, ICardDetailsState, IAppState, ICardDetailsComponentState, Icons, ICardDetailsProps, ValidationTypes } from '../../models';
 import { Icon, Loader, YearInput, Input } from '../../components';
 import { Strings } from '../../constants';
 import { CardDetailsActions } from '../../actions';
 import { createSelector } from '../utils';
+import { validateField } from '../../utils';
 import { AppConfig } from '../../configs';
 
 class CardDetails extends React.Component<ICardDetailsProps & IDispatchProp & ICardDetailsState, ICardDetailsComponentState> {
@@ -32,7 +33,14 @@ class CardDetails extends React.Component<ICardDetailsProps & IDispatchProp & IC
 
     private createTextEditField = (title: string, value: string) => {
         return <React.Fragment>
-            <span className='cardDetails__container__content__field' >{Strings[title]}: <Input name={title} defaultValue={value} getValue={this.updateValue} /></span>
+            <span className='cardDetails__container__content__field' >
+                {Strings[title]}: <Input
+                    name={title}
+                    defaultValue={value}
+                    getValue={this.updateValue}
+                    isValid={validateField(value, ValidationTypes.SIMPLE_STRING)}
+                />
+            </span>
         </ React.Fragment>;
     }
 

@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import { Button, Input, YearInput, ImageLodaer } from '../../components';
 import { AppConfig } from '../../configs';
 import { Strings, continents } from '../../constants';
-import { IDispatchProp, IMoneyEditorInternalState, IMoneyEditorComponentProps, IAppState, Editor } from '../../models';
+import { IDispatchProp, IMoneyEditorInternalState, IMoneyEditorComponentProps, IAppState, Editor, ValidationTypes } from '../../models';
 import CountriesLibrary from '../../utils/countriesLibrary';
-import { ViewActions, MoneyEditorActions, PopupActions } from '../../actions';
+import { MoneyEditorActions, PopupActions } from '../../actions';
 import { createSelector } from '../utils';
+import { validateField } from '../../utils';
 
 class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatchProp, IMoneyEditorInternalState> {
   constructor(props: IMoneyEditorComponentProps & IDispatchProp) {
@@ -43,8 +44,8 @@ class MoneyEditor extends React.Component<IMoneyEditorComponentProps & IDispatch
             <YearInput name={Editor.Selectors.Names.DATE} defaultValue={this.props.editorData.date} getValue={this.getValue} />
             <ImageLodaer name={Editor.Selectors.Names.FRONT_IMAGE_URL} comment={'UPLOAD_FRONT_IMAGE'} getValue={this.getValue} />
             <ImageLodaer name={Editor.Selectors.Names.BACK_IMAGE_URL} comment={'UPLOAD_BACK_IMAGE'} getValue={this.getValue} />
-            <Input name={'material'} placeholder={Strings['MATERIAL']} getValue={this.getValue} />
-            <Input name={'form'} placeholder={Strings['FORM']} getValue={this.getValue} />
+            <Input isValid={validateField(this.props.editorData.material, ValidationTypes.SIMPLE_STRING)} name={'material'} placeholder={Strings['MATERIAL']} getValue={this.getValue} />
+            <Input isValid={validateField(this.props.editorData.form, ValidationTypes.SIMPLE_STRING)} name={'form'} placeholder={Strings['FORM']} getValue={this.getValue} />
             <Button text={Strings['ADD']} handleClick={this.postData} />
           </div>
         </div>

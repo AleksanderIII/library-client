@@ -94,12 +94,14 @@ export namespace Registration {
     PASSWORD = 'PASSWORD',
     REGISTER = 'REGISTER'
   }
-  export enum FieldTypes {
-    PASSWORD = 'PASSWORD',
-    NAME = 'NAME'
-  }
+
 }
 
+export enum ValidationTypes {
+  PASSWORD = 'PASSWORD',
+  NAME = 'NAME',
+  SIMPLE_STRING = 'SIMPLE_STRING'
+}
 export namespace CardInformation {
   export enum Fields {
     DESCRIPTION = 'DESCRIPTION',
@@ -114,3 +116,11 @@ export namespace Tabs {
     COINS = 'COINS'
   }
 }
+
+export const Notes = {
+  validationNotes: {
+    [ValidationTypes.PASSWORD]: 'PASSWORD_VALIDATION_MESSAGE',
+    [ValidationTypes.NAME]: 'NAME_VALIDATION_MESSAGE',
+    [ValidationTypes.SIMPLE_STRING]: 'SIMPLE_STRING_VALIDATION_MESSAGE',
+  }
+};
