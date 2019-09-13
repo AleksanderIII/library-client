@@ -1,4 +1,4 @@
-import DataService from './dataService';
+import MoneyDataService from './MoneyDataService';
 const { json2excel } = require('js2excel');
 import * as html2canvas from 'html2canvas';
 import * as JsPDF from 'jspdf';
@@ -9,7 +9,7 @@ import { sortObjectsByField } from '../utils';
 class ExportService {
     //next step to upgrade https://www.npmjs.com/package/exceljs#number-formats
     public static getExcel = () => {
-        DataService.getData().then(data => {
+        MoneyDataService.getData().then(data => {
             ExportService.exportToExcel(data, 'overview');
         },
         );

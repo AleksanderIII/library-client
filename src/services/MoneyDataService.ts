@@ -1,10 +1,10 @@
 import { IMoneyData, IMoneyEditorState, ICardDetailsState } from '../models';
 import { AppConfig } from '../configs';
 
-class DataService {
+class MoneyDataService {
     public static getData(continent?: string): Promise<IMoneyData[]> {
-        const params = continent ? continent : 'money';
-        return fetch(`${AppConfig.services.moneyData.url}/${params}`)
+        const params = continent ? continent : 'ALL';
+        return fetch(`${AppConfig.services.moneyData.url}/money/${params}`)
             .then(res => res.json());
     }
 
@@ -17,7 +17,7 @@ class DataService {
             method: 'POST',
             body: JSON.stringify(moneyData)
         };
-        return fetch(`${AppConfig.services.moneyData.url}/money`, params)
+        return fetch(`${AppConfig.services.moneyData.url}/card`, params)
             .then(data => console.log(data))
             .catch(error => console.log(error));
     }
@@ -28,7 +28,7 @@ class DataService {
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
             },
-            method: 'POST',
+            method: 'UPDATE',
             body: JSON.stringify(data)
         };
         return fetch(`${AppConfig.services.moneyData.url}/card`, params)
@@ -40,7 +40,7 @@ class DataService {
         const params = {
             method: 'DELETE'
         };
-        return fetch(`${AppConfig.services.moneyData.url}/money/${id}`, params)
+        return fetch(`${AppConfig.services.moneyData.url}/card/${id}`, params)
             .then(data => data.json())
             .catch(error => console.log(error));
     }
@@ -53,11 +53,11 @@ class DataService {
             },
             method: 'GET',
         };
-        return fetch(`${AppConfig.services.moneyData.url}/money/${id}`, params)
+        return fetch(`${AppConfig.services.moneyData.url}/card/${id}`, params)
             .then(data => data.json())
             .catch(error => console.log(error));
     }
 
 }
 
-export default DataService;
+export default MoneyDataService;

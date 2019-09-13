@@ -66,7 +66,6 @@ export interface IUserDataState {
     name: string;
     password: string;
 }
-
 export interface IFiltersState {
     data: {
         country: IFilter,

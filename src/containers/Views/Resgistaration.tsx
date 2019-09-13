@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { IRegistrationState, IDispatchProp, SiteComponents, Registration } from '../../models';
 import { Strings } from '../../constants';
@@ -8,18 +7,22 @@ import { Button, Input } from '../../components';
 import { UserDataActions } from '../../actions';
 
 class RegistrationView extends React.Component<IRegistrationState & IDispatchProp> {
-    constructor(props: IRegistrationState & IDispatchProp) {
-        super(props);
-        this.changeValue = this.changeValue.bind(this);
-        this.postData = this.postData.bind(this);
-    }
-
-    public changeValue(name: string, value: string): void {
+    private nameInput: Input;
+    private passwordInput: Input;
+    public changeValue = (name: string, value: string) => {
         this.props.dispatch(UserDataActions.changeValue(name, value));
     }
 
-    public postData(): void {
+    public postData = () => {
         this.props.dispatch(UserDataActions.postUserData());
+        this.resetValues();
+    }
+
+    public resetValues = () => {
+        if (this.nameInput && this.passwordInput) {
+            this.nameInput.resetValue();
+            this.passwordInput.resetValue();
+        }
     }
 
     public render(): JSX.Element {
@@ -27,11 +30,19 @@ class RegistrationView extends React.Component<IRegistrationState & IDispatchPro
             <div >
                 <div className='form'>
                     <h1>{Strings[SiteComponents.Names.REGISTRATION]}</h1>
-                    <Input placeholder={Strings[Registration.Fields.NAME]} maxLength={10} name='name' getValue={this.changeValue} />
-                    <Input placeholder={Strings[Registration.Fields.PASSWORD]} maxLength={10} name='password' getValue={this.changeValue} />
-                    <Link to='/continents'>
-                        <Button text={Strings[Registration.Fields.REGISTER]} handleClick={() => this.postData()} />
-                    </Link>
+                    <Input
+                        ref={nameInput => this.nameInput = nameInput}
+                        placeholder={Strings[Registration.Fields.NAME]}
+                        maxLength={15}
+                        name={Registration.Fields.NAME.toLowerCase()}
+                        getValue={this.changeValue} />
+                    <Input
+                        ref={passwordInput => this.passwordInput = passwordInput}
+                        placeholder={Strings[Registration.Fields.PASSWORD]}
+                        maxLength={15}
+                        name={Registration.Fields.PASSWORD.toLowerCase()}
+                        getValue={this.changeValue} />
+                    <Button text={Strings[Registration.Fields.REGISTER]} handleClick={() => this.postData()} />
                 </div>
             </div>
         );

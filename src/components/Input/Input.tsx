@@ -15,6 +15,10 @@ class Input extends React.Component<IInputProps, IInputState> {
     this.props.getValue(this.props.name, event.currentTarget.value);
   }
 
+  public resetValue = () => {
+    this.setState({ value: '' });
+  }
+
   public render(): JSX.Element {
     return (
       <div className='input'>

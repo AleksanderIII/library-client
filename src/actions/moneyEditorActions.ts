@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import { MoneyEditorActions } from '../constants';
 import { IAppState } from '../models';
-import DataService from '../services/dataService';
+import { MoneyDataService } from '../services';
 import { ViewActions } from '.';
 
 export const postMoneyData = () => {
@@ -11,7 +11,7 @@ export const postMoneyData = () => {
         dispatch({
             type: MoneyEditorActions.POST_MONEY_DATA
         });
-        DataService.postData(moneyData)
+        MoneyDataService.postData(moneyData)
             .then(data => {
                 dispatch(resetData());
                 if (state.view.continent === 'ALL') {

@@ -1,10 +1,15 @@
 import { Dispatch } from 'redux';
 import { UserDataActions } from '../constants';
+import { UserDataService } from '../services';
 import { IAppState } from '../models';
 
 export const postUserData = () => {
-    return {
-        type: UserDataActions.POST_USER_DATA
+    return (dispatch: Dispatch<IAppState>, getState: () => IAppState) => {
+        dispatch({ type: UserDataActions.POST_USER_DATA });
+        const state = getState();
+        UserDataService.publishUserData(state.userData)
+            .then(console.log)
+            .then(() => dispatch(clearUserData()));
     };
 };
 

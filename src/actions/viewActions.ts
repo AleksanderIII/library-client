@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { ViewActions, Strings } from '../constants';
 import { IAppState, IMoneyData, IPopup, SiteComponents, Tabs } from '../models';
-import DataService from '../services/dataService';
+import { MoneyDataService } from '../services';
 import { FiltersActions, PopupActions } from '.';
 import { MoneyEditor } from '../containers';
 
@@ -11,7 +11,7 @@ export const getViewDataRequest = () => {
     dispatch({
       type: ViewActions.GET_MONEY_REQUEST
     });
-    DataService.getData().then(data => {
+    MoneyDataService.getData().then(data => {
       dispatch(dataRecieved(data));
     });
   };
@@ -22,7 +22,7 @@ export const getViewDataByContinentRequest = (continent: string) => {
     dispatch({
       type: ViewActions.GET_MONEY_BY_CONTINENT_REQUEST
     });
-    DataService.getData(continent).then(data => {
+    MoneyDataService.getData(continent).then(data => {
       dispatch(dataRecieved(data));
     })
       .catch(console.log);
@@ -34,7 +34,7 @@ export const removeCardRequest = (id: string) => {
     dispatch({
       type: ViewActions.REMOVE_CARD_REQUEST
     });
-    DataService.removeCard(id).then(data => {
+    MoneyDataService.removeCard(id).then(data => {
       dispatch(dataRecieved(data));
     })
       .catch(console.log);

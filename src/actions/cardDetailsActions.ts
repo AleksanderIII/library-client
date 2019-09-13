@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { IAppState, IMoneyData, IPopup } from '../models';
-import DataService from '../services/dataService';
+import { MoneyDataService } from '../services';
 import { CardDetailsActions } from '../constants';
 import { PopupActions, ViewActions } from '.';
 
@@ -18,7 +18,7 @@ export const getCardDataRequest = (id: string) => {
         dispatch({
             type: CardDetailsActions.GET_CARD_DETAILS_REQUEST
         });
-        DataService.getCardData(id)
+        MoneyDataService.getCardData(id)
             .then(data => dispatch(cardDataSuccess(data)))
             .catch(error => {
                 dispatch(CardDataFailedRequest());
@@ -54,7 +54,7 @@ export const publishUpdates = () => {
         dispatch({
             type: CardDetailsActions.PUBLISH_CARD_UPDATES
         });
-        DataService.postCardData(state.cardDetails.data)
+        MoneyDataService.postCardData(state.cardDetails.data)
             .then(() => dispatch(PopupActions.hide()))
             .then(() => dispatch(ViewActions.getViewDataRequest()))
             .catch(error => console.log(error));

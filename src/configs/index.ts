@@ -2,7 +2,10 @@ export class AppConfig {
     public static services = {
         moneyData: {
             url: 'https://libraryserv.herokuapp.com'
-        }
+        },
+        userData: {
+            url: 'https://libraryserv.herokuapp.com'
+        },
     };
     public static components = {
         gridSection: {
